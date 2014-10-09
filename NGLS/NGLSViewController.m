@@ -91,7 +91,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (IBAction)startButton:(UIButton *)sender {
     // Identify app delegate
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
