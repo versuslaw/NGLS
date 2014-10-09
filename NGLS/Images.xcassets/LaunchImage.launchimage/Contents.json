@@ -5,7 +5,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "Icon-Portrait.png",
+      "filename" : "Launch-Screen.png",
       "scale" : "1x"
     },
     {
@@ -20,7 +20,6 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "Icon-Portrait@2x.png",
       "scale" : "2x"
     },
     {

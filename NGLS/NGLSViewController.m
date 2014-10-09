@@ -83,12 +83,42 @@
                                                        inManagedObjectContext:context];
     // Declare managed object
     self.managedObjectAdmin = ManagedObjectAdmin;
+    
+    // Start animations
+    //[self startAnimations];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)startAnimations {
+    [_startBtn setAlpha:0.0];
+    [_disclaimerTxt setAlpha:0.0];
+    [_nglsLogo setAlpha:0.0];
+    
+    [UIView animateWithDuration:1
+                          delay:0.25
+                        options:UIViewAnimationOptionAllowAnimatedContent
+                     animations:^{
+                         [_startBtn setAlpha:1];
+                     }completion:nil];
+    
+    [UIView animateWithDuration:1
+                          delay:0.25
+                        options:UIViewAnimationOptionAllowAnimatedContent
+                     animations:^{
+                         [_disclaimerTxt setAlpha:1];
+                     }completion:nil];
+    
+    [UIView animateWithDuration:1
+                          delay:0.25
+                        options:UIViewAnimationOptionAllowAnimatedContent
+                     animations:^{
+                         [_nglsLogo setAlpha:1];
+                     }completion:nil];
 }
 
 - (IBAction)startButton:(UIButton *)sender {

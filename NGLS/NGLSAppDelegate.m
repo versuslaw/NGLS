@@ -26,7 +26,8 @@
     
     [self.window setRootViewController:navigationController];
     [self.window makeKeyAndVisible];
-    self.window.backgroundColor = [UIColor whiteColor];
+    //self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.png"]];
     [self cycleTheGlobalMailComposer];
     
     // Override point for customization after application launch.

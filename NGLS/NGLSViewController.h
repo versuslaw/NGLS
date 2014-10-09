@@ -15,4 +15,9 @@
 @property (nonatomic, strong) NSManagedObject *managedObjectAdmin;
 @property (retain, strong) UIAlertView *loginRequired;
 
+@property (weak, nonatomic) IBOutlet UIImageView *nglsSplash;
+@property (weak, nonatomic) IBOutlet UIButton *startBtn;
+@property (weak, nonatomic) IBOutlet UITextView *disclaimerTxt;
+@property (weak, nonatomic) IBOutlet UIImageView *nglsLogo;
+
 @end

@@ -29,6 +29,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // Set background
+    self.view.backgroundColor = [UIColor clearColor];
 
     // Listen for lower-right keyboard hide button
     [[NSNotificationCenter defaultCenter] addObserver:self

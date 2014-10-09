@@ -64,6 +64,9 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="h8P-p7-hvf">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fk5-yK-GCQ">
                     <rect key="frame" x="19" y="219" width="220" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -116,7 +119,6 @@
                 </textField>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Please provide details of employers with regards to the noisy environments for which you have worked:" translatesAutoresizingMaskIntoConstraints="NO" id="nbb-2o-Q2z">
                     <rect key="frame" x="38" y="116" width="693" height="53"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -349,6 +351,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
     </objects>
+    <resources>
+        <image name="Background.png" width="768" height="1024"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

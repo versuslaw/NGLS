@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+
     // Listen for lower-right keyboard hide button
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)

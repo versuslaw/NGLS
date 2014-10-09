@@ -43,6 +43,7 @@
 //                                             selector:@selector(keyboardWillHide:)
 //                                                 name:UIKeyboardWillHideNotification
 //                                               object:nil];
+
     
     // Identify the app delegate
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
