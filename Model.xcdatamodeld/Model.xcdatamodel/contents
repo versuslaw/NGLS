@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Admin" syncable="YES">
+        <attribute name="siteLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userLogin" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="NGLS" syncable="YES">
+        <attribute name="aaw" optional="YES" attributeType="String" defaultValueString=" " syncable="YES"/>
+        <attribute name="aawDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addLine1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addLine2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addLine3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addLine4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addLine5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asbDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bpDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientForename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientNI" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientPost" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientSurname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientTelLand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientTelMob" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactHours" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="conv" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="convDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateOfBirth" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateStamp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp1Exposure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp1From" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp1Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp1Noise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp1To" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp2Exposure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp2From" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp2Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp2Noise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp2To" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp3Exposure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp3From" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp3Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp3Noise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp3To" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp4Exposure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp4From" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp4Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp4Noise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp4To" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp5Exposure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp5From" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp5Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp5Noise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp5To" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp6Exposure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp6From" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp6Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp6Noise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp6To" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp7Exposure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp7From" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp7Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp7Noise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp7To" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp8Exposure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp8From" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp8Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp8Noise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp8To" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp9Exposure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp9From" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp9Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp9Noise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp9To" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp10Exposure" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp10From" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp10Name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp10Noise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emp10To" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ind" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indSurvey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mslm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mslmDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="msp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mspDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="otherServices" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pba" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pbaDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ppi" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ppiDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q1More" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q2More" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q3More" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q4More" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rcf" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rcfDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recTel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rta" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rtaDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="site" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwf" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wpDetails" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Admin" positionX="-63" positionY="135" width="128" height="73"/>
+        <element name="NGLS" positionX="-63" positionY="-18" width="128" height="1620"/>
+    </elements>
+</model>

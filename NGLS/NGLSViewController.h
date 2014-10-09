@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
-@interface NGLSViewController : UIViewController
+@interface NGLSViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
+
+@property (nonatomic, strong) NSManagedObject *managedObjectNGLS;
+@property (nonatomic, strong) NSManagedObject *managedObjectAdmin;
+@property (retain, strong) UIAlertView *loginRequired;
 
 @end
