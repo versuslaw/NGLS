@@ -20,4 +20,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *disclaimerTxt;
 @property (weak, nonatomic) IBOutlet UIImageView *nglsLogo;
 
+
+
 @end

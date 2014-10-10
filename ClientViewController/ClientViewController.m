@@ -19,6 +19,8 @@
 
 @implementation ClientViewController
 
+@synthesize datePicker;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -250,7 +252,7 @@
 
 - (void)datePickerTextField {
     // Open date picker when textfield is tapped
-    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    datePicker = [[UIDatePicker alloc]init];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker setDate:[NSDate date]];
     [datePicker setMaximumDate:[NSDate date]];
@@ -258,16 +260,17 @@
     [datePicker addTarget:self
                    action:@selector(updateDateTextField:)
          forControlEvents:UIControlEventValueChanged];
-    datePicker.backgroundColor = [UIColor whiteColor];
     [self.dobField setInputView:datePicker];
+    datePicker.backgroundColor = [UIColor clearColor];
 }
 
 - (void)updateDateTextField:(id)sender {
     // Update DoB textfield when date picker is scrolled
-    UIDatePicker *picker = (UIDatePicker *) self.dobField.inputView;
+    datePicker = (UIDatePicker *) self.dobField.inputView;
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd/MM/yyyy"];
-    NSString *stringFromDate = [formatter stringFromDate:picker.date];
+    NSString *stringFromDate = [formatter stringFromDate:datePicker.date];
     self.dobField.text = [NSString stringWithFormat:@"%@", stringFromDate];
 }
 

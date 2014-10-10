@@ -34,6 +34,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *dobField;
 @property (weak, nonatomic) IBOutlet UITextField *niNumField;
+@property (strong, nonatomic) UIDatePicker *datePicker;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *contactSeg;
 
