@@ -13,6 +13,9 @@
 @property (strong, nonatomic) NSManagedObject *managedObjectNGLS;
 @property (nonatomic, strong) NSManagedObject *managedObjectAdmin;
 
+@property (nonatomic, strong) NSDate *dateFrom;
+@property (nonatomic, strong) NSDate *dateTo;
+
 @property (weak, nonatomic) IBOutlet UITextField *empName1;
 @property (weak, nonatomic) IBOutlet UITextField *empFrom1;
 @property (weak, nonatomic) IBOutlet UITextField *empTo1;

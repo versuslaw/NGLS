@@ -18,6 +18,9 @@
 @synthesize noisePicker;
 @synthesize noiseArray;
 
+@synthesize dateFrom;
+@synthesize dateTo;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -55,7 +58,7 @@
 
     // Call datePicker method
     [self datePickerTextField];
-    
+
     // Noise picker
     self.noisePicker = [[UIPickerView alloc]init];
     [noisePicker setDataSource:self];
@@ -101,49 +104,6 @@
     [self.empNoise8 setInputView:noisePicker];
     [self.empNoise9 setInputView:noisePicker];
     [self.empNoise10 setInputView:noisePicker];
-}
-
-- (void)datePickerTextField {
-    // Open date picker when textfield is tapped
-    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
-    datePicker.datePickerMode = UIDatePickerModeDate;
-    
-    // Set default date
-    NSCalendar *calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *components = [[NSDateComponents alloc]init];
-    [components setDay:1];
-    [components setMonth:1];
-    [components setYear:1980];
-    NSDate *defaultDate = [calendar dateFromComponents:components];
-    [datePicker setDate:defaultDate];
-    
-    [datePicker setMaximumDate:[NSDate date]];
-    [datePicker addTarget:self
-                   action:@selector(updateDateTextField:)
-         forControlEvents:UIControlEventValueChanged];
-    datePicker.backgroundColor = [UIColor whiteColor];
-    
-    // Set input for each textfield
-    [self.empFrom1 setInputView:datePicker];
-    [self.empTo1 setInputView:datePicker];
-    [self.empFrom2 setInputView:datePicker];
-    [self.empTo2 setInputView:datePicker];
-    [self.empFrom3 setInputView:datePicker];
-    [self.empTo3 setInputView:datePicker];
-    [self.empFrom4 setInputView:datePicker];
-    [self.empTo4 setInputView:datePicker];
-    [self.empFrom5 setInputView:datePicker];
-    [self.empTo5 setInputView:datePicker];
-    [self.empFrom6 setInputView:datePicker];
-    [self.empTo6 setInputView:datePicker];
-    [self.empFrom7 setInputView:datePicker];
-    [self.empTo7 setInputView:datePicker];
-    [self.empFrom8 setInputView:datePicker];
-    [self.empTo8 setInputView:datePicker];
-    [self.empFrom9 setInputView:datePicker];
-    [self.empTo9 setInputView:datePicker];
-    [self.empFrom10 setInputView:datePicker];
-    [self.empTo10 setInputView:datePicker];
 }
 
 #pragma picker components
@@ -196,72 +156,177 @@
     }
 }
 
+- (void)datePickerTextField {
+    // Open date picker when textfield is tapped
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    // Set default date
+    NSCalendar *calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc]init];
+    [components setDay:1];
+    [components setMonth:1];
+    [components setYear:1980];
+    NSDate *defaultDate = [calendar dateFromComponents:components];
+    [datePicker setDate:defaultDate];
+
+    [datePicker setMaximumDate:[NSDate date]];
+    [datePicker addTarget:self
+                   action:@selector(updateDateTextField:)
+         forControlEvents:UIControlEventValueChanged];
+    datePicker.backgroundColor = [UIColor clearColor];
+    
+    // Set input for each textfield
+    [self.empFrom1 setInputView:datePicker];
+    [self.empTo1 setInputView:datePicker];
+    [self.empFrom2 setInputView:datePicker];
+    [self.empTo2 setInputView:datePicker];
+    [self.empFrom3 setInputView:datePicker];
+    [self.empTo3 setInputView:datePicker];
+    [self.empFrom4 setInputView:datePicker];
+    [self.empTo4 setInputView:datePicker];
+    [self.empFrom5 setInputView:datePicker];
+    [self.empTo5 setInputView:datePicker];
+    [self.empFrom6 setInputView:datePicker];
+    [self.empTo6 setInputView:datePicker];
+    [self.empFrom7 setInputView:datePicker];
+    [self.empTo7 setInputView:datePicker];
+    [self.empFrom8 setInputView:datePicker];
+    [self.empTo8 setInputView:datePicker];
+    [self.empFrom9 setInputView:datePicker];
+    [self.empTo9 setInputView:datePicker];
+    [self.empFrom10 setInputView:datePicker];
+    [self.empTo10 setInputView:datePicker];
+}
+
 - (void)updateDateTextField:(UIDatePicker *) datePicker {
     // Format date
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd/MM/yyyy"];
     NSString *stringFromDate = [formatter stringFromDate:datePicker.date];
     
-    // Check which textfield is active and set date
+    UIAlertView *validDate = [[UIAlertView alloc]initWithTitle:@"Error"
+                                                       message:@"Please check dates"
+                                                      delegate:nil
+                                             cancelButtonTitle:@"Dismiss"
+                                             otherButtonTitles:nil];
+    
+    // Check active textfield, update & validate date
     if ([self.empFrom1 isFirstResponder]) {
         self.empFrom1.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empTo1 isFirstResponder]) {
+        self.dateFrom = datePicker.date;
+    } else if ([self.empTo1 isFirstResponder]) {
         self.empTo1.text = [NSString stringWithFormat:@"%@", stringFromDate];
+        self.dateTo = datePicker.date;
+        if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
+            [validDate show];
+            [datePicker setDate:dateFrom];
+        }
     }
+    
     else if ([self.empFrom2 isFirstResponder]) {
         self.empFrom2.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empTo2 isFirstResponder]) {
+        self.dateFrom = datePicker.date;
+    } else if ([self.empTo2 isFirstResponder]) {
         self.empTo2.text = [NSString stringWithFormat:@"%@", stringFromDate];
+        self.dateTo = datePicker.date;
+        if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
+            [validDate show];
+            [datePicker setDate:dateFrom];
+        }
     }
+    
     else if ([self.empFrom3 isFirstResponder]) {
         self.empFrom3.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empTo3 isFirstResponder]) {
+        self.dateFrom = datePicker.date;
+    } else if ([self.empTo3 isFirstResponder]) {
         self.empTo3.text = [NSString stringWithFormat:@"%@", stringFromDate];
+        self.dateTo = datePicker.date;
+        if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
+            [validDate show];
+            [datePicker setDate:dateFrom];
+        }
     }
+    
     else if ([self.empFrom4 isFirstResponder]) {
         self.empFrom4.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empTo4 isFirstResponder]) {
+        self.dateFrom = datePicker.date;
+    } else if ([self.empTo4 isFirstResponder]) {
         self.empTo4.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empFrom5 isFirstResponder]) {
+        self.dateTo = datePicker.date;
+        if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
+            [validDate show];
+            [datePicker setDate:dateFrom];
+        }
+    } else if ([self.empFrom5 isFirstResponder]) {
         self.empFrom5.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empTo5 isFirstResponder]) {
+        self.dateFrom = datePicker.date;
+    } else if ([self.empTo5 isFirstResponder]) {
         self.empTo5.text = [NSString stringWithFormat:@"%@", stringFromDate];
+        self.dateTo = datePicker.date;
+        if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
+            [validDate show];
+            [datePicker setDate:dateFrom];
+        }
     }
+    
     else if ([self.empFrom6 isFirstResponder]) {
         self.empFrom6.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empTo6 isFirstResponder]) {
+        self.dateFrom = datePicker.date;
+    } else if ([self.empTo6 isFirstResponder]) {
         self.empTo6.text = [NSString stringWithFormat:@"%@", stringFromDate];
+        self.dateTo = datePicker.date;
+        if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
+            [validDate show];
+            [datePicker setDate:dateFrom];
+        }
     }
+    
     else if ([self.empFrom7 isFirstResponder]) {
         self.empFrom7.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empTo7 isFirstResponder]) {
+        self.dateFrom = datePicker.date;
+    } else if ([self.empTo7 isFirstResponder]) {
         self.empTo7.text = [NSString stringWithFormat:@"%@", stringFromDate];
+        self.dateTo = datePicker.date;
+        if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
+            [validDate show];
+            [datePicker setDate:dateFrom];
+        }
     }
+    
     else if ([self.empFrom8 isFirstResponder]) {
         self.empFrom8.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empTo8 isFirstResponder]) {
+        self.dateFrom = datePicker.date;
+    } else if ([self.empTo8 isFirstResponder]) {
         self.empTo8.text = [NSString stringWithFormat:@"%@", stringFromDate];
+        self.dateTo = datePicker.date;
+        if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
+            [validDate show];
+        }
     }
+    
     else if ([self.empFrom9 isFirstResponder]) {
         self.empFrom9.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empTo9 isFirstResponder]) {
+        self.dateFrom = datePicker.date;
+    } else if ([self.empTo9 isFirstResponder]) {
         self.empTo9.text = [NSString stringWithFormat:@"%@", stringFromDate];
+        self.dateTo = datePicker.date;
+        if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
+            [validDate show];
+            [datePicker setDate:dateFrom];
+        }
     }
+    
     else if ([self.empFrom10 isFirstResponder]) {
         self.empFrom10.text = [NSString stringWithFormat:@"%@", stringFromDate];
-    }
-    else if ([self.empTo10 isFirstResponder]) {
+        self.dateFrom = datePicker.date;
+    } else if ([self.empTo10 isFirstResponder]) {
         self.empTo10.text = [NSString stringWithFormat:@"%@", stringFromDate];
+        self.dateTo = datePicker.date;
+        if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
+            [validDate show];
+            [datePicker setDate:dateFrom];
+        }
     }
 }
 
