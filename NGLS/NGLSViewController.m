@@ -85,7 +85,7 @@
     self.managedObjectAdmin = ManagedObjectAdmin;
     
     // Start animations
-    //[self startAnimations];
+    [self startAnimations];
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,22 +99,22 @@
     [_disclaimerTxt setAlpha:0.0];
     [_nglsLogo setAlpha:0.0];
     
-    [UIView animateWithDuration:1
-                          delay:0.25
+    [UIView animateWithDuration:0.5
+                          delay:0.1
                         options:UIViewAnimationOptionAllowAnimatedContent
                      animations:^{
                          [_startBtn setAlpha:1];
                      }completion:nil];
     
-    [UIView animateWithDuration:1
-                          delay:0.25
+    [UIView animateWithDuration:0.5
+                          delay:0.1
                         options:UIViewAnimationOptionAllowAnimatedContent
                      animations:^{
                          [_disclaimerTxt setAlpha:1];
                      }completion:nil];
     
-    [UIView animateWithDuration:1
-                          delay:0.25
+    [UIView animateWithDuration:0.5
+                          delay:0.1
                         options:UIViewAnimationOptionAllowAnimatedContent
                      animations:^{
                          [_nglsLogo setAlpha:1];

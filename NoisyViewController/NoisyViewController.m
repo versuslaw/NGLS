@@ -328,7 +328,6 @@
             [datePicker setDate:dateFrom];
         }
     }
-    
 }
 
 - (IBAction)finishBtnPressed:(UIButton *)sender {
