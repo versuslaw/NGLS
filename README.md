@@ -1,8 +1,7 @@
 NGLS
 ====
 
-Next Generation Legal Services
+Design & Implementation by Ross Humphreys ©
 
-iOS Application developed by Ross Humphreys 2014.
+Copyright © 2014 Next Generation Legal Services. All rights reserved.
 
-A simple data collection app designed to record and export data.
