@@ -211,6 +211,7 @@
                                              cancelButtonTitle:@"Dismiss"
                                              otherButtonTitles:nil];
     
+    
     // Check active textfield, update & validate date
     if ([self.empFrom1 isFirstResponder]) {
         self.empFrom1.text = [NSString stringWithFormat:@"%@", stringFromDate];
@@ -258,7 +259,9 @@
             [validDate show];
             [datePicker setDate:dateFrom];
         }
-    } else if ([self.empFrom5 isFirstResponder]) {
+    }
+    
+    else if ([self.empFrom5 isFirstResponder]) {
         self.empFrom5.text = [NSString stringWithFormat:@"%@", stringFromDate];
         self.dateFrom = datePicker.date;
     } else if ([self.empTo5 isFirstResponder]) {

@@ -53,6 +53,9 @@
     
     // Perform tests to determine button state
     [self isInterested];
+    
+    // Set delegate
+    self.recTel.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -210,13 +213,11 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     // Dismiss keyboard when user taps anywhere on view
-    //[self dismissKeyboard];
     [self.view endEditing:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     // Dismiss keyboard when 'done' is pressed
-    //[self dismissKeyboard];
     [self.view endEditing:YES];
     [textField resignFirstResponder];
     return NO;
@@ -225,7 +226,19 @@
 - (void)keyboardWillHide:(NSNotification *)notification {
     // Dismiss keyboard when lower-right hide button is tapped
     [self.view endEditing:YES];
-    //[self dismissKeyboard];
+}
+
+#define NUMBERS_ONLY @"1234567890"
+#define CHARACTER_LIMIT 11
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // Set recTel field to numbers only with 11 character limit
+    if (textField == self.recTel) {
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS_ONLY] invertedSet];
+        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        return (([string isEqualToString:filtered])&&(newLength <= CHARACTER_LIMIT));
+    }
+    return YES;
 }
 
 //  Select / deselect buttons, prompt for more details
@@ -241,7 +254,7 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                           message:@"Would you like to give additional information by answering some short related questions?"
                                          delegate:self
-                                cancelButtonTitle:@"Cancel"
+                                cancelButtonTitle:@"No"
                                 otherButtonTitles:@"Proceed", nil];
     qConfirm.tag = 1;
     if (sender.isSelected == YES) {
@@ -261,8 +274,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                        message:@"Would you like to give additional information?"
                                                       delegate:self
-                                             cancelButtonTitle:@"Cancel"
-                                             otherButtonTitles:@"Proceed", nil];
+                                             cancelButtonTitle:@"Submit"
+                                             otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 2;
     if (sender.isSelected == YES) {
@@ -282,8 +295,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 3;
     if (sender.isSelected == YES) {
@@ -303,8 +316,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 4;
     if (sender.isSelected == YES) {
@@ -324,8 +337,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 5;
     if (sender.isSelected == YES) {
@@ -345,8 +358,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 6;
     if (sender.isSelected == YES) {
@@ -366,8 +379,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 7;
     if (sender.isSelected == YES) {
@@ -387,8 +400,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 8;
     if (sender.isSelected == YES) {
@@ -408,8 +421,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 9;
     if (sender.isSelected == YES) {
@@ -429,8 +442,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 10;
     if (sender.isSelected == YES) {
@@ -450,8 +463,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 11;
     if (sender.isSelected == YES) {
@@ -471,8 +484,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 12;
     if (sender.isSelected == YES) {
@@ -492,8 +505,8 @@
     UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                                       message:@"Would you like to give additional information?"
                                                      delegate:self
-                                            cancelButtonTitle:@"Cancel"
-                                            otherButtonTitles:@"Proceed", nil];
+                                            cancelButtonTitle:@"Submit"
+                                            otherButtonTitles:nil];
     qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
     qConfirm.tag = 13;
     if (sender.isSelected == YES) {
@@ -524,7 +537,7 @@
     
     // ASB
     if (alertView.tag == 2) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *asbDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:asbDetails forKeyPath:@"asbDetails"];
             if (asbDetails.length > 1) {
@@ -532,12 +545,12 @@
                 _asbBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _asbBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // VWF
     if (alertView.tag == 3) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *vwfDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:vwfDetails forKeyPath:@"vwfDetails"];
             if (vwfDetails.length > 1) {
@@ -545,12 +558,12 @@
                 _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _vwfBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // BP
     if (alertView.tag == 4) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *bpDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:bpDetails forKeyPath:@"bpDetails"];
             if (bpDetails.length > 1) {
@@ -558,12 +571,12 @@
                 _bpBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _bpBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // RTA
     if (alertView.tag == 5) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *rtaDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:rtaDetails forKeyPath:@"rtaDetails"];
             if (rtaDetails.length > 1) {
@@ -571,12 +584,12 @@
                 _rtaBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _rtaBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // MSLM
     if (alertView.tag == 6) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *mslmDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:mslmDetails forKeyPath:@"mslmDetails"];
             if (mslmDetails.length > 1) {
@@ -584,12 +597,12 @@
                 _mslmBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _mslmBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // PBA
     if (alertView.tag == 7) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *pbaDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:pbaDetails forKeyPath:@"pbaDetails"];
             if (pbaDetails.length > 1) {
@@ -597,12 +610,12 @@
                 _pbaBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _pbaBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // RCF
     if (alertView.tag == 8) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *rcfDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:rcfDetails forKeyPath:@"rcfDetails"];
             if (rcfDetails.length > 1) {
@@ -610,12 +623,12 @@
                 _rcfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _rcfBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // MSP
     if (alertView.tag == 9) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *mspDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:mspDetails forKeyPath:@"mspDetails"];
             if (mspDetails.length > 1) {
@@ -623,12 +636,12 @@
                 _mspBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _mspBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // AAW
     if (alertView.tag == 10) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *aawDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:aawDetails forKeyPath:@"aawDetails"];
             if (aawDetails.length > 1) {
@@ -636,12 +649,12 @@
                 _aawBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _aawBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // PPI
     if (alertView.tag == 11) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *ppiDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:ppiDetails forKeyPath:@"ppiDetails"];
             if (ppiDetails.length > 1) {
@@ -649,12 +662,12 @@
                 _ppiBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _ppiBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // WP
     if (alertView.tag == 12) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *wpDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:wpDetails forKeyPath:@"wpDetails"];
             if (wpDetails.length > 1) {
@@ -662,12 +675,12 @@
                 _wpBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _wpBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // CONV
     if (alertView.tag == 13) {
-        if (buttonIndex == 1) {
+        //if (buttonIndex == 1) {
             NSString *convDetails = [alertView textFieldAtIndex:0].text;
             [_managedObjectNGLS setValue:convDetails forKeyPath:@"convDetails"];
             if (convDetails.length > 1) {
@@ -675,7 +688,7 @@
                 _convBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
                 _convBtn.enabled = FALSE;
             }
-        }
+        //}
     }
     
     // Home
@@ -700,7 +713,7 @@
     UIAlertView *successMsg = [[UIAlertView alloc]initWithTitle:@"Submit Survey"
                                                      message:@"Would you like to save and submit this questionnaire?"
                                                     delegate:self
-                                           cancelButtonTitle:@"Dismiss"
+                                           cancelButtonTitle:@"Cancel"
                                            otherButtonTitles:@"Submit", nil];
     successMsg.tag = 14;
     [successMsg show];

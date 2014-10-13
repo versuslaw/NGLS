@@ -66,7 +66,12 @@
     [namePicker setDataSource:self];
     [namePicker setDelegate:self];
     self.usernameArray = [[NSArray alloc]initWithObjects:@"Jennifer",
-                          @"Sharon", @"Divas", @"John", @"Andrew", @"Blal", @"Shehzad", nil];
+                          @"Sharon",
+                          @"Divas",
+                          @"John",
+                          @"Andrew",
+                          @"Blal",
+                          @"Shehzad", nil];
     self.usernameField.delegate = self;
     self.usernameField.inputView = namePicker;
     
@@ -91,14 +96,6 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     // Dismiss keyboard when user taps anywhere on view
     [self.view endEditing:YES];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    // Dismiss keyboard when 'done' is pressed
-    [self.loginRequired dismissWithClickedButtonIndex:self.loginRequired.firstOtherButtonIndex animated:YES];
-    [self.view endEditing:YES];
-    [textField resignFirstResponder];
-    return NO;
 }
 
 #pragma picker components
@@ -226,7 +223,15 @@
     [self.loginRequired show];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // Dismiss keyboard when 'done' is pressed
+    [self.loginRequired dismissWithClickedButtonIndex:self.loginRequired.firstOtherButtonIndex animated:YES];
+    [self.view endEditing:YES];
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if ([title isEqualToString:@"Proceed"]) {
         UITextField *password = [alertView textFieldAtIndex:0];

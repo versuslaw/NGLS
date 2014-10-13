@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface ServicesViewController : UIViewController
+@interface ServicesViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) NSManagedObject *managedObjectNGLS;
 @property (nonatomic, strong) NSManagedObject *managedObjectAdmin;
