@@ -36,14 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-//    // Listen for lower-right keyboard hide button
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWillHide:)
-//                                                 name:UIKeyboardWillHideNotification
-//                                               object:nil];
-
+    // Do any additional setup after loading the view from its nib
     
     // Identify the app delegate
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
@@ -97,39 +90,16 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     // Dismiss keyboard when user taps anywhere on view
-    //[self dismissKeyboard];
     [self.view endEditing:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     // Dismiss keyboard when 'done' is pressed
     [self.loginRequired dismissWithClickedButtonIndex:self.loginRequired.firstOtherButtonIndex animated:YES];
-    //[self dismissKeyboard];
     [self.view endEditing:YES];
     [textField resignFirstResponder];
     return NO;
 }
-
-//- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-//    [self dismissKeyboard];
-//    return YES;
-//}
-
-//- (void)keyboardWillHide:(NSNotification *)notification {
-//    // Dismiss keyboard when lower-right hide button is tapped
-//    [self.view endEditing:YES];
-//    [self dismissKeyboard];
-//}
-
-//- (void)dismissKeyboard {
-//    [UIView beginAnimations:nil
-//                    context:NULL];
-//    [UIView setAnimationDuration:0.35f];
-//    CGRect frame = self.view.frame;
-//    frame.origin.y = 0;
-//    [self.view setFrame:frame];
-//    [UIView commitAnimations];
-//}
 
 #pragma picker components
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

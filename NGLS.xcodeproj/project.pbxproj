@@ -10,7 +10,6 @@
 		5483D56219C61F250084BE08 /* NoisyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5483D56019C61F250084BE08 /* NoisyViewController.m */; };
 		5483D56319C61F250084BE08 /* NoisyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5483D56119C61F250084BE08 /* NoisyViewController.xib */; };
 		910DA6AC19E6B2F20051D608 /* NGLS-Logo-HD.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6AB19E6B2F20051D608 /* NGLS-Logo-HD.png */; };
-		910DA6AE19E6BBAE0051D608 /* Launch-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6AD19E6BBAE0051D608 /* Launch-Portrait.png */; };
 		910DA6B119E6BD150051D608 /* NGLS Logo Final.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6B019E6BD150051D608 /* NGLS Logo Final.png */; };
 		910DA6B719E6CD820051D608 /* Launch-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6B619E6CD820051D608 /* Launch-Screen.png */; };
 		910DA6B919E6CD860051D608 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6B819E6CD860051D608 /* Background.png */; };
@@ -57,7 +56,6 @@
 		5483D56019C61F250084BE08 /* NoisyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoisyViewController.m; path = NoisyViewController/NoisyViewController.m; sourceTree = "<group>"; };
 		5483D56119C61F250084BE08 /* NoisyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoisyViewController.xib; path = NoisyViewController/NoisyViewController.xib; sourceTree = "<group>"; };
 		910DA6AB19E6B2F20051D608 /* NGLS-Logo-HD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NGLS-Logo-HD.png"; sourceTree = "<group>"; };
-		910DA6AD19E6BBAE0051D608 /* Launch-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch-Portrait.png"; sourceTree = "<group>"; };
 		910DA6B019E6BD150051D608 /* NGLS Logo Final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NGLS Logo Final.png"; sourceTree = "<group>"; };
 		910DA6B619E6CD820051D608 /* Launch-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch-Screen.png"; sourceTree = "<group>"; };
 		910DA6B819E6CD860051D608 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
@@ -274,7 +272,6 @@
 				910DA6B819E6CD860051D608 /* Background.png */,
 				910DA6B619E6CD820051D608 /* Launch-Screen.png */,
 				910DA6B019E6BD150051D608 /* NGLS Logo Final.png */,
-				910DA6AD19E6BBAE0051D608 /* Launch-Portrait.png */,
 				910DA6AB19E6B2F20051D608 /* NGLS-Logo-HD.png */,
 			);
 			name = Images;
@@ -377,7 +374,6 @@
 				91A32A0F19C035C400D1553C /* InfoPlist.strings in Resources */,
 				91A32A1819C035C400D1553C /* Main.storyboard in Resources */,
 				91C8F27819C1E58A00318FB8 /* ServicesViewController.xib in Resources */,
-				910DA6AE19E6BBAE0051D608 /* Launch-Portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

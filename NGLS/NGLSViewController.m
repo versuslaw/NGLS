@@ -100,21 +100,21 @@
     [_nglsLogo setAlpha:0.0];
     
     [UIView animateWithDuration:0.5
-                          delay:0.1
+                          delay:0.5
                         options:UIViewAnimationOptionAllowAnimatedContent
                      animations:^{
                          [_startBtn setAlpha:1];
                      }completion:nil];
     
     [UIView animateWithDuration:0.5
-                          delay:0.1
+                          delay:0.5
                         options:UIViewAnimationOptionAllowAnimatedContent
                      animations:^{
                          [_disclaimerTxt setAlpha:1];
                      }completion:nil];
     
     [UIView animateWithDuration:0.5
-                          delay:0.1
+                          delay:0.5
                         options:UIViewAnimationOptionAllowAnimatedContent
                      animations:^{
                          [_nglsLogo setAlpha:1];
