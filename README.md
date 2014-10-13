@@ -3,6 +3,7 @@ NGLS
 
 Next Generation Legal Services
 
-iOS Application developed by Ross Humphreys 2014.
+Copyright (c) Ross Humphreys
 
-A simple data collection app designed to record and export data.
+Copyright (c) 2014 Next Generation Legal Services. All rights reserved.
+
