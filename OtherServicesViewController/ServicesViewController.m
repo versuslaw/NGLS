@@ -10,12 +10,18 @@
 #import "Model.h"
 #import "NGLSAppDelegate.h"
 #import "HearingViewController.h"
+#import "AcceptedCharacters.h"
+#import "PhoneNumber.h"
+#define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_."
 
 @interface ServicesViewController ()
 
 @end
 
 @implementation ServicesViewController
+
+@synthesize moreInfo;
+@synthesize alertTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,14 +60,65 @@
     // Perform tests to determine button state
     [self isInterested];
     
-    // Set delegate
+    // Set delegate on textfield
+    self.otherTextField.delegate = self;
+    self.recName.delegate = self;
     self.recTel.delegate = self;
+    
+    // Call moreInfoAlert method
+    [self moreInfoAlert];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // Call AcceptedCharacters subclass on Other & Name textfields
+    if ([textField isKindOfClass:[AcceptedCharacters class]]) {
+        return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
+    }
+    
+    // Call PhoneNumber subclass on telephone textfield
+    if ([textField isKindOfClass:[PhoneNumber class]]) {
+        return [(PhoneNumber *)textField stringIsAcceptable:string inRange:range];
+    }
+    
+    // Return ACCEPTABLE_CHARACTERS on all UIAlertView textfields (calling subclass is illegal)
+    if (textField.tag == 100) {
+        //return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
+        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
+        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        
+        return [string isEqualToString:filtered];
+    }
+
+    return YES;
+}
+
+- (void)moreInfoAlert {
+    // Alloc & init moreInfo UIAlertView
+    moreInfo = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+                                         message:@"Would you like to give additional information?"
+                                        delegate:self
+                               cancelButtonTitle:@"Submit"
+                               otherButtonTitles:nil];
+    moreInfo.alertViewStyle = UIAlertViewStylePlainTextInput;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+    alertTextField = [moreInfo textFieldAtIndex:0];
+    self.alertTextField.delegate = self;
+    alertTextField.tag = 100;
+    alertTextField.autocapitalizationType = UITextAutocorrectionTypeDefault;
+    alertTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
 }
 
 - (void)isInterested {
@@ -228,20 +285,7 @@
     [self.view endEditing:YES];
 }
 
-#define NUMBERS_ONLY @"1234567890"
-#define CHARACTER_LIMIT 11
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    // Set recTel field to numbers only with 11 character limit
-    if (textField == self.recTel) {
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS_ONLY] invertedSet];
-        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        return (([string isEqualToString:filtered])&&(newLength <= CHARACTER_LIMIT));
-    }
-    return YES;
-}
-
-//  Select / deselect buttons, prompt for more details
+//  Select/deselect buttons, prompt for more details
 - (IBAction)indBtnPressed:(UIButton *)sender {
     if ([sender isSelected]) {
         [sender setSelected:NO];
@@ -257,6 +301,7 @@
                                 cancelButtonTitle:@"No"
                                 otherButtonTitles:@"Proceed", nil];
     qConfirm.tag = 1;
+    
     if (sender.isSelected == YES) {
         [qConfirm show];
     }
@@ -271,15 +316,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"asb"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                       message:@"Would you like to give additional information?"
-                                                      delegate:self
-                                             cancelButtonTitle:@"Submit"
-                                             otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 2;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                       message:@"Would you like to give additional information?"
+//                                                      delegate:self
+//                                             cancelButtonTitle:@"Submit"
+//                                             otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 2;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 2;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -292,15 +350,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"vwf"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 3;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 3;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 3;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -313,15 +384,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"bp"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 4;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 4;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 4;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -334,15 +418,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"rta"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 5;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 5;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 5;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -355,15 +452,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"mslm"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 6;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 6;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 6;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -376,15 +486,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"pba"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 7;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 7;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 7;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -397,15 +520,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"rcf"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 8;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 8;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 8;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -418,15 +554,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"msp"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 9;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 9;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 9;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -439,15 +588,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"aaw"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 10;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 10;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 10;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -460,15 +622,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"ppi"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 11;
+    //    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 11;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 11;
+
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -481,15 +656,28 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"wp"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 12;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 12;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 12;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
 }
 
@@ -502,16 +690,39 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"conv"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                                      message:@"Would you like to give additional information?"
-                                                     delegate:self
-                                            cancelButtonTitle:@"Submit"
-                                            otherButtonTitles:nil];
-    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-    qConfirm.tag = 13;
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                                      message:@"Would you like to give additional information?"
+//                                                     delegate:self
+//                                            cancelButtonTitle:@"Submit"
+//                                            otherButtonTitles:nil];
+//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    qConfirm.tag = 13;
+//    UITextField *textField = [qConfirm textFieldAtIndex:0];
+//    textField.delegate = self;
+//    textField.tag = 100;
+//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    
+//    UITextField *textField = [moreInfo textFieldAtIndex:0];
+//    textField.text = nil;
+    
+    alertTextField.text = nil;
+    moreInfo.tag = 13;
+    
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        [moreInfo show];
+        //[qConfirm show];
     }
+}
+
+- (IBAction)homeBtnPressed:(UIButton *) sender {
+    UIAlertView *successMsg = [[UIAlertView alloc]initWithTitle:@"Submit Survey"
+                                                        message:@"Would you like to save and submit this questionnaire?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Submit", nil];
+    successMsg.tag = 14;
+    [successMsg show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -709,27 +920,13 @@
     return [docDir stringByAppendingPathComponent:@"NGLS_export.csv"];
 }
 
-- (IBAction)homeBtnPressed:(UIButton *) sender {
-    UIAlertView *successMsg = [[UIAlertView alloc]initWithTitle:@"Submit Survey"
-                                                     message:@"Would you like to save and submit this questionnaire?"
-                                                    delegate:self
-                                           cancelButtonTitle:@"Cancel"
-                                           otherButtonTitles:@"Submit", nil];
-    successMsg.tag = 14;
-    [successMsg show];
-}
-
 - (void)surveyComplete {
-    // Identify app delegate
+    // Create fetchRequest
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    // Use appDelegate to identify managed object context
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Admin" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
-    
     NSError *error = nil;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     

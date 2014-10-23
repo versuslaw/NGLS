@@ -9,10 +9,17 @@
 /* Begin PBXBuildFile section */
 		5483D56219C61F250084BE08 /* NoisyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5483D56019C61F250084BE08 /* NoisyViewController.m */; };
 		5483D56319C61F250084BE08 /* NoisyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5483D56119C61F250084BE08 /* NoisyViewController.xib */; };
-		910DA6AC19E6B2F20051D608 /* NGLS-Logo-HD.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6AB19E6B2F20051D608 /* NGLS-Logo-HD.png */; };
 		910DA6B119E6BD150051D608 /* NGLS Logo Final.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6B019E6BD150051D608 /* NGLS Logo Final.png */; };
 		910DA6B719E6CD820051D608 /* Launch-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6B619E6CD820051D608 /* Launch-Screen.png */; };
 		910DA6B919E6CD860051D608 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6B819E6CD860051D608 /* Background.png */; };
+		910DA6DB19ED14580051D608 /* ID Card.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6DA19ED14580051D608 /* ID Card.png */; };
+		910DA6DE19ED21530051D608 /* DisableTextMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 910DA6DD19ED21530051D608 /* DisableTextMenu.m */; };
+		910DA6E519F142140051D608 /* NumbersOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 910DA6E419F142140051D608 /* NumbersOnly.m */; };
+		910DA6EF19F1537E0051D608 /* Button Long.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6EE19F1537E0051D608 /* Button Long.png */; };
+		910DA6F419F15AC40051D608 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6F319F15AC40051D608 /* Button.png */; };
+		910DA6FA19F15F860051D608 /* SegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 910DA6F919F15F860051D608 /* SegmentControl.m */; };
+		918D1FDF19F7A11F00FEE5A3 /* PostcodeField.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FDE19F7A11F00FEE5A3 /* PostcodeField.m */; };
+		918D1FE219F7A3C300FEE5A3 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FE119F7A3C300FEE5A3 /* PhoneNumber.m */; };
 		91A32A0519C035C400D1553C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A32A0419C035C400D1553C /* Foundation.framework */; };
 		91A32A0719C035C400D1553C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A32A0619C035C400D1553C /* CoreGraphics.framework */; };
 		91A32A0919C035C400D1553C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A32A0819C035C400D1553C /* UIKit.framework */; };
@@ -33,6 +40,7 @@
 		91A32A4E19C04E8E00D1553C /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A32A4D19C04E8E00D1553C /* CHCSVParser.m */; };
 		91A32A5219C04F3400D1553C /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A32A5019C04F3400D1553C /* ClientViewController.m */; };
 		91A32A5319C04F3400D1553C /* ClientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91A32A5119C04F3400D1553C /* ClientViewController.xib */; };
+		91B07FAA19F667D500D633FA /* AcceptedCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B07FA919F667D500D633FA /* AcceptedCharacters.m */; };
 		91C8F27219C1A59900318FB8 /* HearingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C8F27019C1A59900318FB8 /* HearingViewController.m */; };
 		91C8F27319C1A59900318FB8 /* HearingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C8F27119C1A59900318FB8 /* HearingViewController.xib */; };
 		91C8F27719C1E58A00318FB8 /* ServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C8F27519C1E58A00318FB8 /* ServicesViewController.m */; };
@@ -55,10 +63,22 @@
 		5483D55F19C61F250084BE08 /* NoisyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoisyViewController.h; path = NoisyViewController/NoisyViewController.h; sourceTree = "<group>"; };
 		5483D56019C61F250084BE08 /* NoisyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoisyViewController.m; path = NoisyViewController/NoisyViewController.m; sourceTree = "<group>"; };
 		5483D56119C61F250084BE08 /* NoisyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoisyViewController.xib; path = NoisyViewController/NoisyViewController.xib; sourceTree = "<group>"; };
-		910DA6AB19E6B2F20051D608 /* NGLS-Logo-HD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NGLS-Logo-HD.png"; sourceTree = "<group>"; };
 		910DA6B019E6BD150051D608 /* NGLS Logo Final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NGLS Logo Final.png"; sourceTree = "<group>"; };
 		910DA6B619E6CD820051D608 /* Launch-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch-Screen.png"; sourceTree = "<group>"; };
 		910DA6B819E6CD860051D608 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		910DA6DA19ED14580051D608 /* ID Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ID Card.png"; sourceTree = "<group>"; };
+		910DA6DC19ED21530051D608 /* DisableTextMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisableTextMenu.h; sourceTree = "<group>"; };
+		910DA6DD19ED21530051D608 /* DisableTextMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisableTextMenu.m; sourceTree = "<group>"; };
+		910DA6E319F142140051D608 /* NumbersOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumbersOnly.h; sourceTree = "<group>"; };
+		910DA6E419F142140051D608 /* NumbersOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumbersOnly.m; sourceTree = "<group>"; };
+		910DA6EE19F1537E0051D608 /* Button Long.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button Long.png"; sourceTree = "<group>"; };
+		910DA6F319F15AC40051D608 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
+		910DA6F819F15F860051D608 /* SegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentControl.h; sourceTree = "<group>"; };
+		910DA6F919F15F860051D608 /* SegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentControl.m; sourceTree = "<group>"; };
+		918D1FDD19F7A11F00FEE5A3 /* PostcodeField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostcodeField.h; sourceTree = "<group>"; };
+		918D1FDE19F7A11F00FEE5A3 /* PostcodeField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostcodeField.m; sourceTree = "<group>"; };
+		918D1FE019F7A3C300FEE5A3 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
+		918D1FE119F7A3C300FEE5A3 /* PhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumber.m; sourceTree = "<group>"; };
 		91A32A0119C035C400D1553C /* NGLS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NGLS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A32A0419C035C400D1553C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91A32A0619C035C400D1553C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +107,8 @@
 		91A32A4F19C04F3400D1553C /* ClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClientViewController.h; path = ClientViewController/ClientViewController.h; sourceTree = "<group>"; };
 		91A32A5019C04F3400D1553C /* ClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClientViewController.m; path = ClientViewController/ClientViewController.m; sourceTree = "<group>"; };
 		91A32A5119C04F3400D1553C /* ClientViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientViewController.xib; path = ClientViewController/ClientViewController.xib; sourceTree = "<group>"; };
+		91B07FA819F667D500D633FA /* AcceptedCharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptedCharacters.h; sourceTree = "<group>"; };
+		91B07FA919F667D500D633FA /* AcceptedCharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptedCharacters.m; sourceTree = "<group>"; };
 		91C8F26F19C1A59900318FB8 /* HearingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HearingViewController.h; path = HearingViewController/HearingViewController.h; sourceTree = "<group>"; };
 		91C8F27019C1A59900318FB8 /* HearingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HearingViewController.m; path = HearingViewController/HearingViewController.m; sourceTree = "<group>"; };
 		91C8F27119C1A59900318FB8 /* HearingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HearingViewController.xib; path = HearingViewController/HearingViewController.xib; sourceTree = "<group>"; };
@@ -131,6 +153,25 @@
 				5483D56119C61F250084BE08 /* NoisyViewController.xib */,
 			);
 			name = "Noisy Environments";
+			sourceTree = "<group>";
+		};
+		918D1FE319F7B8CF00FEE5A3 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				910DA6DC19ED21530051D608 /* DisableTextMenu.h */,
+				910DA6DD19ED21530051D608 /* DisableTextMenu.m */,
+				910DA6E319F142140051D608 /* NumbersOnly.h */,
+				910DA6E419F142140051D608 /* NumbersOnly.m */,
+				91B07FA819F667D500D633FA /* AcceptedCharacters.h */,
+				91B07FA919F667D500D633FA /* AcceptedCharacters.m */,
+				918D1FDD19F7A11F00FEE5A3 /* PostcodeField.h */,
+				918D1FDE19F7A11F00FEE5A3 /* PostcodeField.m */,
+				918D1FE019F7A3C300FEE5A3 /* PhoneNumber.h */,
+				918D1FE119F7A3C300FEE5A3 /* PhoneNumber.m */,
+				910DA6F819F15F860051D608 /* SegmentControl.h */,
+				910DA6F919F15F860051D608 /* SegmentControl.m */,
+			);
+			name = Subclasses;
 			sourceTree = "<group>";
 		};
 		91A329F819C035C400D1553C = {
@@ -187,6 +228,7 @@
 		91A32A0B19C035C400D1553C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				918D1FE319F7B8CF00FEE5A3 /* Subclasses */,
 				91A32A4C19C04E8E00D1553C /* CHCSVParser.h */,
 				91A32A4D19C04E8E00D1553C /* CHCSVParser.m */,
 				91A32A4619C03F1100D1553C /* Images */,
@@ -270,9 +312,11 @@
 			isa = PBXGroup;
 			children = (
 				910DA6B819E6CD860051D608 /* Background.png */,
+				910DA6DA19ED14580051D608 /* ID Card.png */,
+				910DA6F319F15AC40051D608 /* Button.png */,
+				910DA6EE19F1537E0051D608 /* Button Long.png */,
 				910DA6B619E6CD820051D608 /* Launch-Screen.png */,
 				910DA6B019E6BD150051D608 /* NGLS Logo Final.png */,
-				910DA6AB19E6B2F20051D608 /* NGLS-Logo-HD.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -363,15 +407,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				910DA6B719E6CD820051D608 /* Launch-Screen.png in Resources */,
+				910DA6DB19ED14580051D608 /* ID Card.png in Resources */,
 				91FABB5D19C2EA9F0098C340 /* AdminViewController.xib in Resources */,
 				5483D56319C61F250084BE08 /* NoisyViewController.xib in Resources */,
 				91A32A5319C04F3400D1553C /* ClientViewController.xib in Resources */,
 				910DA6B919E6CD860051D608 /* Background.png in Resources */,
-				910DA6AC19E6B2F20051D608 /* NGLS-Logo-HD.png in Resources */,
 				91A32A1D19C035C400D1553C /* Images.xcassets in Resources */,
 				910DA6B119E6BD150051D608 /* NGLS Logo Final.png in Resources */,
+				910DA6EF19F1537E0051D608 /* Button Long.png in Resources */,
 				91C8F27319C1A59900318FB8 /* HearingViewController.xib in Resources */,
 				91A32A0F19C035C400D1553C /* InfoPlist.strings in Resources */,
+				910DA6F419F15AC40051D608 /* Button.png in Resources */,
 				91A32A1819C035C400D1553C /* Main.storyboard in Resources */,
 				91C8F27819C1E58A00318FB8 /* ServicesViewController.xib in Resources */,
 			);
@@ -394,13 +440,19 @@
 			files = (
 				91A32A1519C035C400D1553C /* NGLSAppDelegate.m in Sources */,
 				91A32A1B19C035C400D1553C /* NGLSViewController.m in Sources */,
+				910DA6E519F142140051D608 /* NumbersOnly.m in Sources */,
 				91FABB5C19C2EA9F0098C340 /* AdminViewController.m in Sources */,
 				91A32A4E19C04E8E00D1553C /* CHCSVParser.m in Sources */,
 				91A32A1119C035C400D1553C /* main.m in Sources */,
+				918D1FDF19F7A11F00FEE5A3 /* PostcodeField.m in Sources */,
 				91A32A4219C0377500D1553C /* Model.xcdatamodeld in Sources */,
+				910DA6DE19ED21530051D608 /* DisableTextMenu.m in Sources */,
+				91B07FAA19F667D500D633FA /* AcceptedCharacters.m in Sources */,
 				91A32A5219C04F3400D1553C /* ClientViewController.m in Sources */,
 				5483D56219C61F250084BE08 /* NoisyViewController.m in Sources */,
 				91A32A4B19C04C0700D1553C /* Model.m in Sources */,
+				918D1FE219F7A3C300FEE5A3 /* PhoneNumber.m in Sources */,
+				910DA6FA19F15F860051D608 /* SegmentControl.m in Sources */,
 				91C8F27719C1E58A00318FB8 /* ServicesViewController.m in Sources */,
 				91C8F27219C1A59900318FB8 /* HearingViewController.m in Sources */,
 			);

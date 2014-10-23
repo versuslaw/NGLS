@@ -20,9 +20,11 @@
 
 @property (retain, nonatomic) IBOutlet UIPickerView *namePicker;
 @property (retain, nonatomic) NSArray *usernameArray;
+@property (retain, nonatomic) NSArray *sortedUsernameArray;
 
 @property (retain, nonatomic) IBOutlet UIPickerView *sitePicker;
 @property (retain, nonatomic) NSArray *siteArray;
+@property (retain, nonatomic) NSArray *sortedSiteArray;
 
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 

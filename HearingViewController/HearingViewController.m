@@ -9,6 +9,7 @@
 #import "HearingViewController.h"
 #import "ServicesViewController.h"
 #import "NoisyViewController.h"
+#import "AcceptedCharacters.h"
 
 @interface HearingViewController ()
 
@@ -58,6 +59,20 @@
     self.q2Seg.selectedSegmentIndex = 1;
     self.q3Seg.selectedSegmentIndex = 1;
     self.q4Seg.selectedSegmentIndex = 1;
+    
+    // Disable textfields as default
+    self.q1More.enabled = NO;
+    self.q2More.enabled = NO;
+    self.q3More.enabled = NO;
+    self.q4More.enabled = NO;
+    
+    
+    
+    // Set delegate on textfield
+    self.q1More.delegate = self;
+    self.q2More.delegate = self;
+    self.q3More.delegate = self;
+    self.q4More.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,6 +98,50 @@
     [self.view endEditing:YES];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // Call AcceptedCharacters class on Further Details textfields
+    if ([textField isKindOfClass:[AcceptedCharacters class]]) {
+        return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
+    }
+    return YES;
+}
+
+- (IBAction)segmentChanged:(UISegmentedControl *)sender {
+    // If segment = Yes, enable & focus on textfield
+    if (self.q1Seg.selectedSegmentIndex == 0) {
+        self.q1More.enabled = YES;
+        [self.q1More becomeFirstResponder];
+        // If segment = No, disable & clear textfield
+    } else if (self.q1Seg.selectedSegmentIndex == 1) {
+        self.q1More.enabled = NO;
+        self.q1More.text = nil;
+    }
+    
+    if (self.q2Seg.selectedSegmentIndex == 0) {
+        self.q2More.enabled = YES;
+        [self.q2More becomeFirstResponder];
+    } else if (self.q2Seg.selectedSegmentIndex == 1) {
+        self.q2More.enabled = NO;
+        self.q2More.text = nil;
+    }
+    
+    if (self.q3Seg.selectedSegmentIndex == 0) {
+        self.q3More.enabled = YES;
+        [self.q3More becomeFirstResponder];
+    } else if (self.q3Seg.selectedSegmentIndex == 1) {
+        self.q3More.enabled = NO;
+        self.q3More.text = nil;
+    }
+    
+    if (self.q4Seg.selectedSegmentIndex == 0) {
+        self.q4More.enabled = YES;
+        [self.q4More becomeFirstResponder];
+    } else if (self.q4Seg.selectedSegmentIndex == 1) {
+        self.q4More.enabled = NO;
+        self.q4More.text = nil;
+    }
+}
+
 - (IBAction)nextBtnPressed:(UIButton *)sender {
     _infoAlert = [[UIAlertView alloc]initWithTitle:@"More information required"
                                                        message:@"Please enter further details"
@@ -90,7 +149,7 @@
                                              cancelButtonTitle:@"Dismiss"
                                              otherButtonTitles:nil];
     
-    // If "yes" is selected on segment, user must enter additional information
+    // If segment = "Yes", user must provide Further Information
     if ([[self.q1Seg titleForSegmentAtIndex:self.q1Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
         if (self.q1More.text.length <= 0) {
             if (!_infoAlert.visible) {
@@ -154,8 +213,6 @@
             // Push next view
             [self.navigationController pushViewController:noisy animated:YES];
         }
-        
-        // Else, go back to Services
     } else {
         // Allocate & initialise ServicesViewController
         ServicesViewController *services = [[ServicesViewController alloc]initWithNibName:@"ServicesViewController"

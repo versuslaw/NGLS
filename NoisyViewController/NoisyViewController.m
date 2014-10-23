@@ -8,6 +8,8 @@
 
 #import "NoisyViewController.h"
 #import "ServicesViewController.h"
+#import "NumbersOnly.h"
+#import "AcceptedCharacters.h"
 
 @interface NoisyViewController ()
 
@@ -67,6 +69,29 @@
     
     // Call noisePicker method
     [self noisePickerTextField];
+    
+    // Set textfield delegate to self
+    self.empName1.delegate = self;
+    self.empName1.delegate = self;
+    self.empName1.delegate = self;
+    self.empName1.delegate = self;
+    self.empName1.delegate = self;
+    self.empName1.delegate = self;
+    self.empName1.delegate = self;
+    self.empName1.delegate = self;
+    self.empName1.delegate = self;
+    self.empName1.delegate = self;
+    
+    self.empExposure1.delegate = self;
+    self.empExposure2.delegate = self;
+    self.empExposure3.delegate = self;
+    self.empExposure4.delegate = self;
+    self.empExposure5.delegate = self;
+    self.empExposure6.delegate = self;
+    self.empExposure7.delegate = self;
+    self.empExposure8.delegate = self;
+    self.empExposure9.delegate = self;
+    self.empExposure10.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,6 +115,19 @@
 - (void)keyboardWillHide:(NSNotification *)notification {
     // Dismiss keyboard when lower-right hide button is tapped
     [self.view endEditing:YES];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // Call NumbersOnly subclass on Exposure textfields
+    if ([textField isKindOfClass:[NumbersOnly class]]) {
+        return [(NumbersOnly *)textField stringIsAcceptable:string inRange:range];
+    }
+    
+    // Call AcceptedCharacters subclass on Employers Name textfields
+    if ([textField isKindOfClass:[AcceptedCharacters class]]) {
+        return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
+    }
+    return YES;
 }
 
 - (void)noisePickerTextField {

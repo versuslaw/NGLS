@@ -9,9 +9,11 @@
 #import "ClientViewController.h"
 #import "NGLSAppDelegate.h"
 #import "ServicesViewController.h"
-#import "AdminViewController.h"
+//#import "AdminViewController.h"
 #import "Model.h"
-
+#import "AcceptedCharacters.h"
+#import "PostcodeField.h"
+#import "PhoneNumber.h"
 
 @interface ClientViewController ()
 
@@ -70,6 +72,13 @@
     self.navigationItem.hidesBackButton = YES;
     
     // Set delegate on textfields
+    self.forenameField.delegate = self;
+    self.surnameField.delegate = self;
+    self.addLine1Field.delegate = self;
+    self.addLine2Field.delegate = self;
+    self.addLine3Field.delegate = self;
+    self.addLine4Field.delegate = self;
+    self.addLine5Field.delegate = self;
     self.postcodeField.delegate = self;
     self.telLandField.delegate = self;
     self.telMobField.delegate = self;
@@ -133,6 +142,54 @@
     return YES;
 }
 
+//#define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_."
+//#define NUMBERS_ONLY @"1234567890"
+//#define CHARACTER_LIMIT 11
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+//    if (textField == self.postcodeField) {
+//        NSLog(@"postcode field");
+//        //return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
+//        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
+//        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+//        
+//        return [string isEqualToString:filtered];
+//    }
+    
+    // Call AcceptedCharacters subclass on Name/Address textfields
+    if ([textField isKindOfClass:[AcceptedCharacters class]]) {
+        return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
+    }
+    
+    // Call UpperCaseConvert subclass on Postcode textfield
+    if ([textField isKindOfClass:[PostcodeField class]]) {
+        return [(PostcodeField *)textField stringIsAcceptable:string inRange:range];
+    }
+    
+    // Call PhoneNumber subclass on telephone textfields
+    if ([textField isKindOfClass:[PhoneNumber class]]) {
+        return [(PhoneNumber *)textField stringIsAcceptable:string inRange:range];
+    }
+    
+    //    // Restrict special characters
+    //    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
+    //    NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    
+    //    if (textField == self.postcodeField) {
+    //        [textField setText:[textField.text stringByReplacingCharactersInRange:range withString:[string uppercaseString]]];
+    //        return NO;
+    //    }
+    
+    // Set max character limit on tel fields
+    //    if (textField == self.telMobField || textField == self.telLandField) {
+    //        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    //        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS_ONLY] invertedSet];
+    //        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    //        return (([string isEqualToString:filtered])&&(newLength <= CHARACTER_LIMIT));
+    //    }
+    return YES;
+    //return [string isEqualToString:filtered];
+}
+
 - (void)dateStamped {
     // Convert date to string
     NSDate *sysDate = [NSDate date];
@@ -150,11 +207,14 @@
 
 - (void)clientName {
     // Set predicate: name fields can only contain alphabetical characters
-    NSString *nameRegex = @"[A-Za-z- ]+";
-    NSPredicate *charTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegex];
+//    NSString *nameRegex = @"[A-Za-z- ]+";
+//    NSPredicate *charTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegex];
     
     // If predciate test fails (i.e. if name contains numbers or special characters)
-    if ((![charTest evaluateWithObject:self.forenameField.text]) || (![charTest evaluateWithObject:self.surnameField.text])) {
+    //if ((![charTest evaluateWithObject:self.forenameField.text]) || (![charTest evaluateWithObject:self.surnameField.text])) {
+    
+    // If fields are blank
+    if ((self.forenameField.text.length == 0) || (self.surnameField.text.length == 0)) {
         _nameError = [[UIAlertView alloc]initWithTitle:@"Error"
                                                message:@"Please enter a valid name"
                                               delegate:self
@@ -174,7 +234,7 @@
     // If fields are blank
     if ((self.addLine1Field.text.length == 0) || (self.postcodeField.text.length == 0)) {
         _addError = [[UIAlertView alloc]initWithTitle:@"Error"
-                                              message:@"Address Line 1 and Postcode are mandatory"
+                                              message:@"Please enter a valid address"
                                              delegate:self
                                     cancelButtonTitle:@"Dismiss"
                                     otherButtonTitles:nil];
@@ -190,26 +250,6 @@
         [self.managedObjectNGLS setValue:self.addLine5Field.text forKey:@"addLine5"];
         [self.managedObjectNGLS setValue:self.postcodeField.text forKey:@"clientPost"];
     }
-}
-
-#define NUMBERS_ONLY @"1234567890"
-#define CHARACTER_LIMIT 11
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    // Convert postcode field characters to uppercase
-    if (textField == self.postcodeField) {
-        [textField setText:[textField.text stringByReplacingCharactersInRange:range withString:[string uppercaseString]]];
-        return NO;
-    }
-
-    // Set max character limit on tel fields
-    if (textField == self.telMobField || textField == self.telLandField) {
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS_ONLY] invertedSet];
-        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        return (([string isEqualToString:filtered])&&(newLength <= CHARACTER_LIMIT));
-    }
-    return YES;
 }
 
 - (void)clientTel {

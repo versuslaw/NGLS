@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *addLine3Field;
 @property (weak, nonatomic) IBOutlet UITextField *addLine4Field;
 @property (weak, nonatomic) IBOutlet UITextField *addLine5Field;
-@property (weak, nonatomic) IBOutlet UITextField *addLine6Field;
+//@property (weak, nonatomic) IBOutlet UITextField *addLine6Field;
 @property (weak, nonatomic) IBOutlet UITextField *postcodeField;
 
 @property (weak, nonatomic) IBOutlet UITextField *telLandField;

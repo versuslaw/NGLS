@@ -10,6 +10,7 @@
 #import "Model.h"
 #import "NGLSAppDelegate.h"
 #import "CHCSVParser.h"
+#import "DisableTextMenu.h"
 
 
 @interface AdminViewController () <MFMailComposeViewControllerDelegate, UIDocumentInteractionControllerDelegate, UIApplicationDelegate>
@@ -20,9 +21,11 @@
 
 @synthesize namePicker;
 @synthesize usernameArray;
+@synthesize sortedUsernameArray;
 
 @synthesize sitePicker;
 @synthesize siteArray;
+@synthesize sortedSiteArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,19 +41,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib
     
-    // Identify the app delegate
+    // Create fetchRequest
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    // Use appDelegate object to identify managed object context
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Admin" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
-    
     NSError *error = nil;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    
+    // Fetch last object
     Model *admin = [fetchedObjects lastObject];
     
     // Populate login fields with last stored details
@@ -72,6 +71,8 @@
                           @"Andrew",
                           @"Blal",
                           @"Shehzad", nil];
+    // Sort alphabetically
+    self.sortedUsernameArray = [usernameArray sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     self.usernameField.delegate = self;
     self.usernameField.inputView = namePicker;
     
@@ -80,6 +81,8 @@
     [sitePicker setDataSource:self];
     [sitePicker setDelegate:self];
     self.siteArray = [[NSArray alloc]initWithObjects:@"Houndshill Shopping Centre", @"St John's Shopping Centre", @"Spindles Shopping Centre", @"Town Square Shopping Centre", @"The Rock Shopping Centre", @"Port Arcades Shopping Centre", @"Fishergate Shopping Centre", @"Stretford Mall", @"Spinning Gate Shopping Centre", @"Belle Vale Shopping Centre", @"Clarendon Square Shopping Centre", @"Forum Shopping Centre", @"Huyton Place Shopping Centre", @"Dunmail Park Shopping Centre", @"The Mill Outlet Store", @"Merrion Centre", @"Lakeside Village", @"Junction 32 Outlet Shopping Village", @"The Grafton Centre", @"Weaver Square", nil];
+    // Sort alphabetically
+    self.sortedSiteArray = [siteArray sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     self.siteLocationField.delegate =self;
     self.siteLocationField.inputView = sitePicker;
     
@@ -105,9 +108,9 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if (pickerView == self.namePicker) {
-        return [usernameArray count];
+        return [sortedUsernameArray count];
     } else if (pickerView == self.sitePicker) {
-        return [siteArray count];
+        return [sortedSiteArray count];
     } else {
         assert(NO);
     }
@@ -115,9 +118,9 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     if (pickerView == self.namePicker) {
-        return [usernameArray objectAtIndex:row];
+        return [sortedUsernameArray objectAtIndex:row];
     } else if (pickerView == self.sitePicker) {
-        return [siteArray objectAtIndex:row];
+        return [sortedSiteArray objectAtIndex:row];
     } else {
         assert(NO);
     }
@@ -125,10 +128,10 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (pickerView == self.namePicker) {
-        NSString *nameString = [[NSString alloc]initWithFormat:@"%@", [usernameArray objectAtIndex:row]];
+        NSString *nameString = [[NSString alloc]initWithFormat:@"%@", [sortedUsernameArray objectAtIndex:row]];
         self.usernameField.text = nameString;
     } else if (pickerView == self.sitePicker) {
-        NSString *siteString = [[NSString alloc]initWithFormat:@"%@", [siteArray objectAtIndex:row]];
+        NSString *siteString = [[NSString alloc]initWithFormat:@"%@", [sortedSiteArray objectAtIndex:row]];
         self.siteLocationField.text = siteString;
     }
 }
@@ -176,13 +179,9 @@
 }
 
 - (IBAction)exportBtnPressed:(UIButton *)sender {
-    // Identify app delegate
-    NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    // Use appDelegate to identify managed object context
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
     // Create fetch request to fetch data from the store
+    NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"NGLS"
                                               inManagedObjectContext:context];
@@ -236,10 +235,27 @@
     if ([title isEqualToString:@"Proceed"]) {
         UITextField *password = [alertView textFieldAtIndex:0];
         
-        // Basic login authentication
+        // Check admin password
         if ([password.text isEqualToString:@"admin"]) {
             NSLog(@"Password correct");
-        [self exportProcess];
+            
+            // Create fetchRequest
+            NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
+            NSManagedObjectContext *context = [appDelegate managedObjectContext];
+            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+            NSEntityDescription *entity = [NSEntityDescription entityForName:@"NGLS"
+                                                      inManagedObjectContext:context];
+            [fetchRequest setEntity:entity];
+            NSError *error;
+            NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+            
+            // Confirm export & display number of records
+            UIAlertView *exportConfirm = [[UIAlertView alloc]initWithTitle:@"Export"
+                                                            message:[NSString stringWithFormat:@"%lu Records found. Do you want to export these results?", (unsigned long)[fetchedObjects count]]
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Export", nil];
+            [exportConfirm show];
         } else {
             UIAlertView *wrongPass = [[UIAlertView alloc]initWithTitle:@"Error"
                                                                message:@"Wrong password. Please try again or contact your administrator"
@@ -248,6 +264,10 @@
                                                      otherButtonTitles:nil];
             [wrongPass show];
         }
+    }
+    if ([title isEqualToString:@"Export"]) {
+        NSLog(@"Start export");
+        [self exportProcess];
     }
 }
 
@@ -259,13 +279,9 @@
 }
 
 - (void) exportProcess {
-    // Identify app delegate
+    // Create fetchRequest
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    // Use appDelegate to identify managed object context
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
-    // Create fetch request to fetch data from the store
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"NGLS"
                                               inManagedObjectContext:context];
@@ -386,10 +402,17 @@
     if ([MFMailComposeViewController canSendMail]) {
         NSArray *recipient = [NSArray arrayWithObject:@"proadmin@medicalgeneration.co.uk"];
         NSArray *ccRecipient = [NSArray arrayWithObjects:@"info@ngls.co.uk", @"bc@ngls.co.uk", @"as@ngls.co.uk", @"sc@ngls.co.uk",nil];
+
+        NSDate *sysDate = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"dd/MM/yyyy"];
+        NSString *dateStamp = [formatter stringFromDate:sysDate];
+        NSString *emailBody = [NSString stringWithFormat:@"Attachment: NGLS Survey Results - Exported on %@", dateStamp];
+        
         [appDelegate.globalMailComposer setToRecipients:recipient];
         [appDelegate.globalMailComposer setCcRecipients:ccRecipient];
         [appDelegate.globalMailComposer setSubject:@"NGLS Survey Results"];
-        [appDelegate.globalMailComposer setMessageBody:@"Attached survey results" isHTML:NO];
+        [appDelegate.globalMailComposer setMessageBody:emailBody isHTML:NO];
         appDelegate.globalMailComposer.mailComposeDelegate = self;
         // Attach file
         [appDelegate.globalMailComposer addAttachmentData:[NSData dataWithContentsOfFile:[self dataFilePath]]
@@ -444,14 +467,9 @@
                 NSLog(@".csv deleted");
                 // If mail sent successfully, delete context (wipe database)
                 
-                // Identify app delegate
+                // Create fetchRequest
                 NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
-                
-                // Use appDelegate to identify managed object context
                 NSManagedObjectContext *context = [appDelegate managedObjectContext];
-                
-                
-                // Create fetch request to fetch NGLS data from the store
                 NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
                 NSEntityDescription *entity = [NSEntityDescription entityForName:@"NGLS"
                                                           inManagedObjectContext:context];

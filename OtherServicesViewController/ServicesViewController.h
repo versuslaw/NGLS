@@ -32,4 +32,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *recName;
 @property (weak, nonatomic) IBOutlet UITextField *recTel;
 
+@property (strong) UIAlertView *moreInfo;
+@property (strong) UITextField *alertTextField;
+
 @end

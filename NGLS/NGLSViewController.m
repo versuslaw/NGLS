@@ -33,6 +33,8 @@
     self.navigationItem.rightBarButtonItem = adminBtn;
     adminBtn.enabled = TRUE;
     
+    _startBtn.backgroundColor = [UIColor colorWithRed:(25/255.0) green:(230/255.0) blue:(0/255.0) alpha:1];
+    
     // Set custom text for back button
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Home"
                                                                             style:UIBarButtonItemStylePlain

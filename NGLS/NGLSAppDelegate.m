@@ -23,18 +23,18 @@
     NGLSViewController *nglsViewController = (NGLSViewController *) [mainStoryboard instantiateViewControllerWithIdentifier:@"NGLSViewController"];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:nglsViewController];
-    
     [self.window setRootViewController:navigationController];
+    
     [self.window makeKeyAndVisible];
-    //self.window.backgroundColor = [UIColor whiteColor];
     self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background.png"]];
+    
     [self cycleTheGlobalMailComposer];
     
     // Override point for customization after application launch.
     return YES;
 }
 
--(void)cycleTheGlobalMailComposer
+- (void)cycleTheGlobalMailComposer
 {
     // Cycle the globalMailComposer
     self.globalMailComposer = nil;
@@ -146,7 +146,12 @@
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
+        
+        // Delete existing store
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+        
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        NSLog(@"Store deleted");
         abort();
     }
     
