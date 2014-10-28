@@ -12,7 +12,7 @@
 #import "HearingViewController.h"
 #import "AcceptedCharacters.h"
 #import "PhoneNumber.h"
-#define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_."
+#define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'&-_."
 
 @interface ServicesViewController ()
 
@@ -88,10 +88,8 @@
     
     // Return ACCEPTABLE_CHARACTERS on all UIAlertView textfields (calling subclass is illegal)
     if (textField.tag == 100) {
-        //return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
         NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
         NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        
         return [string isEqualToString:filtered];
     }
 
@@ -106,19 +104,11 @@
                                cancelButtonTitle:@"Submit"
                                otherButtonTitles:nil];
     moreInfo.alertViewStyle = UIAlertViewStylePlainTextInput;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
     alertTextField = [moreInfo textFieldAtIndex:0];
     self.alertTextField.delegate = self;
-    alertTextField.tag = 100;
-    alertTextField.autocapitalizationType = UITextAutocorrectionTypeDefault;
+    alertTextField.autocorrectionType = UITextAutocorrectionTypeDefault;
     alertTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
+    alertTextField.tag = 100;
 }
 
 - (void)isInterested {
@@ -285,12 +275,13 @@
     [self.view endEditing:YES];
 }
 
-//  Select/deselect buttons, prompt for more details
 - (IBAction)indBtnPressed:(UIButton *)sender {
+    // If button is not selected
     if ([sender isSelected]) {
         [sender setSelected:NO];
         [_managedObjectNGLS setValue:@"" forKey:@"ind"];
     } else {
+        // If button is selected
         [sender setSelected:YES];
         [_managedObjectNGLS setValue:@"Yes" forKey:@"ind"];
     }
@@ -301,7 +292,7 @@
                                 cancelButtonTitle:@"No"
                                 otherButtonTitles:@"Proceed", nil];
     qConfirm.tag = 1;
-    
+    // If button is selected, show alert
     if (sender.isSelected == YES) {
         [qConfirm show];
     }
@@ -315,29 +306,12 @@
         [sender setSelected:YES];
         [_managedObjectNGLS setValue:@"Yes" forKey:@"asb"];
     }
-    
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                       message:@"Would you like to give additional information?"
-//                                                      delegate:self
-//                                             cancelButtonTitle:@"Submit"
-//                                             otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 2;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
+    // Set textfield.text to empty
     alertTextField.text = nil;
     moreInfo.tag = 2;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -349,29 +323,12 @@
         [sender setSelected:YES];
         [_managedObjectNGLS setValue:@"Yes" forKey:@"vwf"];
     }
-    
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 3;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
+
     alertTextField.text = nil;
     moreInfo.tag = 3;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -384,28 +341,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"bp"];
     }
     
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 4;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
     alertTextField.text = nil;
     moreInfo.tag = 4;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -418,28 +358,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"rta"];
     }
     
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 5;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
     alertTextField.text = nil;
     moreInfo.tag = 5;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -452,28 +375,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"mslm"];
     }
     
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 6;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
     alertTextField.text = nil;
     moreInfo.tag = 6;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -486,28 +392,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"pba"];
     }
     
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 7;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
     alertTextField.text = nil;
     moreInfo.tag = 7;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -520,28 +409,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"rcf"];
     }
     
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 8;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
     alertTextField.text = nil;
     moreInfo.tag = 8;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -554,28 +426,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"msp"];
     }
     
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 9;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
     alertTextField.text = nil;
     moreInfo.tag = 9;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -588,28 +443,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"aaw"];
     }
     
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 10;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
     alertTextField.text = nil;
     moreInfo.tag = 10;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -622,28 +460,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"ppi"];
     }
     
-    //    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 11;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
     alertTextField.text = nil;
     moreInfo.tag = 11;
 
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -656,28 +477,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"wp"];
     }
     
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 12;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
     alertTextField.text = nil;
     moreInfo.tag = 12;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -690,28 +494,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"conv"];
     }
     
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                                      message:@"Would you like to give additional information?"
-//                                                     delegate:self
-//                                            cancelButtonTitle:@"Submit"
-//                                            otherButtonTitles:nil];
-//    qConfirm.alertViewStyle = UIAlertViewStylePlainTextInput;
-//    qConfirm.tag = 13;
-//    UITextField *textField = [qConfirm textFieldAtIndex:0];
-//    textField.delegate = self;
-//    textField.tag = 100;
-//    textField.autocorrectionType = UITextAutocorrectionTypeDefault;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    
-//    UITextField *textField = [moreInfo textFieldAtIndex:0];
-//    textField.text = nil;
-    
     alertTextField.text = nil;
     moreInfo.tag = 13;
     
     if (sender.isSelected == YES) {
         [moreInfo show];
-        //[qConfirm show];
     }
 }
 
@@ -727,7 +514,6 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     // Alter button state depending if additional details are added
-    
     // IND
     if (alertView.tag == 1) {
         if (buttonIndex == 1) {
@@ -748,158 +534,134 @@
     
     // ASB
     if (alertView.tag == 2) {
-        //if (buttonIndex == 1) {
-            NSString *asbDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:asbDetails forKeyPath:@"asbDetails"];
-            if (asbDetails.length > 1) {
-                [_asbBtn setSelected:NO];
-                _asbBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _asbBtn.enabled = FALSE;
-            }
-        //}
+        NSString *asbDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:asbDetails forKeyPath:@"asbDetails"];
+        if (asbDetails.length > 1) {
+            [_asbBtn setSelected:NO];
+            _asbBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _asbBtn.enabled = FALSE;
+        }
     }
     
     // VWF
     if (alertView.tag == 3) {
-        //if (buttonIndex == 1) {
-            NSString *vwfDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:vwfDetails forKeyPath:@"vwfDetails"];
-            if (vwfDetails.length > 1) {
-                [_vwfBtn setSelected:NO];
-                _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _vwfBtn.enabled = FALSE;
-            }
-        //}
+        NSString *vwfDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:vwfDetails forKeyPath:@"vwfDetails"];
+        if (vwfDetails.length > 1) {
+            [_vwfBtn setSelected:NO];
+            _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _vwfBtn.enabled = FALSE;
+        }
     }
     
     // BP
     if (alertView.tag == 4) {
-        //if (buttonIndex == 1) {
-            NSString *bpDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:bpDetails forKeyPath:@"bpDetails"];
-            if (bpDetails.length > 1) {
-                [_bpBtn setSelected:NO];
-                _bpBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _bpBtn.enabled = FALSE;
-            }
-        //}
+        NSString *bpDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:bpDetails forKeyPath:@"bpDetails"];
+        if (bpDetails.length > 1) {
+            [_bpBtn setSelected:NO];
+            _bpBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _bpBtn.enabled = FALSE;
+        }
     }
     
     // RTA
     if (alertView.tag == 5) {
-        //if (buttonIndex == 1) {
-            NSString *rtaDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:rtaDetails forKeyPath:@"rtaDetails"];
-            if (rtaDetails.length > 1) {
-                [_rtaBtn setSelected:NO];
-                _rtaBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _rtaBtn.enabled = FALSE;
-            }
-        //}
+        NSString *rtaDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:rtaDetails forKeyPath:@"rtaDetails"];
+        if (rtaDetails.length > 1) {
+            [_rtaBtn setSelected:NO];
+            _rtaBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _rtaBtn.enabled = FALSE;
+        }
     }
     
     // MSLM
     if (alertView.tag == 6) {
-        //if (buttonIndex == 1) {
-            NSString *mslmDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:mslmDetails forKeyPath:@"mslmDetails"];
-            if (mslmDetails.length > 1) {
-                [_mslmBtn setSelected:NO];
-                _mslmBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _mslmBtn.enabled = FALSE;
-            }
-        //}
+        NSString *mslmDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:mslmDetails forKeyPath:@"mslmDetails"];
+        if (mslmDetails.length > 1) {
+            [_mslmBtn setSelected:NO];
+            _mslmBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _mslmBtn.enabled = FALSE;
+        }
     }
     
     // PBA
     if (alertView.tag == 7) {
-        //if (buttonIndex == 1) {
-            NSString *pbaDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:pbaDetails forKeyPath:@"pbaDetails"];
-            if (pbaDetails.length > 1) {
-                [_pbaBtn setSelected:NO];
-                _pbaBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _pbaBtn.enabled = FALSE;
-            }
-        //}
+        NSString *pbaDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:pbaDetails forKeyPath:@"pbaDetails"];
+        if (pbaDetails.length > 1) {
+            [_pbaBtn setSelected:NO];
+            _pbaBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _pbaBtn.enabled = FALSE;
+        }
     }
     
     // RCF
     if (alertView.tag == 8) {
-        //if (buttonIndex == 1) {
-            NSString *rcfDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:rcfDetails forKeyPath:@"rcfDetails"];
-            if (rcfDetails.length > 1) {
-                [_rcfBtn setSelected:NO];
-                _rcfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _rcfBtn.enabled = FALSE;
-            }
-        //}
+        NSString *rcfDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:rcfDetails forKeyPath:@"rcfDetails"];
+        if (rcfDetails.length > 1) {
+            [_rcfBtn setSelected:NO];
+            _rcfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _rcfBtn.enabled = FALSE;
+        }
     }
     
     // MSP
     if (alertView.tag == 9) {
-        //if (buttonIndex == 1) {
-            NSString *mspDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:mspDetails forKeyPath:@"mspDetails"];
-            if (mspDetails.length > 1) {
-                [_mspBtn setSelected:NO];
-                _mspBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _mspBtn.enabled = FALSE;
-            }
-        //}
+        NSString *mspDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:mspDetails forKeyPath:@"mspDetails"];
+        if (mspDetails.length > 1) {
+            [_mspBtn setSelected:NO];
+            _mspBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _mspBtn.enabled = FALSE;
+        }
     }
     
     // AAW
     if (alertView.tag == 10) {
-        //if (buttonIndex == 1) {
-            NSString *aawDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:aawDetails forKeyPath:@"aawDetails"];
-            if (aawDetails.length > 1) {
-                [_aawBtn setSelected:NO];
-                _aawBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _aawBtn.enabled = FALSE;
-            }
-        //}
+        NSString *aawDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:aawDetails forKeyPath:@"aawDetails"];
+        if (aawDetails.length > 1) {
+            [_aawBtn setSelected:NO];
+            _aawBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _aawBtn.enabled = FALSE;
+        }
     }
     
     // PPI
     if (alertView.tag == 11) {
-        //if (buttonIndex == 1) {
-            NSString *ppiDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:ppiDetails forKeyPath:@"ppiDetails"];
-            if (ppiDetails.length > 1) {
-                [_ppiBtn setSelected:NO];
-                _ppiBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _ppiBtn.enabled = FALSE;
-            }
-        //}
+        NSString *ppiDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:ppiDetails forKeyPath:@"ppiDetails"];
+        if (ppiDetails.length > 1) {
+            [_ppiBtn setSelected:NO];
+            _ppiBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _ppiBtn.enabled = FALSE;
+        }
     }
     
     // WP
     if (alertView.tag == 12) {
-        //if (buttonIndex == 1) {
-            NSString *wpDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:wpDetails forKeyPath:@"wpDetails"];
-            if (wpDetails.length > 1) {
-                [_wpBtn setSelected:NO];
-                _wpBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _wpBtn.enabled = FALSE;
-            }
-        //}
+        NSString *wpDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:wpDetails forKeyPath:@"wpDetails"];
+        if (wpDetails.length > 1) {
+            [_wpBtn setSelected:NO];
+            _wpBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _wpBtn.enabled = FALSE;
+        }
     }
     
     // CONV
     if (alertView.tag == 13) {
-        //if (buttonIndex == 1) {
-            NSString *convDetails = [alertView textFieldAtIndex:0].text;
-            [_managedObjectNGLS setValue:convDetails forKeyPath:@"convDetails"];
-            if (convDetails.length > 1) {
-                [_convBtn setSelected:NO];
-                _convBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-                _convBtn.enabled = FALSE;
-            }
-        //}
+        NSString *convDetails = [alertView textFieldAtIndex:0].text;
+        [_managedObjectNGLS setValue:convDetails forKeyPath:@"convDetails"];
+        if (convDetails.length > 1) {
+            [_convBtn setSelected:NO];
+            _convBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+            _convBtn.enabled = FALSE;
+        }
     }
     
     // Home
@@ -921,19 +683,22 @@
 }
 
 - (void)surveyComplete {
-    // Create fetchRequest
+    // Identify the app delegate
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    
+    // Fetch objects from Admin entity
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Admin" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Admin"
+                                              inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
-    NSError *error = nil;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     
-    // Fetch last admin objects
+    // Fetch last admin object
     Model *admin = [fetchedObjects lastObject];
     
-    // Set last row of admin objects in NGLS entity
+    // Set username/site keys in NGLS entity to values of last objects in Admin entity
     [_managedObjectNGLS setValue:admin.userLogin forKey:@"username"];
     [_managedObjectNGLS setValue:admin.siteLocation forKey:@"site"];
     
@@ -941,23 +706,23 @@
     [_managedObjectNGLS setValue:_recName.text forKey:@"recName"];
     [_managedObjectNGLS setValue:_recTel.text forKey:@"recTel"];
     
-    // Call blankData in Model.m
+    // Call blankData in Model.m to insert "" values
     Model *callMethod = [[Model alloc]init];
     callMethod.managedObjectNGLS = self.managedObjectNGLS;
     [callMethod blankData];
     
-    // Save managedObject
+    // Save context
     [[self.managedObjectAdmin managedObjectContext] save:&error];
     [[self.managedObjectNGLS managedObjectContext] save:&error];
     NSLog(@"%@", self.managedObjectNGLS);
     
-    // Create fetch request to fetch data from NGLS entity
+    // Fetch objects from NGLS entity
     NSFetchRequest *totalFetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *NGLSentity = [NSEntityDescription entityForName:@"NGLS"
                                                   inManagedObjectContext:context];
     [totalFetchRequest setEntity:NGLSentity];
     NSArray *totalFetchedObjects = [context executeFetchRequest:totalFetchRequest error:&error];
-    NSLog(@"%@", [NSString stringWithFormat:@"%lu records found", (unsigned long)[totalFetchedObjects count]]);
+    NSLog(@"%@", [NSString stringWithFormat:@"Total records: %lu", (unsigned long)[totalFetchedObjects count]]);
     
     // Delete .csv to avoid duplicate entries
     if ([[NSFileManager defaultManager] fileExistsAtPath:[self dataFilePath]]) {

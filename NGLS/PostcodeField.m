@@ -11,6 +11,7 @@
 
 @implementation PostcodeField
 
+// Convert characters to uppercase and return acceptable characters
 - (BOOL)stringIsAcceptable:(NSString *)string inRange:(NSRange)range {
     NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
     NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];

@@ -17,7 +17,7 @@
 
 @end
 
-@implementation AdminViewController 
+@implementation AdminViewController
 
 @synthesize namePicker;
 @synthesize usernameArray;
@@ -41,26 +41,40 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib
     
-    // Create fetchRequest
+    // Identify the app delegate
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    
+    // Fetch objects from Admin entity
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Admin" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
-    NSError *error = nil;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    
     // Fetch last object
     Model *admin = [fetchedObjects lastObject];
     
-    // Populate login fields with last stored details
+    // If userLogin is empty
     if (admin.userLogin == nil) {
         //NSLog(@"Login empty");
     } else {
+        // Populate textfields with data
         self.usernameField.text = admin.userLogin;
         self.siteLocationField.text = admin.siteLocation;
     }
     
-    // Username picker
+    // Create new managed object using the Admin entity description
+    NSManagedObject *ManagedObjectAdmin;
+    ManagedObjectAdmin = [NSEntityDescription insertNewObjectForEntityForName:@"Admin"
+                                                       inManagedObjectContext:context];
+    self.managedObjectAdmin = ManagedObjectAdmin;
+
+    // Save context
+    NSError *saveError = nil;
+    [context save:&saveError];
+    
+    // Alloc & init username picker
     self.namePicker = [[UIPickerView alloc]init];
     [namePicker setDataSource:self];
     [namePicker setDelegate:self];
@@ -71,17 +85,19 @@
                           @"Andrew",
                           @"Blal",
                           @"Shehzad", nil];
-    // Sort alphabetically
+    
+    // Sort array alphabetically
     self.sortedUsernameArray = [usernameArray sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     self.usernameField.delegate = self;
     self.usernameField.inputView = namePicker;
     
-    // Location picker
+    // Alloc & init location picker
     self.sitePicker = [[UIPickerView alloc]init];
     [sitePicker setDataSource:self];
     [sitePicker setDelegate:self];
     self.siteArray = [[NSArray alloc]initWithObjects:@"Houndshill Shopping Centre", @"St John's Shopping Centre", @"Spindles Shopping Centre", @"Town Square Shopping Centre", @"The Rock Shopping Centre", @"Port Arcades Shopping Centre", @"Fishergate Shopping Centre", @"Stretford Mall", @"Spinning Gate Shopping Centre", @"Belle Vale Shopping Centre", @"Clarendon Square Shopping Centre", @"Forum Shopping Centre", @"Huyton Place Shopping Centre", @"Dunmail Park Shopping Centre", @"The Mill Outlet Store", @"Merrion Centre", @"Lakeside Village", @"Junction 32 Outlet Shopping Village", @"The Grafton Centre", @"Weaver Square", nil];
-    // Sort alphabetically
+    
+    // Sort array alphabetically
     self.sortedSiteArray = [siteArray sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     self.siteLocationField.delegate =self;
     self.siteLocationField.inputView = sitePicker;
@@ -179,16 +195,18 @@
 }
 
 - (IBAction)exportBtnPressed:(UIButton *)sender {
-    // Create fetch request to fetch data from the store
+    // Identify the app delegate
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    
+    // Fetch objects from NGLS entity
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"NGLS"
                                               inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
-    NSError *error;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    //NSLog(@"%lu", (unsigned long)fetchedObjects.count);
+    //NSLog(@"%@", [NSString stringWithFormat:@"%lu records found", (unsigned long)[fetchedObjects count]]);
     
     // If entity is empty
     if ([fetchedObjects count] == 0) {
@@ -205,6 +223,7 @@
             [[NSFileManager defaultManager] removeItemAtPath:[self dataFilePath] error:NULL];
             NSLog(@".csv found - deleted to avoid duplicate entries");
         }
+        // Call confirmExport method
         [self confirmExport];
         NSLog(@"%@", [NSString stringWithFormat:@"%lu records found", (unsigned long)[fetchedObjects count]]);
     }
@@ -239,14 +258,16 @@
         if ([password.text isEqualToString:@"admin"]) {
             NSLog(@"Password correct");
             
-            // Create fetchRequest
+            // Identify the app delegate
             NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
             NSManagedObjectContext *context = [appDelegate managedObjectContext];
+            NSError *error;
+            
+            // Fetch objects from NGLS entity
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
             NSEntityDescription *entity = [NSEntityDescription entityForName:@"NGLS"
                                                       inManagedObjectContext:context];
             [fetchRequest setEntity:entity];
-            NSError *error;
             NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
             
             // Confirm export & display number of records
@@ -265,6 +286,7 @@
             [wrongPass show];
         }
     }
+    // If user pressed "Export" button
     if ([title isEqualToString:@"Export"]) {
         NSLog(@"Start export");
         [self exportProcess];
@@ -279,14 +301,16 @@
 }
 
 - (void) exportProcess {
-    // Create fetchRequest
+    // Identify the app delegate
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    
+    // Fetch objects from NGLS entity
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"NGLS"
                                               inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
-    NSError *error;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     
     // CHCSVParser
@@ -295,7 +319,7 @@
                                                           encoding:NSUTF8StringEncoding
                                                          delimiter:','];
     
-    // Fetch objects to write to .csv
+    // Write fetched objects to .csv
     for (Model *results in fetchedObjects) {
         [writer writeLineOfFields:@[results.site,
                                     results.username,
@@ -389,8 +413,10 @@
     
 
     // *
-    // * DO NOT UNCOMMENT SECTION - DEBUG PURPOSES ONLY
+    // * SECTION BELOW IS FOR DEBUG PURPOSES ONLY
+    // * Opens UIDocumentInteractionController to preview contents of .csv
     // *
+    
 //    NSURL *fileURL = [NSURL fileURLWithPath:[self dataFilePath] isDirectory:NO];
 //    UIDocumentInteractionController *docController = [[UIDocumentInteractionController alloc]init];
 //    docController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
@@ -400,15 +426,16 @@
     
     // If device can send mail
     if ([MFMailComposeViewController canSendMail]) {
+        // Set mail components
         NSArray *recipient = [NSArray arrayWithObject:@"proadmin@medicalgeneration.co.uk"];
         NSArray *ccRecipient = [NSArray arrayWithObjects:@"info@ngls.co.uk", @"bc@ngls.co.uk", @"as@ngls.co.uk", @"sc@ngls.co.uk",nil];
-
+        // Set date format
         NSDate *sysDate = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
         [formatter setDateFormat:@"dd/MM/yyyy"];
         NSString *dateStamp = [formatter stringFromDate:sysDate];
         NSString *emailBody = [NSString stringWithFormat:@"Attachment: NGLS Survey Results - Exported on %@", dateStamp];
-        
+        // Set components
         [appDelegate.globalMailComposer setToRecipients:recipient];
         [appDelegate.globalMailComposer setCcRecipients:ccRecipient];
         [appDelegate.globalMailComposer setSubject:@"NGLS Survey Results"];
@@ -418,7 +445,7 @@
         [appDelegate.globalMailComposer addAttachmentData:[NSData dataWithContentsOfFile:[self dataFilePath]]
                          mimeType:@"text/csv"
                          fileName:@"NGLS_export.csv"];
-        // Present globalMailView
+        // Open mail composer
         [self presentViewController:appDelegate.globalMailComposer
                                        animated:YES
                                      completion:nil];
@@ -439,8 +466,6 @@
 {
     return [self navigationController];
 }
-
-
 
 // Check mail outcome, delete .csv to avoide duplicate entries
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
@@ -466,39 +491,7 @@
                 [[NSFileManager defaultManager] removeItemAtPath:[self dataFilePath] error:NULL];
                 NSLog(@".csv deleted");
                 // If mail sent successfully, delete context (wipe database)
-                
-                // Create fetchRequest
-                NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
-                NSManagedObjectContext *context = [appDelegate managedObjectContext];
-                NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-                NSEntityDescription *entity = [NSEntityDescription entityForName:@"NGLS"
-                                                          inManagedObjectContext:context];
-                [fetchRequest setEntity:entity];
-                NSError *error;
-                NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-                
-                // Delete objects
-                for (Model *results in fetchedObjects) {
-                    [context deleteObject:(id)results];
-                    NSLog(@"NGLS object deleted: %@", results.username);
-                }
-
-                // Create fetch request to fetch Admin data from the store
-                NSFetchRequest *adminFetchRequest = [[NSFetchRequest alloc]init];
-                NSEntityDescription *adminEntity = [NSEntityDescription entityForName:@"Admin"
-                                                          inManagedObjectContext:context];
-                [adminFetchRequest setEntity:adminEntity];
-            
-                NSArray *adminFetchedObjects = [context executeFetchRequest:adminFetchRequest error:&error];
-                
-                // Delete objects
-                for (Model *adminResults in adminFetchedObjects) {
-                    [context deleteObject:(id)adminResults];
-                    NSLog(@"Admin object deleted: %@", adminResults.userLogin);
-                }
-                
-                NSError *saveError = nil;
-                [context save:&saveError];
+                [self resetData];
             }
             NSLog(@"Mail sent");
             break;
@@ -516,8 +509,51 @@
     [self dismissViewControllerAnimated:YES completion:^{
         NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
         [appDelegate cycleTheGlobalMailComposer];
-        NSLog(@"mail dismissed");
+        //NSLog(@"mail dismissed");
     }];
+}
+
+- (void)resetData {
+    // Identify the app delegate
+    NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    
+    // Fetch objects from NGLS entity
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"NGLS"
+                                              inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    
+    // Delete objects
+    for (Model *results in fetchedObjects) {
+        [context deleteObject:(id)results];
+        NSLog(@"NGLS objects deleted");
+    };
+    
+    // Fetch objects from Admin entity
+    NSFetchRequest *adminFetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription *adminEntity = [NSEntityDescription entityForName:@"Admin"
+                                                   inManagedObjectContext:context];
+    [adminFetchRequest setEntity:adminEntity];
+    NSArray *adminFetchedObjects = [context executeFetchRequest:adminFetchRequest error:&error];
+    
+    // Delete objects
+    for (Model *adminResults in adminFetchedObjects) {
+        [context deleteObject:(id)adminResults];
+        NSLog(@"Admin objects deleted");
+    }
+    
+    // Create new managed object using the Admin entity description
+    NSManagedObject *ManagedObjectAdmin;
+    ManagedObjectAdmin = [NSEntityDescription insertNewObjectForEntityForName:@"Admin"
+                                                       inManagedObjectContext:context];
+    self.managedObjectAdmin = ManagedObjectAdmin;
+    
+    // Save context
+    NSError *saveError = nil;
+    [context save:&saveError];
 }
 
 @end

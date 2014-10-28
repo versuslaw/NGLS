@@ -10,24 +10,7 @@
 
 @implementation NumbersOnly
 
-//- (void)awakeFromNib
-//{
-//    [super awakeFromNib];
-//    
-//    self.delegate = self;
-//    [self setKeyboardType:UIKeyboardTypeNumberPad];
-//    
-//}
-
-//// Set UITextField to numbers only
-//- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-//    NSLog(@"NumbersOnly");
-//    if ([string rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location != NSNotFound) {
-//        return NO;
-//    }
-//    return YES;
-//}
-
+// Only return numbers
 - (BOOL)stringIsAcceptable:(NSString *)string inRange:(NSRange)range {
     if ([string rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location != NSNotFound) {
         return NO;

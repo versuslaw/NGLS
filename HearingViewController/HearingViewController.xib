@@ -63,6 +63,9 @@
                 </segmentedControl>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever had a hearing assessment?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytP-ic-6We">
                     <rect key="frame" x="55" y="255" width="360" height="33"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                    </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -85,11 +88,17 @@
                 </segmentedControl>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever served in HM Forces/TA?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbH-K6-KAr">
                     <rect key="frame" x="55" y="535" width="360" height="33"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                    </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever spoken to your GP/Hospital regarding your hearing?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ly0-eQ-K2d">
                     <rect key="frame" x="55" y="376" width="360" height="52"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                    </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -109,6 +118,9 @@
                 </segmentedControl>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever worked in a noisy environment?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYb-rt-a3O">
                     <rect key="frame" x="55" y="115" width="390" height="33"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                    </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -146,6 +158,9 @@
                 </segmentedControl>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever made a claim for NIHL against your previous employers?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCi-nN-fdA">
                     <rect key="frame" x="55" y="653" width="360" height="55"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                    </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>

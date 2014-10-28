@@ -7,30 +7,11 @@
 //
 
 #import "AcceptedCharacters.h"
-#define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_."
+#define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'&-_."
 
 @implementation AcceptedCharacters
 
-//- (void)awakeFromNib
-//{
-//    [super awakeFromNib];
-//    
-//    if (self) {
-//        NSLog(@"Delegate = self");
-//        self.delegate = self;
-//    }
-//}
-
-//#define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_."
-//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-//    NSLog(@"AcceptedCharacters");
-//    // Restrict special characters
-//    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
-//    NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-//    
-//    return [string isEqualToString:filtered];
-//}
-
+// Only return acceptable characters
 - (BOOL)stringIsAcceptable:(NSString *)string inRange:(NSRange)range {
     NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
     NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];

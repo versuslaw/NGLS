@@ -12,6 +12,7 @@
 
 @implementation PhoneNumber
 
+// Only return numbers, limit to 11 characters
 - (BOOL)stringIsAcceptable:(NSString *)string inRange:(NSRange)range {
     NSUInteger newLength = [self.text length] + [string length] - range.length;
     NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS_ONLY] invertedSet];

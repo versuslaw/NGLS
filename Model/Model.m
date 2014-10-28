@@ -152,7 +152,7 @@
 @dynamic otherServices;
 
 - (void)blankData {
-    // Set blank value if keys are nil
+    // Set blank value ("") if keys are nil
     
     // Services
     NSArray *services = @[@"ind", @"asb", @"vwf", @"bp", @"rta", @"mslm", @"pba", @"rcf", @"msp", @"aaw", @"ppi", @"wp", @"conv"];

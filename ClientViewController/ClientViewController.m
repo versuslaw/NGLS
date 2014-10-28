@@ -9,7 +9,6 @@
 #import "ClientViewController.h"
 #import "NGLSAppDelegate.h"
 #import "ServicesViewController.h"
-//#import "AdminViewController.h"
 #import "Model.h"
 #import "AcceptedCharacters.h"
 #import "PostcodeField.h"
@@ -45,16 +44,12 @@
 
     // Identify the app delegate
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    // Use appDelegate object to identify managed object context
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
     // Create new managed object using the NGLS entity description
     NSManagedObject *ManagedObjectNGLS;
     ManagedObjectNGLS = [NSEntityDescription insertNewObjectForEntityForName:@"NGLS"
                                                       inManagedObjectContext:context];
-    
-    // Declare managed object
     self.managedObjectNGLS = ManagedObjectNGLS;
     
     // Set navbar title
@@ -86,6 +81,7 @@
     self.dobField.delegate = self;
     self.niNumField.delegate = self;
     
+    // Call datePicker
     [self datePickerTextField];
 }
 
@@ -142,19 +138,7 @@
     return YES;
 }
 
-//#define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_."
-//#define NUMBERS_ONLY @"1234567890"
-//#define CHARACTER_LIMIT 11
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-//    if (textField == self.postcodeField) {
-//        NSLog(@"postcode field");
-//        //return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
-//        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
-//        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-//        
-//        return [string isEqualToString:filtered];
-//    }
-    
     // Call AcceptedCharacters subclass on Name/Address textfields
     if ([textField isKindOfClass:[AcceptedCharacters class]]) {
         return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
@@ -170,24 +154,7 @@
         return [(PhoneNumber *)textField stringIsAcceptable:string inRange:range];
     }
     
-    //    // Restrict special characters
-    //    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
-    //    NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-    
-    //    if (textField == self.postcodeField) {
-    //        [textField setText:[textField.text stringByReplacingCharactersInRange:range withString:[string uppercaseString]]];
-    //        return NO;
-    //    }
-    
-    // Set max character limit on tel fields
-    //    if (textField == self.telMobField || textField == self.telLandField) {
-    //        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    //        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS_ONLY] invertedSet];
-    //        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-    //        return (([string isEqualToString:filtered])&&(newLength <= CHARACTER_LIMIT));
-    //    }
     return YES;
-    //return [string isEqualToString:filtered];
 }
 
 - (void)dateStamped {
@@ -206,13 +173,6 @@
 }
 
 - (void)clientName {
-    // Set predicate: name fields can only contain alphabetical characters
-//    NSString *nameRegex = @"[A-Za-z- ]+";
-//    NSPredicate *charTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nameRegex];
-    
-    // If predciate test fails (i.e. if name contains numbers or special characters)
-    //if ((![charTest evaluateWithObject:self.forenameField.text]) || (![charTest evaluateWithObject:self.surnameField.text])) {
-    
     // If fields are blank
     if ((self.forenameField.text.length == 0) || (self.surnameField.text.length == 0)) {
         _nameError = [[UIAlertView alloc]initWithTitle:@"Error"

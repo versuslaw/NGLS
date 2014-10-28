@@ -66,9 +66,7 @@
     self.q3More.enabled = NO;
     self.q4More.enabled = NO;
     
-    
-    
-    // Set delegate on textfield
+    // Set delegate on textfields
     self.q1More.delegate = self;
     self.q2More.delegate = self;
     self.q3More.delegate = self;
@@ -151,7 +149,7 @@
     
     // If segment = "Yes", user must provide Further Information
     if ([[self.q1Seg titleForSegmentAtIndex:self.q1Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
-        if (self.q1More.text.length <= 0) {
+        if (self.q1More.text.length == 0) {
             if (!_infoAlert.visible) {
                 [_infoAlert show];
             }
@@ -159,7 +157,7 @@
     }
     
     if ([[self.q2Seg titleForSegmentAtIndex:self.q2Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
-        if (self.q2More.text.length <= 0) {
+        if (self.q2More.text.length == 0) {
             if (!_infoAlert.visible) {
                 [_infoAlert show];
             }
@@ -167,7 +165,7 @@
     }
     
     if ([[self.q3Seg titleForSegmentAtIndex:self.q3Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
-        if (self.q3More.text.length <= 0) {
+        if (self.q3More.text.length == 0) {
             if (!_infoAlert.visible) {
                 [_infoAlert show];
             }
@@ -175,13 +173,14 @@
     }
     
     if ([[self.q4Seg titleForSegmentAtIndex:self.q4Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
-        if (self.q4More.text.length <= 0) {
+        if (self.q4More.text.length == 0) {
             if (!_infoAlert.visible) {
                 [_infoAlert show];
             }
         }
     }
     
+    // Save values
     NSString *q1 = [self.q1Seg titleForSegmentAtIndex:self.q1Seg.selectedSegmentIndex];
     [self.managedObjectNGLS setValue:q1 forKey:@"q1"];
     [self.managedObjectNGLS setValue:self.q1More.text forKey:@"q1More"];

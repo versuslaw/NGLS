@@ -43,48 +43,45 @@
     
     // Identify the app delegate
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    // Use appDelegate object to identify managed object context
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
     
-    // Create fetch request to fetch NGLS data from the store
+    // Fetch objects from NGLS entity
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"NGLS"
                                               inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
-    NSError *error;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     
-    // Delete objects
-    for (Model *results in fetchedObjects) {
-        [context deleteObject:(id)results];
-        //NSLog(@"NGLS object deleted: %@", results.username);
+    
+    // If entity isn't empty
+    if ([fetchedObjects count] != 0) {
+        // Delete objects
+        for (Model *results in fetchedObjects) {
+            [context deleteObject:(id)results];
+            NSLog(@"NGLS object deleted: %@", results.username);
+        }
     }
     
-    // Create fetch request to fetch Admin data from the store
+    // Fetch objects from Admin entity
     NSFetchRequest *adminFetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *adminEntity = [NSEntityDescription entityForName:@"Admin"
                                                    inManagedObjectContext:context];
     [adminFetchRequest setEntity:adminEntity];
-    
     NSArray *adminFetchedObjects = [context executeFetchRequest:adminFetchRequest error:&error];
     
-    // Delete objects
-    for (Model *adminResults in adminFetchedObjects) {
-        [context deleteObject:(id)adminResults];
-        NSLog(@"Admin object deleted: %@", adminResults.userLogin);
+    // If entity isn't empty
+    if ([adminFetchedObjects count] != 0) {
+        // Delete objects
+        for (Model *adminResults in adminFetchedObjects) {
+            [context deleteObject:(id)adminResults];
+            NSLog(@"Admin object deleted: %@", adminResults.userLogin);
+        }
     }
     
     // Save context
     NSError *saveError = nil;
     [context save:&saveError];
-    
-    // Create new managed object using the Admin entity description
-    NSManagedObject *ManagedObjectAdmin;
-    ManagedObjectAdmin = [NSEntityDescription insertNewObjectForEntityForName:@"Admin"
-                                                       inManagedObjectContext:context];
-    // Declare managed object
-    self.managedObjectAdmin = ManagedObjectAdmin;
     
     // Start animations
     [self startAnimations];
@@ -124,19 +121,18 @@
 }
 
 - (IBAction)startButton:(UIButton *)sender {
-    // Identify app delegate
+    // Identify the app delegate
     NGLSAppDelegate *appDelegate = (NGLSAppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    // Use appDelegate to identify managed object context
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
     
+    // Fetch objects from Admin entity
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Admin" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
-    
-    NSError *error = nil;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     
+    // Fetch last object
     Model *admin = [fetchedObjects lastObject];
     
     // If no username found, display message
@@ -164,6 +160,7 @@
 }
 
 - (IBAction)adminBtnPressed:(UIButton *)sender {
+    // Prompt for admin password
     self.loginRequired = [[UIAlertView alloc]initWithTitle:@"Login Required"
                                                    message:@"Please enter the admin password"
                                                   delegate:self

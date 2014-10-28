@@ -70,17 +70,17 @@
     // Call noisePicker method
     [self noisePickerTextField];
     
-    // Set textfield delegate to self
+    // Set textfields delegate to self
     self.empName1.delegate = self;
-    self.empName1.delegate = self;
-    self.empName1.delegate = self;
-    self.empName1.delegate = self;
-    self.empName1.delegate = self;
-    self.empName1.delegate = self;
-    self.empName1.delegate = self;
-    self.empName1.delegate = self;
-    self.empName1.delegate = self;
-    self.empName1.delegate = self;
+    self.empName2.delegate = self;
+    self.empName3.delegate = self;
+    self.empName4.delegate = self;
+    self.empName5.delegate = self;
+    self.empName6.delegate = self;
+    self.empName7.delegate = self;
+    self.empName8.delegate = self;
+    self.empName9.delegate = self;
+    self.empName10.delegate = self;
     
     self.empExposure1.delegate = self;
     self.empExposure2.delegate = self;
@@ -199,7 +199,7 @@
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     datePicker.datePickerMode = UIDatePickerModeDate;
     
-    // Set default date
+    // Set default date to 01/01/1980
     NSCalendar *calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [[NSDateComponents alloc]init];
     [components setDay:1];
@@ -207,7 +207,8 @@
     [components setYear:1980];
     NSDate *defaultDate = [calendar dateFromComponents:components];
     [datePicker setDate:defaultDate];
-
+    
+    // Set max date to today
     [datePicker setMaximumDate:[NSDate date]];
     [datePicker addTarget:self
                    action:@selector(updateDateTextField:)
@@ -248,7 +249,6 @@
                                                       delegate:nil
                                              cancelButtonTitle:@"Dismiss"
                                              otherButtonTitles:nil];
-    
     
     // Check active textfield, update & validate date
     if ([self.empFrom1 isFirstResponder]) {

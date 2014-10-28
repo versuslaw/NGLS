@@ -25,6 +25,9 @@
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qky-pf-sNK">
                                 <rect key="frame" x="168" y="405" width="433" height="189"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                                </accessibility>
                                 <string key="text">NGLS is a trading style of Peoples Claims Ltd which is regulated by the Ministry of Justice in respect of regulated claims management activities. Its registration is recorded on the website www.claimsregulation.gov.uk. Any solicitor we recommend to you is an independant professional from whom you will receive impartial and confidential advice. You are free to choose another solicitor. Company Reg No. 04258497. CRM 3928</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
