@@ -41,5 +41,6 @@
 @property (strong, nonatomic) IBOutlet UIAlertView *addError;
 @property (strong, nonatomic) IBOutlet UIAlertView *phoneError;
 @property (strong, nonatomic) IBOutlet UIAlertView *emailError;
+@property (strong, nonatomic) IBOutlet UIAlertView *niError;
 
 @end

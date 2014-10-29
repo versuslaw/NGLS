@@ -412,17 +412,19 @@
     [handle closeFile];
     
 
-    // *
-    // * SECTION BELOW IS FOR DEBUG PURPOSES ONLY
-    // * Opens UIDocumentInteractionController to preview contents of .csv
-    // *
-    
-//    NSURL *fileURL = [NSURL fileURLWithPath:[self dataFilePath] isDirectory:NO];
-//    UIDocumentInteractionController *docController = [[UIDocumentInteractionController alloc]init];
-//    docController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
-//    docController.delegate = self;
-//    [docController presentPreviewAnimated:YES];
-//    NSLog(@"Debug - preview .csv file");
+    /**
+     
+     // SECTION BELOW IS FOR DEBUG PURPOSES ONLY
+     // Opens UIDocumentInteractionController to preview contents of .csv
+     
+     NSURL *fileURL = [NSURL fileURLWithPath:[self dataFilePath] isDirectory:NO];
+     UIDocumentInteractionController *docController = [[UIDocumentInteractionController alloc]init];
+     docController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+     docController.delegate = self;
+     [docController presentPreviewAnimated:YES];
+     NSLog(@"Debug - preview .csv file");
+     
+     **/
     
     // If device can send mail
     if ([MFMailComposeViewController canSendMail]) {
@@ -492,6 +494,10 @@
                 NSLog(@".csv deleted");
                 // If mail sent successfully, delete context (wipe database)
                 [self resetData];
+                
+                // Empty login fields
+                self.usernameField.text = nil;
+                self.siteLocationField.text = nil;
             }
             NSLog(@"Mail sent");
             break;
@@ -554,6 +560,13 @@
     // Save context
     NSError *saveError = nil;
     [context save:&saveError];
+    
+    UIAlertView *successfulExport = [[UIAlertView alloc]initWithTitle:@"Successful Export"
+                                                              message:@"The .csv file was successfully exported via email. Please monitor Proclaim for newly imported cases. Note: Import can take between 30 - 90+ minutes."
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"Dismiss"
+                                                    otherButtonTitles:nil];
+    [successfulExport show];
 }
 
 @end

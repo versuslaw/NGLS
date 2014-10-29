@@ -13,6 +13,8 @@
 #import "AcceptedCharacters.h"
 #import "PostcodeField.h"
 #import "PhoneNumber.h"
+#import "LettersOnly.h"
+#import "NINumber.h"
 
 @interface ClientViewController ()
 
@@ -139,9 +141,14 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    // Call AcceptedCharacters subclass on Name/Address textfields
+    // Call AcceptedCharacters subclass on Address textfields
     if ([textField isKindOfClass:[AcceptedCharacters class]]) {
         return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
+    }
+    
+    // Call AcceptedCharacters subclass on Name textfields
+    if ([textField isKindOfClass:[LettersOnly class]]) {
+        return [(LettersOnly *)textField stringIsAcceptable:string inRange:range];
     }
     
     // Call UpperCaseConvert subclass on Postcode textfield
@@ -152,6 +159,11 @@
     // Call PhoneNumber subclass on telephone textfields
     if ([textField isKindOfClass:[PhoneNumber class]]) {
         return [(PhoneNumber *)textField stringIsAcceptable:string inRange:range];
+    }
+    
+    // Call NINumber subclass on National Insurance textfield
+    if ([textField isKindOfClass:[NINumber class]]) {
+        return [(NINumber *)textField stringIsAcceptable:string inRange:range];
     }
     
     return YES;
@@ -181,7 +193,7 @@
                                      cancelButtonTitle:@"Dismiss"
                                      otherButtonTitles:nil];
         // Only display one error message
-        if ((!_addError.visible) && (!_phoneError.visible)) {
+        if ((!_addError.visible) && (!_phoneError.visible) && (!_emailError.visible) && (!_niError.visible)) {
             [_nameError show];
         }
     } else {
@@ -199,7 +211,7 @@
                                     cancelButtonTitle:@"Dismiss"
                                     otherButtonTitles:nil];
         // Only display one error message
-        if ((!_nameError.visible) && (!_phoneError.visible)) {
+        if ((!_nameError.visible) && (!_phoneError.visible) && (!_emailError.visible) && (!_niError.visible)) {
             [_addError show];
         }
     } else {
@@ -213,15 +225,15 @@
 }
 
 - (void)clientTel {
-    // If both phone numbers are blank
-    if ((self.telLandField.text.length == 0) && (self.telMobField.text.length == 0)) {
+    // If neither phone numbers are valid
+    if ((self.telLandField.text.length != 11) && (self.telMobField.text.length != 11)) {
         _phoneError = [[UIAlertView alloc]initWithTitle:@"Error"
-                                                message:@"Please enter either a landline or mobile phone number"
+                                                message:@"Please enter a valid landline or mobile phone number"
                                                delegate:self
                                       cancelButtonTitle:@"Dismiss"
                                       otherButtonTitles:nil];
         // Only display one error message
-        if((!_nameError.visible) && (!_addError.visible) && (!_emailError.visible)) {
+        if((!_nameError.visible) && (!_addError.visible) && (!_emailError.visible) && (!_niError.visible)) {
             [_phoneError show];
         }
     } else {
@@ -232,7 +244,7 @@
 
 - (void) clientEmail {
     // Set predicate test for valid email
-    NSString *emailRegEx = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSString *emailRegEx = @"\\A[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,4}\\z";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegEx];
     
     if (_emailField.text.length > 0) {
@@ -243,7 +255,7 @@
                                            cancelButtonTitle:@"Dismiss"
                                            otherButtonTitles:nil];
             // Only display one error message
-            if((!_nameError.visible) && (!_addError.visible) && (!_phoneError.visible)) {
+            if((!_nameError.visible) && (!_addError.visible) && (!_phoneError.visible) && (!_niError.visible)) {
                 [_emailError show];
             }
         }
@@ -274,6 +286,24 @@
     self.dobField.text = [NSString stringWithFormat:@"%@", stringFromDate];
 }
 
+- (void)clientNInumber {
+    // If something is entered into NI textfield
+    if (_niNumField.text.length > 0) {
+        // If character length is less than 13
+        if (_niNumField.text.length < 13) {
+            _niError = [[UIAlertView alloc]initWithTitle:@"Error"
+                                                 message:@"Please enter a valid UK National Insurance Number (Format: XX-##-##-##-X)"
+                                                delegate:nil
+                                       cancelButtonTitle:@"Dismiss"
+                                       otherButtonTitles:nil];
+            // Only display one error message
+            if((!_nameError.visible) && (!_addError.visible) && (!_phoneError.visible) && (!_emailError.visible)) {
+                [_niError show];
+            }
+        }
+    }
+}
+
 - (void)contactHours {
     // 0 = Morning, 1 = Afternoon, 2 = Evening
     NSString *contactNumber = [NSString stringWithFormat:@"%ld", (long)self.contactSeg.selectedSegmentIndex];
@@ -288,6 +318,7 @@
     [self clientAddress];
     [self clientEmail];
     [self clientTel];
+    [self clientNInumber];
     [self contactHours];
     
     [self.managedObjectNGLS setValue:self.dobField.text forKey:@"dateOfBirth"];
@@ -296,7 +327,7 @@
     NSLog(@"%@", self.managedObjectNGLS);
     
     // If no error messages are showing
-    if ((!_nameError.visible) && (!_addError.visible) && (!_phoneError.visible) && (!_emailError.visible)) {
+    if ((!_nameError.visible) && (!_addError.visible) && (!_phoneError.visible) && (!_emailError.visible) && (!_niError.visible)) {
 
         // Allocate & initialise ServicesViewController
         ServicesViewController *services = [[ServicesViewController alloc]initWithNibName:@"ServicesViewController"

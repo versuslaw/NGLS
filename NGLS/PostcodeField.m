@@ -7,15 +7,20 @@
 //
 
 #import "PostcodeField.h"
-#define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_."
+#define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+#define CHARACTER_LIMIT 8
 
 @implementation PostcodeField
 
-// Convert characters to uppercase and return acceptable characters
 - (BOOL)stringIsAcceptable:(NSString *)string inRange:(NSRange)range {
-    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
-    NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-    [self setText:[self.text stringByReplacingCharactersInRange:range withString:[filtered uppercaseString]]];
+    NSUInteger newLength = [self.text length] + [string length] - range.length;
+    // Check text meets character limit
+    if (newLength <= CHARACTER_LIMIT) {
+        // Convert characters to uppercase and return acceptable characters
+        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
+        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        [self setText:[self.text stringByReplacingCharactersInRange:range withString:[filtered uppercaseString]]];
+    }
     return NO;
 }
 
