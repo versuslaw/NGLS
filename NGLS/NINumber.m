@@ -49,7 +49,7 @@
         if (isdigit([mutableText characterAtIndex:i]))
         {
             if (i < 2 || i > 10) {
-                NSLog(@"Number found: %d", i);
+                NSLog(@"Number found at index: %lu", (unsigned long)i);
                 return NO;
             }
         }
@@ -57,7 +57,7 @@
         if (isalpha([mutableText characterAtIndex:i]))
         {
             if (i > 2 && i < 12) {
-                NSLog(@"Alpha found: %d", i);
+                NSLog(@"Alpha found at index: %lu", (unsigned long)i);
                 return NO;
             }
         }

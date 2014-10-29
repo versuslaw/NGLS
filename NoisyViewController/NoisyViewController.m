@@ -17,6 +17,8 @@
 
 @implementation NoisyViewController
 
+@synthesize datePicker;
+
 @synthesize noisePicker;
 @synthesize noiseArray;
 
@@ -60,6 +62,9 @@
 
     // Call datePicker method
     [self datePickerTextField];
+    
+    [datePicker addTarget:self action:@selector(updateDateTextField)
+         forControlEvents:UIControlEventValueChanged];
 
     // Noise picker
     self.noisePicker = [[UIPickerView alloc]init];
@@ -196,7 +201,7 @@
 
 - (void)datePickerTextField {
     // Open date picker when textfield is tapped
-    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    /*UIDatePicker */datePicker = [[UIDatePicker alloc]init];
     datePicker.datePickerMode = UIDatePickerModeDate;
     
     // Set default date to 01/01/1980
@@ -210,9 +215,9 @@
     
     // Set max date to today
     [datePicker setMaximumDate:[NSDate date]];
-    [datePicker addTarget:self
-                   action:@selector(updateDateTextField:)
-         forControlEvents:UIControlEventValueChanged];
+//    [datePicker addTarget:self
+//                   action:@selector(updateDateTextField:)
+//         forControlEvents:UIControlEventValueChanged];
     datePicker.backgroundColor = [UIColor clearColor];
     
     // Set input for each textfield
@@ -238,7 +243,7 @@
     [self.empTo10 setInputView:datePicker];
 }
 
-- (void)updateDateTextField:(UIDatePicker *) datePicker {
+- (void)updateDateTextField/*:(UIDatePicker *) datePicker*/ {
     // Format date
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd/MM/yyyy"];
@@ -260,6 +265,7 @@
         if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
             [validDate show];
             [datePicker setDate:dateFrom];
+            [self updateDateTextField];
         }
     }
     
@@ -272,6 +278,7 @@
         if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
             [validDate show];
             [datePicker setDate:dateFrom];
+            [self updateDateTextField];
         }
     }
     
@@ -284,6 +291,7 @@
         if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
             [validDate show];
             [datePicker setDate:dateFrom];
+            [self updateDateTextField];
         }
     }
     
@@ -296,6 +304,7 @@
         if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
             [validDate show];
             [datePicker setDate:dateFrom];
+            [self updateDateTextField];
         }
     }
     
@@ -308,6 +317,7 @@
         if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
             [validDate show];
             [datePicker setDate:dateFrom];
+            [self updateDateTextField];
         }
     }
     
@@ -320,6 +330,7 @@
         if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
             [validDate show];
             [datePicker setDate:dateFrom];
+            [self updateDateTextField];
         }
     }
     
@@ -332,6 +343,7 @@
         if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
             [validDate show];
             [datePicker setDate:dateFrom];
+            [self updateDateTextField];
         }
     }
     
@@ -355,6 +367,7 @@
         if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
             [validDate show];
             [datePicker setDate:dateFrom];
+            [self updateDateTextField];
         }
     }
     
@@ -367,6 +380,7 @@
         if ([self.dateFrom timeIntervalSinceDate:self.dateTo] > 0) {
             [validDate show];
             [datePicker setDate:dateFrom];
+            [self updateDateTextField];
         }
     }
 }

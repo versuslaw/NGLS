@@ -193,7 +193,7 @@
                                      cancelButtonTitle:@"Dismiss"
                                      otherButtonTitles:nil];
         // Only display one error message
-        if ((!_addError.visible) && (!_phoneError.visible) && (!_emailError.visible) && (!_niError.visible)) {
+        if ((!_addError.visible) && (!_phoneLandError.visible) && (!_phoneMobError.visible) && (!_emailError.visible) && (!_niError.visible)) {
             [_nameError show];
         }
     } else {
@@ -211,7 +211,7 @@
                                     cancelButtonTitle:@"Dismiss"
                                     otherButtonTitles:nil];
         // Only display one error message
-        if ((!_nameError.visible) && (!_phoneError.visible) && (!_emailError.visible) && (!_niError.visible)) {
+        if ((!_nameError.visible) && (!_phoneLandError.visible) && (!_phoneMobError.visible) && (!_emailError.visible) && (!_niError.visible)) {
             [_addError show];
         }
     } else {
@@ -226,15 +226,30 @@
 
 - (void)clientTel {
     // If neither phone numbers are valid
-    if ((self.telLandField.text.length != 11) && (self.telMobField.text.length != 11)) {
-        _phoneError = [[UIAlertView alloc]initWithTitle:@"Error"
-                                                message:@"Please enter a valid landline or mobile phone number"
-                                               delegate:self
-                                      cancelButtonTitle:@"Dismiss"
-                                      otherButtonTitles:nil];
-        // Only display one error message
-        if((!_nameError.visible) && (!_addError.visible) && (!_emailError.visible) && (!_niError.visible)) {
-            [_phoneError show];
+    if (self.telLandField.text.length > 0) {
+        if (self.telLandField.text.length != 11) {
+            _phoneLandError = [[UIAlertView alloc]initWithTitle:@"Error"
+                                                    message:@"Please enter a valid landline or mobile phone number"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Dismiss"
+                                          otherButtonTitles:nil];
+            // Only display one error message
+            if((!_nameError.visible) && (!_addError.visible) && (!_phoneMobError.visible) && (!_emailError.visible) && (!_niError.visible)) {
+                [_phoneLandError show];
+            }
+        }
+        if (self.telMobField.text.length > 0) {
+            if (self.telMobField.text.length != 11) {
+                _phoneMobError = [[UIAlertView alloc]initWithTitle:@"Error"
+                                                        message:@"Please enter a valid landline or mobile phone number"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Dismiss"
+                                              otherButtonTitles:nil];
+                // Only display one error message
+                if((!_nameError.visible) && (!_addError.visible) && (!_phoneLandError.visible )&& (!_emailError.visible) && (!_niError.visible)) {
+                    [_phoneMobError show];
+                }
+            }
         }
     } else {
         [self.managedObjectNGLS setValue:self.telLandField.text forKey:@"clientTelLand"];
@@ -255,9 +270,11 @@
                                            cancelButtonTitle:@"Dismiss"
                                            otherButtonTitles:nil];
             // Only display one error message
-            if((!_nameError.visible) && (!_addError.visible) && (!_phoneError.visible) && (!_niError.visible)) {
+            if((!_nameError.visible) && (!_addError.visible) && (!_phoneLandError.visible) && (!_phoneMobError.visible) && (!_niError.visible)) {
                 [_emailError show];
             }
+        } else {
+            [self.managedObjectNGLS setValue:self.emailField.text forKey:@"clientEmail"];
         }
     }
 }
@@ -279,7 +296,6 @@
 - (void)updateDateTextField:(id)sender {
     // Update DoB textfield when date picker is scrolled
     datePicker = (UIDatePicker *) self.dobField.inputView;
-    
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd/MM/yyyy"];
     NSString *stringFromDate = [formatter stringFromDate:datePicker.date];
@@ -297,9 +313,11 @@
                                        cancelButtonTitle:@"Dismiss"
                                        otherButtonTitles:nil];
             // Only display one error message
-            if((!_nameError.visible) && (!_addError.visible) && (!_phoneError.visible) && (!_emailError.visible)) {
+            if((!_nameError.visible) && (!_addError.visible) && (!_phoneLandError.visible) && (!_phoneMobError.visible) && (!_emailError.visible)) {
                 [_niError show];
             }
+        } else {
+            [self.managedObjectNGLS setValue:self.niNumField.text forKey:@"clientNI"];
         }
     }
 }
@@ -321,13 +339,14 @@
     [self clientNInumber];
     [self contactHours];
     
-    [self.managedObjectNGLS setValue:self.dobField.text forKey:@"dateOfBirth"];
-    [self.managedObjectNGLS setValue:self.emailField.text forKey:@"clientEmail"];
-    [self.managedObjectNGLS setValue:self.niNumField.text forKey:@"clientNI"];
-    NSLog(@"%@", self.managedObjectNGLS);
-    
     // If no error messages are showing
-    if ((!_nameError.visible) && (!_addError.visible) && (!_phoneError.visible) && (!_emailError.visible) && (!_niError.visible)) {
+    if ((!_nameError.visible) && (!_addError.visible) && (!_phoneLandError.visible) && (!_phoneMobError.visible) && (!_emailError.visible) && (!_niError.visible)) {
+        
+        // Save remaining objects
+        [self.managedObjectNGLS setValue:self.dobField.text forKey:@"dateOfBirth"];
+        //[self.managedObjectNGLS setValue:self.emailField.text forKey:@"clientEmail"];
+        //[self.managedObjectNGLS setValue:self.niNumField.text forKey:@"clientNI"];
+        NSLog(@"%@", self.managedObjectNGLS);
 
         // Allocate & initialise ServicesViewController
         ServicesViewController *services = [[ServicesViewController alloc]initWithNibName:@"ServicesViewController"

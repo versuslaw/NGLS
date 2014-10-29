@@ -34,5 +34,6 @@
 
 @property (strong) UIAlertView *moreInfo;
 @property (strong) UITextField *alertTextField;
+@property (strong) UIAlertView *invalidPhone;
 
 @end

@@ -503,13 +503,26 @@
 }
 
 - (IBAction)homeBtnPressed:(UIButton *) sender {
+    if (self.recTel.text.length > 0) {
+        if (self.recTel.text.length != 11) {
+            _invalidPhone = [[UIAlertView alloc]initWithTitle:@"Error"
+                                                                 message:@"Please enter a valid phone number for the recommendation"
+                                                                delegate:nil
+                                                       cancelButtonTitle:@"Dismiss"
+                                                       otherButtonTitles:nil];
+            [_invalidPhone show];
+        }
+    }
+    
     UIAlertView *successMsg = [[UIAlertView alloc]initWithTitle:@"Submit Survey"
                                                         message:@"Would you like to save and submit this questionnaire?"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"Submit", nil];
     successMsg.tag = 14;
-    [successMsg show];
+    if (!_invalidPhone.visible) {
+       [successMsg show];
+    }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

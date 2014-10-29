@@ -39,7 +39,8 @@
 
 @property (strong, nonatomic) IBOutlet UIAlertView *nameError;
 @property (strong, nonatomic) IBOutlet UIAlertView *addError;
-@property (strong, nonatomic) IBOutlet UIAlertView *phoneError;
+@property (strong, nonatomic) IBOutlet UIAlertView *phoneLandError;
+@property (strong, nonatomic) IBOutlet UIAlertView *phoneMobError;
 @property (strong, nonatomic) IBOutlet UIAlertView *emailError;
 @property (strong, nonatomic) IBOutlet UIAlertView *niError;
 

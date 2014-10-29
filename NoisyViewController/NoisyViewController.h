@@ -13,6 +13,8 @@
 @property (strong, nonatomic) NSManagedObject *managedObjectNGLS;
 @property (nonatomic, strong) NSManagedObject *managedObjectAdmin;
 
+@property (nonatomic, strong) UIDatePicker *datePicker;
+
 @property (nonatomic, strong) NSDate *dateFrom;
 @property (nonatomic, strong) NSDate *dateTo;
 
