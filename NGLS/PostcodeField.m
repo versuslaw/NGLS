@@ -1,5 +1,5 @@
 //
-//  UpperCaseConvert.m
+//  PostcodeField.m
 //  NGLS
 //
 //  Created by Ross Humphreys on 22/10/2014.

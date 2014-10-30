@@ -227,7 +227,7 @@
 - (void)clientTel {
     // If neither phone numbers are valid
     if (self.telLandField.text.length > 0) {
-        if (self.telLandField.text.length != 11) {
+        if (self.telLandField.text.length < 11) {
             _phoneLandError = [[UIAlertView alloc]initWithTitle:@"Error"
                                                     message:@"Please enter a valid landline or mobile phone number"
                                                    delegate:self
@@ -239,7 +239,7 @@
             }
         }
         if (self.telMobField.text.length > 0) {
-            if (self.telMobField.text.length != 11) {
+            if (self.telMobField.text.length < 11) {
                 _phoneMobError = [[UIAlertView alloc]initWithTitle:@"Error"
                                                         message:@"Please enter a valid landline or mobile phone number"
                                                        delegate:self
@@ -251,10 +251,9 @@
                 }
             }
         }
-    } else {
-        [self.managedObjectNGLS setValue:self.telLandField.text forKey:@"clientTelLand"];
-        [self.managedObjectNGLS setValue:self.telMobField.text forKey:@"clientTelMob"];
     }
+    [self.managedObjectNGLS setValue:self.telLandField.text forKey:@"clientTelLand"];
+    [self.managedObjectNGLS setValue:self.telMobField.text forKey:@"clientTelMob"];
 }
 
 - (void) clientEmail {
@@ -273,10 +272,9 @@
             if((!_nameError.visible) && (!_addError.visible) && (!_phoneLandError.visible) && (!_phoneMobError.visible) && (!_niError.visible)) {
                 [_emailError show];
             }
-        } else {
-            [self.managedObjectNGLS setValue:self.emailField.text forKey:@"clientEmail"];
         }
     }
+    [self.managedObjectNGLS setValue:self.emailField.text forKey:@"clientEmail"];
 }
 
 - (void)datePickerTextField {
@@ -316,10 +314,9 @@
             if((!_nameError.visible) && (!_addError.visible) && (!_phoneLandError.visible) && (!_phoneMobError.visible) && (!_emailError.visible)) {
                 [_niError show];
             }
-        } else {
-            [self.managedObjectNGLS setValue:self.niNumField.text forKey:@"clientNI"];
         }
     }
+    [self.managedObjectNGLS setValue:self.niNumField.text forKey:@"clientNI"];
 }
 
 - (void)contactHours {

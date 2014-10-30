@@ -14,13 +14,13 @@
 
 // Only return numbers, limit to 11 characters
 - (BOOL)stringIsAcceptable:(NSString *)string inRange:(NSRange)range {
-    NSUInteger newLength = [self.text length] + [string length] - range.length;
+    //NSUInteger newLength = [self.text length] + [string length] - range.length;
     NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS_ONLY] invertedSet];
     NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-    return (([string isEqualToString:filtered])&&(newLength <= CHARACTER_LIMIT));
+    return (([string isEqualToString:filtered]) /*&& (newLength <= CHARACTER_LIMIT)*/);
 }
 
-//#pragma - force user to enter specific telephone number format
+#pragma - force user to enter specific telephone number format
 //- (BOOL)stringIsAcceptable:(NSString *)string inRange:(NSRange)range {
 //    NSString *filter = @"(####) ### - ####";
 //    

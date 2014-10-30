@@ -63,7 +63,9 @@
     // Call datePicker method
     [self datePickerTextField];
     
-    [datePicker addTarget:self action:@selector(updateDateTextField)
+    // Listen for datePicker changes
+    [datePicker addTarget:self
+                   action:@selector(updateDateTextField)
          forControlEvents:UIControlEventValueChanged];
 
     // Noise picker
