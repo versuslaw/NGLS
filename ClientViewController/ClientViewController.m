@@ -146,12 +146,12 @@
         return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
     }
     
-    // Call AcceptedCharacters subclass on Name textfields
+    // Call LettersOnly subclass on Name textfields
     if ([textField isKindOfClass:[LettersOnly class]]) {
         return [(LettersOnly *)textField stringIsAcceptable:string inRange:range];
     }
     
-    // Call UpperCaseConvert subclass on Postcode textfield
+    // Call PostcodeField subclass on Postcode textfield
     if ([textField isKindOfClass:[PostcodeField class]]) {
         return [(PostcodeField *)textField stringIsAcceptable:string inRange:range];
     }
