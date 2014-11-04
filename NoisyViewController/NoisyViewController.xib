@@ -68,7 +68,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="h8P-p7-hvf">
                     <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                 </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Please provide details of employers with regards to the noisy environments for which you have worked:" translatesAutoresizingMaskIntoConstraints="NO" id="nbb-2o-Q2z">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Please provide details of employers with regards to the noisy environments for which you have worked:" translatesAutoresizingMaskIntoConstraints="NO" id="nbb-2o-Q2z">
                     <rect key="frame" x="38" y="116" width="693" height="53"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES"/>

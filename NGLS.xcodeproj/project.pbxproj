@@ -22,6 +22,7 @@
 		918D1FE219F7A3C300FEE5A3 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FE119F7A3C300FEE5A3 /* PhoneNumber.m */; };
 		918D1FE619FFF59100FEE5A3 /* LettersOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FE519FFF59100FEE5A3 /* LettersOnly.m */; };
 		918D1FE91A00DDF100FEE5A3 /* NINumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FE81A00DDF100FEE5A3 /* NINumber.m */; };
+		918D1FEC1A08D05800FEE5A3 /* EmaiField.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FEB1A08D05800FEE5A3 /* EmaiField.m */; };
 		91A32A0519C035C400D1553C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A32A0419C035C400D1553C /* Foundation.framework */; };
 		91A32A0719C035C400D1553C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A32A0619C035C400D1553C /* CoreGraphics.framework */; };
 		91A32A0919C035C400D1553C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A32A0819C035C400D1553C /* UIKit.framework */; };
@@ -85,6 +86,8 @@
 		918D1FE519FFF59100FEE5A3 /* LettersOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LettersOnly.m; sourceTree = "<group>"; };
 		918D1FE71A00DDF100FEE5A3 /* NINumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NINumber.h; sourceTree = "<group>"; };
 		918D1FE81A00DDF100FEE5A3 /* NINumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NINumber.m; sourceTree = "<group>"; };
+		918D1FEA1A08D05800FEE5A3 /* EmaiField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmaiField.h; sourceTree = "<group>"; };
+		918D1FEB1A08D05800FEE5A3 /* EmaiField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmaiField.m; sourceTree = "<group>"; };
 		91A32A0119C035C400D1553C /* NGLS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NGLS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A32A0419C035C400D1553C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91A32A0619C035C400D1553C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -176,6 +179,8 @@
 				918D1FDE19F7A11F00FEE5A3 /* PostcodeField.m */,
 				918D1FE71A00DDF100FEE5A3 /* NINumber.h */,
 				918D1FE81A00DDF100FEE5A3 /* NINumber.m */,
+				918D1FEA1A08D05800FEE5A3 /* EmaiField.h */,
+				918D1FEB1A08D05800FEE5A3 /* EmaiField.m */,
 				918D1FE019F7A3C300FEE5A3 /* PhoneNumber.h */,
 				918D1FE119F7A3C300FEE5A3 /* PhoneNumber.m */,
 				910DA6F819F15F860051D608 /* SegmentControl.h */,
@@ -450,6 +455,7 @@
 			files = (
 				91A32A1519C035C400D1553C /* NGLSAppDelegate.m in Sources */,
 				918D1FE91A00DDF100FEE5A3 /* NINumber.m in Sources */,
+				918D1FEC1A08D05800FEE5A3 /* EmaiField.m in Sources */,
 				91A32A1B19C035C400D1553C /* NGLSViewController.m in Sources */,
 				910DA6E519F142140051D608 /* NumbersOnly.m in Sources */,
 				91FABB5C19C2EA9F0098C340 /* AdminViewController.m in Sources */,

@@ -305,7 +305,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                 </textField>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Would you like to recommend any of our services to friends / family / colleagues?" translatesAutoresizingMaskIntoConstraints="NO" id="dTb-EO-4HV">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Would you like to recommend any of our services to friends / family / colleagues?" translatesAutoresizingMaskIntoConstraints="NO" id="dTb-EO-4HV">
                     <rect key="frame" x="120" y="585" width="528" height="66"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES"/>

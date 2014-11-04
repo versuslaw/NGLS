@@ -38,7 +38,7 @@
     
     NSMutableString *mutableText = [text mutableCopy];
 
-    // Every 3rd char will be a "."
+    // Every 3rd char will be " "
     for (NSUInteger i = 2; i < mutableText.length; i += 3) {
         [mutableText insertString:@" " atIndex:i];
     }

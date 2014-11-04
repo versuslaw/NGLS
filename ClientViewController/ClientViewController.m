@@ -15,6 +15,7 @@
 #import "PhoneNumber.h"
 #import "LettersOnly.h"
 #import "NINumber.h"
+#import "EmaiField.h"
 
 @interface ClientViewController ()
 
@@ -156,7 +157,7 @@
         return [(PostcodeField *)textField stringIsAcceptable:string inRange:range];
     }
     
-    // Call PhoneNumber subclass on telephone textfields
+    // Call PhoneNumber subclass on Telephone textfields
     if ([textField isKindOfClass:[PhoneNumber class]]) {
         return [(PhoneNumber *)textField stringIsAcceptable:string inRange:range];
     }
@@ -164,6 +165,11 @@
     // Call NINumber subclass on National Insurance textfield
     if ([textField isKindOfClass:[NINumber class]]) {
         return [(NINumber *)textField stringIsAcceptable:string inRange:range];
+    }
+    
+    // Call EmailField subclass on Email textfield
+    if ([textField isKindOfClass:[EmaiField class]]) {
+        return [(EmaiField *)textField stringIsAcceptable:string inRange:range];
     }
     
     return YES;
