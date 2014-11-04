@@ -56,6 +56,7 @@
     
     // If entity isn't empty
     if ([fetchedObjects count] != 0) {
+        NSLog(@"NGLS object count: %lu", (unsigned long)[fetchedObjects count]);
         // Delete objects
         for (Model *results in fetchedObjects) {
             [context deleteObject:(id)results];
@@ -72,6 +73,7 @@
     
     // If entity isn't empty
     if ([adminFetchedObjects count] != 0) {
+        NSLog(@"Admin object count: %lu", (unsigned long)[fetchedObjects count]);
         // Delete objects
         for (Model *adminResults in adminFetchedObjects) {
             [context deleteObject:(id)adminResults];
