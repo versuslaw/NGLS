@@ -107,12 +107,21 @@
         <attribute name="site" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vwf" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="vwfDetails" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfQ1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfQ2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfQ3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfQ4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfQ5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfQ6" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfQ7" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfQ8" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfQ9" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vwfSurvey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wp" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wpDetails" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Admin" positionX="-63" positionY="135" width="128" height="73"/>
-        <element name="NGLS" positionX="-63" positionY="-18" width="128" height="1620"/>
+        <element name="NGLS" positionX="-63" positionY="-18" width="128" height="1753"/>
     </elements>
 </model>

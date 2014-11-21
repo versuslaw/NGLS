@@ -144,7 +144,7 @@
 @dynamic rtaDetails;
 
 @dynamic vwf;
-@dynamic vwfDetails;
+@dynamic vwfSurvey;
 
 @dynamic wp;
 @dynamic wpDetails;
@@ -162,7 +162,15 @@
         }
     }
     
-    // Employers
+    // IND Questions
+    NSArray *indQuestions = @[@"indSurvey", @"indQ1", @"indQ1More", @"indQ2", @"indQ2More", @"indQ3", @"indQ3More", @"indQ4", @"indQ4More"];
+    for (NSString *indKey in indQuestions) {
+        if ([_managedObjectNGLS valueForKey:indKey] == nil) {
+            [_managedObjectNGLS setValue:@"" forKey:indKey];
+        }
+    }
+    
+    // IND Employers
     NSArray *employers = @[@"emp1Name", @"emp1From", @"emp1To", @"emp1Exposure", @"emp1Noise",
                            @"emp2Name", @"emp2From", @"emp2To", @"emp2Exposure", @"emp2Noise",
                            @"emp3Name", @"emp3From", @"emp3To", @"emp3Exposure", @"emp3Noise",
@@ -179,16 +187,16 @@
         }
     }
     
-    // IND Questions
-    NSArray *indQuestions = @[@"indSurvey", @"indQ1", @"indQ1More", @"indQ2", @"indQ2More", @"indQ3", @"indQ3More", @"indQ4", @"indQ4More"];
-    for (NSString *indKey in indQuestions) {
-        if ([_managedObjectNGLS valueForKey:indKey] == nil) {
-            [_managedObjectNGLS setValue:@"" forKey:indKey];
+    // VWF Questions
+    NSArray *vwfQuestions = @[@"vwfSurvey", @"vwfQ1", @"vwfQ2", @"vwfQ3", @"vwfQ4", @"vwfQ5", @"vwfQ6", @"vwfQ7", @"vwfQ8", @"vwfQ9"];
+    for (NSString *vwfKey in vwfQuestions) {
+        if ([_managedObjectNGLS valueForKey:vwfKey] == nil) {
+            [_managedObjectNGLS setValue:@"" forKey:vwfKey];
         }
     }
     
     // Services - Additional Details
-    NSArray *addDetails = @[@"asbDetails", @"vwfDetails", @"bpDetails", @"rtaDetails", @"mslmDetails", @"pbaDetails", @"rcfDetails", @"mspDetails", @"aawDetails", @"ppiDetails", @"wpDetails", @"convDetails"];
+    NSArray *addDetails = @[@"asbDetails", @"bpDetails", @"rtaDetails", @"mslmDetails", @"pbaDetails", @"rcfDetails", @"mspDetails", @"aawDetails", @"ppiDetails", @"wpDetails", @"convDetails"];
     for (NSString *detailsKey in addDetails) {
         if ([_managedObjectNGLS valueForKey:detailsKey] == nil) {
             [_managedObjectNGLS setValue:@"" forKeyPath:detailsKey];

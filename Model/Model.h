@@ -140,7 +140,7 @@
 @property (nonatomic, retain) NSString *rtaDetails;
 
 @property (nonatomic, retain) NSString *vwf;
-@property (nonatomic, retain) NSString *vwfDetails;
+@property (nonatomic, retain) NSString *vwfSurvey;
 
 @property (nonatomic, retain) NSString *wp;
 @property (nonatomic, retain) NSString *wpDetails;

@@ -10,6 +10,7 @@
 #import "Model.h"
 #import "NGLSAppDelegate.h"
 #import "INDViewController.h"
+#import "VWFViewController.h"
 #import "LettersOnly.h"
 #import "PhoneNumber.h"
 #define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'&-_."
@@ -23,6 +24,7 @@
 @implementation ServicesViewController
 
 @synthesize moreInfo;
+@synthesize qConfirm;
 @synthesize alertTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -99,8 +101,9 @@
         self.otherTextField.enabled = FALSE;
     }
     
-    // Call moreInfoAlert method
+    // Call alert methods
     [self moreInfoAlert];
+    [self qConfirmAlert];
 }
 
 - (void)didReceiveMemoryWarning
@@ -181,6 +184,15 @@
     alertTextField.tag = 100;
 }
 
+- (void)qConfirmAlert {
+    // Alloc & init qConfirm UIAlertView
+    qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+                                         message:@"Would you like to give additional information by answering some short related questions?"
+                                        delegate:self
+                               cancelButtonTitle:@"No"
+                               otherButtonTitles:@"Proceed", nil];
+}
+
 - (void)isInterested {
     // If <key> is "yes", keep button in selected state
     // If <keyDetails> isn't empty, disable button & change colour
@@ -210,12 +222,17 @@
     if ([[_managedObjectNGLS valueForKey:@"vwf"] isEqual: @"Yes"]) {
         _vwfBtn.selected = YES;
     }
-    NSString *vwfDetails = [_managedObjectNGLS valueForKey:@"vwfDetails"];
-    if (vwfDetails.length > 0) {
+    if ([[_managedObjectNGLS valueForKey:@"vwfSurvey"] isEqual: @"Yes"]) {
         _vwfBtn.selected = NO;
         _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
         _vwfBtn.enabled = FALSE;
     }
+//    NSString *vwfDetails = [_managedObjectNGLS valueForKey:@"vwfDetails"];
+//    if (vwfDetails.length > 0) {
+//        _vwfBtn.selected = NO;
+//        _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+//        _vwfBtn.enabled = FALSE;
+//    }
     
     // BP
     if ([[_managedObjectNGLS valueForKey:@"bp"] isEqual: @"Yes"]) {
@@ -349,11 +366,11 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"ind"];
     }
     
-    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-                                          message:@"Would you like to give additional information by answering some short related questions?"
-                                         delegate:self
-                                cancelButtonTitle:@"No"
-                                otherButtonTitles:@"Proceed", nil];
+//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+//                                          message:@"Would you like to give additional information by answering some short related questions?"
+//                                         delegate:self
+//                                cancelButtonTitle:@"No"
+//                                otherButtonTitles:@"Proceed", nil];
     qConfirm.tag = 1;
     // If button is selected, show alert
     if (sender.isSelected == YES) {
@@ -386,13 +403,19 @@
         [sender setSelected:YES];
         [_managedObjectNGLS setValue:@"Yes" forKey:@"vwf"];
     }
-
-    alertTextField.text = nil;
-    moreInfo.tag = 3;
     
+    qConfirm.tag = 3;
+    // If button is selected, show alert
     if (sender.isSelected == YES) {
-        [moreInfo show];
+        [qConfirm show];
     }
+
+//    alertTextField.text = nil;
+//    moreInfo.tag = 3;
+//    
+//    if (sender.isSelected == YES) {
+//        [moreInfo show];
+//    }
 }
 
 - (IBAction)bpBtnPressed:(UIButton *)sender {
@@ -630,14 +653,30 @@
     
     // VWF
     if (alertView.tag == 3) {
-        NSString *vwfDetails = [alertView textFieldAtIndex:0].text;
-        [_managedObjectNGLS setValue:vwfDetails forKeyPath:@"vwfDetails"];
-        if (vwfDetails.length > 1) {
-            [_vwfBtn setSelected:NO];
-            _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-            _vwfBtn.enabled = FALSE;
+        if (buttonIndex == 1) {
+            // Set "Yes" for vwfSurvey
+            [_managedObjectNGLS setValue:@"Yes" forKey:@"vwfSurvey"];
+        
+            // Allocate & initialise INDViewController
+            VWFViewController *vwf = [[VWFViewController alloc]initWithNibName:@"VWFViewController"
+                                                                        bundle:nil];
+        
+            // Pass managedObject to view
+            vwf.managedObjectNGLS = self.managedObjectNGLS;
+        
+            // Push next view
+            [self.navigationController pushViewController:vwf animated:YES];
         }
     }
+
+//        NSString *vwfDetails = [alertView textFieldAtIndex:0].text;
+//        [_managedObjectNGLS setValue:vwfDetails forKeyPath:@"vwfDetails"];
+//        if (vwfDetails.length > 1) {
+//            [_vwfBtn setSelected:NO];
+//            _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+//            _vwfBtn.enabled = FALSE;
+//        }
+//    }
     
     // BP
     if (alertView.tag == 4) {

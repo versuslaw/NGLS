@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *recTel;
 
 @property (strong) UIAlertView *moreInfo;
+@property (strong) UIAlertView *qConfirm;
 @property (strong) UITextField *alertTextField;
 @property (strong) UIAlertView *invalidPhone;
 

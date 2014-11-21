@@ -18,6 +18,9 @@
 		910DA6EF19F1537E0051D608 /* Button Long.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6EE19F1537E0051D608 /* Button Long.png */; };
 		910DA6F419F15AC40051D608 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6F319F15AC40051D608 /* Button.png */; };
 		910DA6FA19F15F860051D608 /* SegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 910DA6F919F15F860051D608 /* SegmentControl.m */; };
+		91466B641A1F760900165716 /* VWFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91466B621A1F760900165716 /* VWFViewController.m */; };
+		91466B651A1F760900165716 /* VWFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91466B631A1F760900165716 /* VWFViewController.xib */; };
+		91466B671A1F86BC00165716 /* QuestionBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 91466B661A1F86BC00165716 /* QuestionBox.png */; };
 		918D1FDF19F7A11F00FEE5A3 /* PostcodeField.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FDE19F7A11F00FEE5A3 /* PostcodeField.m */; };
 		918D1FE219F7A3C300FEE5A3 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FE119F7A3C300FEE5A3 /* PhoneNumber.m */; };
 		918D1FE619FFF59100FEE5A3 /* LettersOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FE519FFF59100FEE5A3 /* LettersOnly.m */; };
@@ -78,6 +81,10 @@
 		910DA6F319F15AC40051D608 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
 		910DA6F819F15F860051D608 /* SegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentControl.h; sourceTree = "<group>"; };
 		910DA6F919F15F860051D608 /* SegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentControl.m; sourceTree = "<group>"; };
+		91466B611A1F760900165716 /* VWFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWFViewController.h; path = "Services/Accident - Work Claims/Vibration White Finger/VWF Questionnaire/VWFViewController.h"; sourceTree = SOURCE_ROOT; };
+		91466B621A1F760900165716 /* VWFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWFViewController.m; path = "Services/Accident - Work Claims/Vibration White Finger/VWF Questionnaire/VWFViewController.m"; sourceTree = SOURCE_ROOT; };
+		91466B631A1F760900165716 /* VWFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VWFViewController.xib; path = "Services/Accident - Work Claims/Vibration White Finger/VWF Questionnaire/VWFViewController.xib"; sourceTree = SOURCE_ROOT; };
+		91466B661A1F86BC00165716 /* QuestionBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuestionBox.png; sourceTree = "<group>"; };
 		918D1FDD19F7A11F00FEE5A3 /* PostcodeField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostcodeField.h; sourceTree = "<group>"; };
 		918D1FDE19F7A11F00FEE5A3 /* PostcodeField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostcodeField.m; sourceTree = "<group>"; };
 		918D1FE019F7A3C300FEE5A3 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
@@ -213,7 +220,7 @@
 			path = "Breathing Problems";
 			sourceTree = "<group>";
 		};
-		91466B431A1F519100165716 /* Accident / Work Claims */ = {
+		91466B431A1F519100165716 /* Accident: Work Claims */ = {
 			isa = PBXGroup;
 			children = (
 				91466B3D1A1F3E5600165716 /* Industrial Deafness */,
@@ -223,8 +230,8 @@
 				91466B3E1A1F3F0C00165716 /* Vibration White Finger */,
 				91466B421A1F517900165716 /* Breathing Problems */,
 			);
-			name = "Accident / Work Claims";
-			path = "Accident : Work Claims";
+			name = "Accident: Work Claims";
+			path = "Accident - Work Claims";
 			sourceTree = "<group>";
 		};
 		91466B441A1F51C300165716 /* Financial Mis-selling */ = {
@@ -342,6 +349,9 @@
 		91466B521A1F5D1100165716 /* VWF Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
+				91466B611A1F760900165716 /* VWFViewController.h */,
+				91466B621A1F760900165716 /* VWFViewController.m */,
+				91466B631A1F760900165716 /* VWFViewController.xib */,
 			);
 			name = "VWF Questionnaire";
 			path = "Vibration White Finger/VWF Questionnaire";
@@ -559,7 +569,7 @@
 				91C8F27419C1E58A00318FB8 /* ServicesViewController.h */,
 				91C8F27519C1E58A00318FB8 /* ServicesViewController.m */,
 				91C8F27619C1E58A00318FB8 /* ServicesViewController.xib */,
-				91466B431A1F519100165716 /* Accident / Work Claims */,
+				91466B431A1F519100165716 /* Accident: Work Claims */,
 				91466B441A1F51C300165716 /* Financial Mis-selling */,
 				91466B451A1F51DE00165716 /* General Legal Services */,
 			);
@@ -579,6 +589,7 @@
 		91A32A4619C03F1100D1553C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				91466B661A1F86BC00165716 /* QuestionBox.png */,
 				910DA6B819E6CD860051D608 /* Background.png */,
 				910DA6DA19ED14580051D608 /* ID Card.png */,
 				910DA6F319F15AC40051D608 /* Button.png */,
@@ -676,6 +687,8 @@
 			files = (
 				910DA6B719E6CD820051D608 /* Launch-Screen.png in Resources */,
 				910DA6DB19ED14580051D608 /* ID Card.png in Resources */,
+				91466B651A1F760900165716 /* VWFViewController.xib in Resources */,
+				91466B671A1F86BC00165716 /* QuestionBox.png in Resources */,
 				91FABB5D19C2EA9F0098C340 /* AdminViewController.xib in Resources */,
 				5483D56319C61F250084BE08 /* INDEmpViewController.xib in Resources */,
 				91A32A5319C04F3400D1553C /* ClientViewController.xib in Resources */,
@@ -710,6 +723,7 @@
 				918D1FE91A00DDF100FEE5A3 /* NINumber.m in Sources */,
 				918D1FEC1A08D05800FEE5A3 /* EmaiField.m in Sources */,
 				91A32A1B19C035C400D1553C /* NGLSViewController.m in Sources */,
+				91466B641A1F760900165716 /* VWFViewController.m in Sources */,
 				910DA6E519F142140051D608 /* NumbersOnly.m in Sources */,
 				91FABB5C19C2EA9F0098C340 /* AdminViewController.m in Sources */,
 				91A32A4E19C04E8E00D1553C /* CHCSVParser.m in Sources */,

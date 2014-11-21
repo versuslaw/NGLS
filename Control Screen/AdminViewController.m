@@ -365,7 +365,7 @@
                                     results.asb,
                                     results.asbDetails,
                                     results.vwf,
-                                    results.vwfDetails,
+                                    //results.vwfDetails,
                                     results.bp,
                                     results.bpDetails,
                                     results.rta,
