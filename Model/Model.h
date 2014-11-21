@@ -100,14 +100,14 @@
 
 @property (nonatomic, retain) NSString *ind;
 @property (nonatomic, retain) NSString *indSurvey;
-@property (nonatomic, retain) NSString *q1;
-@property (nonatomic, retain) NSString *q1More;
-@property (nonatomic, retain) NSString *q2;
-@property (nonatomic, retain) NSString *q2More;
-@property (nonatomic, retain) NSString *q3;
-@property (nonatomic, retain) NSString *q3More;
-@property (nonatomic, retain) NSString *q4;
-@property (nonatomic, retain) NSString *q4More;
+@property (nonatomic, retain) NSString *indQ1;
+@property (nonatomic, retain) NSString *indQ1More;
+@property (nonatomic, retain) NSString *indQ2;
+@property (nonatomic, retain) NSString *indQ2More;
+@property (nonatomic, retain) NSString *indQ3;
+@property (nonatomic, retain) NSString *indQ3More;
+@property (nonatomic, retain) NSString *indQ4;
+@property (nonatomic, retain) NSString *indQ4More;
 
 @property (nonatomic, retain) NSString *asb;
 @property (nonatomic, retain) NSString *asbDetails;

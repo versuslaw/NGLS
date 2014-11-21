@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HearingViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="INDViewController">
             <connections>
+                <outlet property="indQ1More" destination="hcQ-sK-KRP" id="cMY-Lv-bDO"/>
+                <outlet property="indQ1Seg" destination="fYT-fq-uMs" id="ycm-dy-7WA"/>
+                <outlet property="indQ2More" destination="erH-DU-vk0" id="DLF-AW-sfJ"/>
+                <outlet property="indQ2Seg" destination="igF-pc-lcM" id="7hY-0e-Nqc"/>
+                <outlet property="indQ3More" destination="MMB-s9-EhB" id="R8q-QX-Iyf"/>
+                <outlet property="indQ3Seg" destination="D8a-9F-jHD" id="vX9-0B-xdQ"/>
+                <outlet property="indQ4More" destination="7zv-7w-NOD" id="qp2-z7-2JY"/>
+                <outlet property="indQ4Seg" destination="4a2-XB-1Rb" id="uWs-vE-d5x"/>
                 <outlet property="noisyWork" destination="qHD-DP-5aX" id="Yjs-9c-2aU"/>
-                <outlet property="q1More" destination="hcQ-sK-KRP" id="4bF-3t-qLU"/>
-                <outlet property="q1Seg" destination="fYT-fq-uMs" id="Uug-U8-Wgi"/>
-                <outlet property="q2More" destination="erH-DU-vk0" id="VUH-hY-Zfx"/>
-                <outlet property="q2Seg" destination="igF-pc-lcM" id="11g-FQ-Rqk"/>
-                <outlet property="q3More" destination="MMB-s9-EhB" id="cdc-dN-IeF"/>
-                <outlet property="q3Seg" destination="D8a-9F-jHD" id="oha-zd-Kz9"/>
-                <outlet property="q4More" destination="7zv-7w-NOD" id="LDB-1s-1vn"/>
-                <outlet property="q4Seg" destination="4a2-XB-1Rb" id="Sk8-jC-XD6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -87,7 +87,7 @@
                     </connections>
                 </segmentedControl>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever served in HM Forces/TA?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbH-K6-KAr">
-                    <rect key="frame" x="55" y="535" width="360" height="33"/>
+                    <rect key="frame" x="56" y="535" width="360" height="33"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES"/>
                     </accessibility>

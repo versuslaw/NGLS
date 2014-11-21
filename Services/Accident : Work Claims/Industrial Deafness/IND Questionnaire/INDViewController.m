@@ -1,21 +1,21 @@
 //
-//  HearingViewController.m
+//  INDViewController.m
 //  NGLS
 //
 //  Created by Ross Humphreys on 11/09/2014.
 //  Copyright (c) 2014 Next Generation Legal Services. All rights reserved.
 //
 
-#import "HearingViewController.h"
+#import "INDViewController.h"
 #import "ServicesViewController.h"
-#import "NoisyViewController.h"
+#import "INDEmpViewController.h"
 #import "AcceptedCharacters.h"
 
-@interface HearingViewController ()
+@interface INDViewController ()
 
 @end
 
-@implementation HearingViewController
+@implementation INDViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,7 +41,7 @@
                                                object:nil];
     
     // Set navbar title
-    self.navigationItem.title = @"Hearing";
+    self.navigationItem.title = @"Industrial Deafness";
     
     // Create 'next' navbar item
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc]initWithTitle:@"Next"
@@ -55,22 +55,22 @@
     self.navigationItem.hidesBackButton = YES;
     
     // Default all segments to 'no'
-    self.q1Seg.selectedSegmentIndex = 1;
-    self.q2Seg.selectedSegmentIndex = 1;
-    self.q3Seg.selectedSegmentIndex = 1;
-    self.q4Seg.selectedSegmentIndex = 1;
+    self.indQ1Seg.selectedSegmentIndex = 1;
+    self.indQ2Seg.selectedSegmentIndex = 1;
+    self.indQ3Seg.selectedSegmentIndex = 1;
+    self.indQ4Seg.selectedSegmentIndex = 1;
     
     // Disable textfields as default
-    self.q1More.enabled = NO;
-    self.q2More.enabled = NO;
-    self.q3More.enabled = NO;
-    self.q4More.enabled = NO;
+    self.indQ1More.enabled = NO;
+    self.indQ2More.enabled = NO;
+    self.indQ3More.enabled = NO;
+    self.indQ4More.enabled = NO;
     
     // Set delegate on textfields
-    self.q1More.delegate = self;
-    self.q2More.delegate = self;
-    self.q3More.delegate = self;
-    self.q4More.delegate = self;
+    self.indQ1More.delegate = self;
+    self.indQ2More.delegate = self;
+    self.indQ3More.delegate = self;
+    self.indQ4More.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -106,37 +106,37 @@
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {
     // If segment = Yes, enable & focus on textfield
-    if (self.q1Seg.selectedSegmentIndex == 0) {
-        self.q1More.enabled = YES;
-        [self.q1More becomeFirstResponder];
+    if (self.indQ1Seg.selectedSegmentIndex == 0) {
+        self.indQ1More.enabled = YES;
+        [self.indQ1More becomeFirstResponder];
         // If segment = No, disable & clear textfield
-    } else if (self.q1Seg.selectedSegmentIndex == 1) {
-        self.q1More.enabled = NO;
-        self.q1More.text = nil;
+    } else if (self.indQ1Seg.selectedSegmentIndex == 1) {
+        self.indQ1More.enabled = NO;
+        self.indQ1More.text = nil;
     }
     
-    if (self.q2Seg.selectedSegmentIndex == 0) {
-        self.q2More.enabled = YES;
-        [self.q2More becomeFirstResponder];
-    } else if (self.q2Seg.selectedSegmentIndex == 1) {
-        self.q2More.enabled = NO;
-        self.q2More.text = nil;
+    if (self.indQ2Seg.selectedSegmentIndex == 0) {
+        self.indQ2More.enabled = YES;
+        [self.indQ2More becomeFirstResponder];
+    } else if (self.indQ2Seg.selectedSegmentIndex == 1) {
+        self.indQ2More.enabled = NO;
+        self.indQ2More.text = nil;
     }
     
-    if (self.q3Seg.selectedSegmentIndex == 0) {
-        self.q3More.enabled = YES;
-        [self.q3More becomeFirstResponder];
-    } else if (self.q3Seg.selectedSegmentIndex == 1) {
-        self.q3More.enabled = NO;
-        self.q3More.text = nil;
+    if (self.indQ3Seg.selectedSegmentIndex == 0) {
+        self.indQ3More.enabled = YES;
+        [self.indQ3More becomeFirstResponder];
+    } else if (self.indQ3Seg.selectedSegmentIndex == 1) {
+        self.indQ3More.enabled = NO;
+        self.indQ3More.text = nil;
     }
     
-    if (self.q4Seg.selectedSegmentIndex == 0) {
-        self.q4More.enabled = YES;
-        [self.q4More becomeFirstResponder];
-    } else if (self.q4Seg.selectedSegmentIndex == 1) {
-        self.q4More.enabled = NO;
-        self.q4More.text = nil;
+    if (self.indQ4Seg.selectedSegmentIndex == 0) {
+        self.indQ4More.enabled = YES;
+        [self.indQ4More becomeFirstResponder];
+    } else if (self.indQ4Seg.selectedSegmentIndex == 1) {
+        self.indQ4More.enabled = NO;
+        self.indQ4More.text = nil;
     }
 }
 
@@ -148,32 +148,32 @@
                                              otherButtonTitles:nil];
     
     // If segment = "Yes", user must provide Further Information
-    if ([[self.q1Seg titleForSegmentAtIndex:self.q1Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
-        if (self.q1More.text.length == 0) {
+    if ([[self.indQ1Seg titleForSegmentAtIndex:self.indQ1Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
+        if (self.indQ1More.text.length == 0) {
             if (!_infoAlert.visible) {
                 [_infoAlert show];
             }
         }
     }
     
-    if ([[self.q2Seg titleForSegmentAtIndex:self.q2Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
-        if (self.q2More.text.length == 0) {
+    if ([[self.indQ2Seg titleForSegmentAtIndex:self.indQ2Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
+        if (self.indQ2More.text.length == 0) {
             if (!_infoAlert.visible) {
                 [_infoAlert show];
             }
         }
     }
     
-    if ([[self.q3Seg titleForSegmentAtIndex:self.q3Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
-        if (self.q3More.text.length == 0) {
+    if ([[self.indQ3Seg titleForSegmentAtIndex:self.indQ3Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
+        if (self.indQ3More.text.length == 0) {
             if (!_infoAlert.visible) {
                 [_infoAlert show];
             }
         }
     }
     
-    if ([[self.q4Seg titleForSegmentAtIndex:self.q4Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
-        if (self.q4More.text.length == 0) {
+    if ([[self.indQ4Seg titleForSegmentAtIndex:self.indQ4Seg.selectedSegmentIndex] isEqualToString:@"Yes"]) {
+        if (self.indQ4More.text.length == 0) {
             if (!_infoAlert.visible) {
                 [_infoAlert show];
             }
@@ -181,21 +181,21 @@
     }
     
     // Save values
-    NSString *q1 = [self.q1Seg titleForSegmentAtIndex:self.q1Seg.selectedSegmentIndex];
-    [self.managedObjectNGLS setValue:q1 forKey:@"q1"];
-    [self.managedObjectNGLS setValue:self.q1More.text forKey:@"q1More"];
+    NSString *indQ1 = [self.indQ1Seg titleForSegmentAtIndex:self.indQ1Seg.selectedSegmentIndex];
+    [self.managedObjectNGLS setValue:indQ1 forKey:@"indQ1"];
+    [self.managedObjectNGLS setValue:self.indQ1More.text forKey:@"indQ1More"];
     
-    NSString *q2 = [self.q2Seg titleForSegmentAtIndex:self.q2Seg.selectedSegmentIndex];
-    [self.managedObjectNGLS setValue:q2 forKey:@"q2"];
-    [self.managedObjectNGLS setValue:self.q2More.text forKey:@"q2More"];
+    NSString *indQ2 = [self.indQ2Seg titleForSegmentAtIndex:self.indQ2Seg.selectedSegmentIndex];
+    [self.managedObjectNGLS setValue:indQ2 forKey:@"indQ2"];
+    [self.managedObjectNGLS setValue:self.indQ2More.text forKey:@"indQ2More"];
     
-    NSString *q3 = [self.q3Seg titleForSegmentAtIndex:self.q3Seg.selectedSegmentIndex];
-    [self.managedObjectNGLS setValue:q3 forKey:@"q3"];
-    [self.managedObjectNGLS setValue:self.q3More.text forKey:@"q3More"];
+    NSString *indQ3 = [self.indQ3Seg titleForSegmentAtIndex:self.indQ3Seg.selectedSegmentIndex];
+    [self.managedObjectNGLS setValue:indQ3 forKey:@"indQ3"];
+    [self.managedObjectNGLS setValue:self.indQ3More.text forKey:@"indQ3More"];
     
-    NSString *q4 = [self.q4Seg titleForSegmentAtIndex:self.q4Seg.selectedSegmentIndex];
-    [self.managedObjectNGLS setValue:q4 forKey:@"q4"];
-    [self.managedObjectNGLS setValue:self.q4More.text forKey:@"q4More"];
+    NSString *indQ4 = [self.indQ4Seg titleForSegmentAtIndex:self.indQ4Seg.selectedSegmentIndex];
+    [self.managedObjectNGLS setValue:indQ4 forKey:@"indQ4"];
+    [self.managedObjectNGLS setValue:self.indQ4More.text forKey:@"indQ4More"];
     
     NSLog(@"%@", self.managedObjectNGLS);
     
@@ -203,14 +203,14 @@
     if ([[self.noisyWork titleForSegmentAtIndex:self.noisyWork.selectedSegmentIndex] isEqualToString:@"Yes"]) {
         if (!_infoAlert.visible) {
             // Allocate & initialise OtherInfoViewController
-            NoisyViewController *noisy = [[NoisyViewController alloc]initWithNibName:@"NoisyViewController"
+            INDEmpViewController *indEmp = [[INDEmpViewController alloc]initWithNibName:@"INDEmpViewController"
                                                                               bundle:nil];
             
             // Pass managedObject to view
-            noisy.managedObjectNGLS = self.managedObjectNGLS;
+            indEmp.managedObjectNGLS = self.managedObjectNGLS;
             
             // Push next view
-            [self.navigationController pushViewController:noisy animated:YES];
+            [self.navigationController pushViewController:indEmp animated:YES];
         }
     } else {
         // Allocate & initialise ServicesViewController

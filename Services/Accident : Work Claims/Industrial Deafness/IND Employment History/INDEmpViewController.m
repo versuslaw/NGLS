@@ -1,21 +1,21 @@
 //
-//  NoisyViewController.m
+//  INDEmpViewController.m
 //  NGLS
 //
 //  Created by Ross Humphreys on 14/09/2014.
 //  Copyright (c) 2014 Next Generation Legal Services. All rights reserved.
 //
 
-#import "NoisyViewController.h"
+#import "INDEmpViewController.h"
 #import "ServicesViewController.h"
 #import "NumbersOnly.h"
 #import "AcceptedCharacters.h"
 
-@interface NoisyViewController ()
+@interface INDEmpViewController ()
 
 @end
 
-@implementation NoisyViewController
+@implementation INDEmpViewController
 
 @synthesize datePicker;
 
@@ -50,7 +50,7 @@
     
     
     // Set navbar title
-    self.navigationItem.title = @"Noisy Environments";
+    self.navigationItem.title = @"Industrial Deafness";
     
     // Create 'Home' navbar button
     UIBarButtonItem *finishBtn = [[UIBarButtonItem alloc]initWithTitle:@"Services"

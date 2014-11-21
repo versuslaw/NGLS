@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5483D56219C61F250084BE08 /* NoisyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5483D56019C61F250084BE08 /* NoisyViewController.m */; };
-		5483D56319C61F250084BE08 /* NoisyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5483D56119C61F250084BE08 /* NoisyViewController.xib */; };
+		5483D56219C61F250084BE08 /* INDEmpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5483D56019C61F250084BE08 /* INDEmpViewController.m */; };
+		5483D56319C61F250084BE08 /* INDEmpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5483D56119C61F250084BE08 /* INDEmpViewController.xib */; };
 		910DA6B119E6BD150051D608 /* NGLS Logo Final.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6B019E6BD150051D608 /* NGLS Logo Final.png */; };
 		910DA6B719E6CD820051D608 /* Launch-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6B619E6CD820051D608 /* Launch-Screen.png */; };
 		910DA6B919E6CD860051D608 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 910DA6B819E6CD860051D608 /* Background.png */; };
@@ -44,8 +44,8 @@
 		91A32A5219C04F3400D1553C /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A32A5019C04F3400D1553C /* ClientViewController.m */; };
 		91A32A5319C04F3400D1553C /* ClientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91A32A5119C04F3400D1553C /* ClientViewController.xib */; };
 		91B07FAA19F667D500D633FA /* AcceptedCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B07FA919F667D500D633FA /* AcceptedCharacters.m */; };
-		91C8F27219C1A59900318FB8 /* HearingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C8F27019C1A59900318FB8 /* HearingViewController.m */; };
-		91C8F27319C1A59900318FB8 /* HearingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C8F27119C1A59900318FB8 /* HearingViewController.xib */; };
+		91C8F27219C1A59900318FB8 /* INDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C8F27019C1A59900318FB8 /* INDViewController.m */; };
+		91C8F27319C1A59900318FB8 /* INDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C8F27119C1A59900318FB8 /* INDViewController.xib */; };
 		91C8F27719C1E58A00318FB8 /* ServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C8F27519C1E58A00318FB8 /* ServicesViewController.m */; };
 		91C8F27819C1E58A00318FB8 /* ServicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C8F27619C1E58A00318FB8 /* ServicesViewController.xib */; };
 		91FABB5C19C2EA9F0098C340 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FABB5A19C2EA9F0098C340 /* AdminViewController.m */; };
@@ -63,9 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5483D55F19C61F250084BE08 /* NoisyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoisyViewController.h; path = NoisyViewController/NoisyViewController.h; sourceTree = "<group>"; };
-		5483D56019C61F250084BE08 /* NoisyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoisyViewController.m; path = NoisyViewController/NoisyViewController.m; sourceTree = "<group>"; };
-		5483D56119C61F250084BE08 /* NoisyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoisyViewController.xib; path = NoisyViewController/NoisyViewController.xib; sourceTree = "<group>"; };
+		5483D55F19C61F250084BE08 /* INDEmpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INDEmpViewController.h; sourceTree = "<group>"; };
+		5483D56019C61F250084BE08 /* INDEmpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INDEmpViewController.m; sourceTree = "<group>"; };
+		5483D56119C61F250084BE08 /* INDEmpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INDEmpViewController.xib; sourceTree = "<group>"; };
 		910DA6B019E6BD150051D608 /* NGLS Logo Final.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NGLS Logo Final.png"; sourceTree = "<group>"; };
 		910DA6B619E6CD820051D608 /* Launch-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch-Screen.png"; sourceTree = "<group>"; };
 		910DA6B819E6CD860051D608 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
@@ -113,20 +113,20 @@
 		91A32A4A19C04C0700D1553C /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Model.m; path = Model/Model.m; sourceTree = "<group>"; };
 		91A32A4C19C04E8E00D1553C /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 		91A32A4D19C04E8E00D1553C /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
-		91A32A4F19C04F3400D1553C /* ClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClientViewController.h; path = ClientViewController/ClientViewController.h; sourceTree = "<group>"; };
-		91A32A5019C04F3400D1553C /* ClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClientViewController.m; path = ClientViewController/ClientViewController.m; sourceTree = "<group>"; };
-		91A32A5119C04F3400D1553C /* ClientViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientViewController.xib; path = ClientViewController/ClientViewController.xib; sourceTree = "<group>"; };
+		91A32A4F19C04F3400D1553C /* ClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientViewController.h; sourceTree = "<group>"; };
+		91A32A5019C04F3400D1553C /* ClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientViewController.m; sourceTree = "<group>"; };
+		91A32A5119C04F3400D1553C /* ClientViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientViewController.xib; sourceTree = "<group>"; };
 		91B07FA819F667D500D633FA /* AcceptedCharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptedCharacters.h; sourceTree = "<group>"; };
 		91B07FA919F667D500D633FA /* AcceptedCharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptedCharacters.m; sourceTree = "<group>"; };
-		91C8F26F19C1A59900318FB8 /* HearingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HearingViewController.h; path = HearingViewController/HearingViewController.h; sourceTree = "<group>"; };
-		91C8F27019C1A59900318FB8 /* HearingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HearingViewController.m; path = HearingViewController/HearingViewController.m; sourceTree = "<group>"; };
-		91C8F27119C1A59900318FB8 /* HearingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HearingViewController.xib; path = HearingViewController/HearingViewController.xib; sourceTree = "<group>"; };
-		91C8F27419C1E58A00318FB8 /* ServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServicesViewController.h; path = OtherServicesViewController/ServicesViewController.h; sourceTree = "<group>"; };
-		91C8F27519C1E58A00318FB8 /* ServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServicesViewController.m; path = OtherServicesViewController/ServicesViewController.m; sourceTree = "<group>"; };
-		91C8F27619C1E58A00318FB8 /* ServicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ServicesViewController.xib; path = OtherServicesViewController/ServicesViewController.xib; sourceTree = "<group>"; };
-		91FABB5919C2EA9F0098C340 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminViewController.h; path = AdminViewController/AdminViewController.h; sourceTree = "<group>"; };
-		91FABB5A19C2EA9F0098C340 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdminViewController.m; path = AdminViewController/AdminViewController.m; sourceTree = "<group>"; };
-		91FABB5B19C2EA9F0098C340 /* AdminViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AdminViewController.xib; path = AdminViewController/AdminViewController.xib; sourceTree = "<group>"; };
+		91C8F26F19C1A59900318FB8 /* INDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INDViewController.h; sourceTree = "<group>"; };
+		91C8F27019C1A59900318FB8 /* INDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INDViewController.m; sourceTree = "<group>"; };
+		91C8F27119C1A59900318FB8 /* INDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = INDViewController.xib; sourceTree = "<group>"; };
+		91C8F27419C1E58A00318FB8 /* ServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesViewController.h; sourceTree = "<group>"; };
+		91C8F27519C1E58A00318FB8 /* ServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesViewController.m; sourceTree = "<group>"; };
+		91C8F27619C1E58A00318FB8 /* ServicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesViewController.xib; sourceTree = "<group>"; };
+		91FABB5919C2EA9F0098C340 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
+		91FABB5A19C2EA9F0098C340 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
+		91FABB5B19C2EA9F0098C340 /* AdminViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdminViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,14 +154,266 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5483D55E19C61EAF0084BE08 /* Noisy Environments */ = {
+		5483D55E19C61EAF0084BE08 /* IND Employment History */ = {
 			isa = PBXGroup;
 			children = (
-				5483D55F19C61F250084BE08 /* NoisyViewController.h */,
-				5483D56019C61F250084BE08 /* NoisyViewController.m */,
-				5483D56119C61F250084BE08 /* NoisyViewController.xib */,
+				5483D55F19C61F250084BE08 /* INDEmpViewController.h */,
+				5483D56019C61F250084BE08 /* INDEmpViewController.m */,
+				5483D56119C61F250084BE08 /* INDEmpViewController.xib */,
 			);
-			name = "Noisy Environments";
+			path = "IND Employment History";
+			sourceTree = "<group>";
+		};
+		91466B3D1A1F3E5600165716 /* Industrial Deafness */ = {
+			isa = PBXGroup;
+			children = (
+				91A32A3D19C0373E00D1553C /* IND Questionnaire */,
+				5483D55E19C61EAF0084BE08 /* IND Employment History */,
+			);
+			path = "Industrial Deafness";
+			sourceTree = "<group>";
+		};
+		91466B3E1A1F3F0C00165716 /* Vibration White Finger */ = {
+			isa = PBXGroup;
+			children = (
+				91466B521A1F5D1100165716 /* VWF Questionnaire */,
+			);
+			path = "Vibration White Finger";
+			sourceTree = "<group>";
+		};
+		91466B3F1A1F513600165716 /* Asbestosis */ = {
+			isa = PBXGroup;
+			children = (
+				91466B4F1A1F5CE200165716 /* ASB Questionnaire */,
+			);
+			path = Asbestosis;
+			sourceTree = "<group>";
+		};
+		91466B401A1F515500165716 /* Accident At Work */ = {
+			isa = PBXGroup;
+			children = (
+				91466B501A1F5CF400165716 /* AAW Questionnaire */,
+			);
+			path = "Accident At Work";
+			sourceTree = "<group>";
+		};
+		91466B411A1F516400165716 /* Road Traffic Accident */ = {
+			isa = PBXGroup;
+			children = (
+				91466B511A1F5D0300165716 /* RTA Questionnaire */,
+			);
+			path = "Road Traffic Accident";
+			sourceTree = "<group>";
+		};
+		91466B421A1F517900165716 /* Breathing Problems */ = {
+			isa = PBXGroup;
+			children = (
+				91466B531A1F5D2600165716 /* BP Questionnaire */,
+			);
+			path = "Breathing Problems";
+			sourceTree = "<group>";
+		};
+		91466B431A1F519100165716 /* Accident / Work Claims */ = {
+			isa = PBXGroup;
+			children = (
+				91466B3D1A1F3E5600165716 /* Industrial Deafness */,
+				91466B3F1A1F513600165716 /* Asbestosis */,
+				91466B401A1F515500165716 /* Accident At Work */,
+				91466B411A1F516400165716 /* Road Traffic Accident */,
+				91466B3E1A1F3F0C00165716 /* Vibration White Finger */,
+				91466B421A1F517900165716 /* Breathing Problems */,
+			);
+			name = "Accident / Work Claims";
+			path = "Accident : Work Claims";
+			sourceTree = "<group>";
+		};
+		91466B441A1F51C300165716 /* Financial Mis-selling */ = {
+			isa = PBXGroup;
+			children = (
+				91466B471A1F55C300165716 /* PPI */,
+				91466B481A1F55CA00165716 /* Mis-sold Loans/Mortgages */,
+				91466B491A1F55E200165716 /* Packaged Bank Accounts */,
+				91466B4A1A1F55EB00165716 /* Mis-sold Pension */,
+				91466B4B1A1F55F600165716 /* Reclaim Care Fees */,
+			);
+			path = "Financial Mis-selling";
+			sourceTree = "<group>";
+		};
+		91466B451A1F51DE00165716 /* General Legal Services */ = {
+			isa = PBXGroup;
+			children = (
+				91466B4C1A1F563B00165716 /* Wills & Probate */,
+				91466B4D1A1F564400165716 /* Conveyancing */,
+				91466B4E1A1F564D00165716 /* Other */,
+			);
+			path = "General Legal Services";
+			sourceTree = "<group>";
+		};
+		91466B471A1F55C300165716 /* PPI */ = {
+			isa = PBXGroup;
+			children = (
+				91466B541A1F5D5D00165716 /* PPI Questionnaire */,
+			);
+			path = PPI;
+			sourceTree = "<group>";
+		};
+		91466B481A1F55CA00165716 /* Mis-sold Loans/Mortgages */ = {
+			isa = PBXGroup;
+			children = (
+				91466B551A1F5D7100165716 /* MSLM Questionnaire */,
+			);
+			name = "Mis-sold Loans/Mortgages";
+			path = "Mis-sold Loans:Mortgages";
+			sourceTree = "<group>";
+		};
+		91466B491A1F55E200165716 /* Packaged Bank Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				91466B561A1F5D7E00165716 /* PBA Questionnaire */,
+			);
+			path = "Packaged Bank Accounts";
+			sourceTree = "<group>";
+		};
+		91466B4A1A1F55EB00165716 /* Mis-sold Pension */ = {
+			isa = PBXGroup;
+			children = (
+				91466B571A1F5D8D00165716 /* MSP Questionnaire */,
+			);
+			name = "Mis-sold Pension";
+			path = "Mid-sold Pension";
+			sourceTree = "<group>";
+		};
+		91466B4B1A1F55F600165716 /* Reclaim Care Fees */ = {
+			isa = PBXGroup;
+			children = (
+				91466B581A1F5D9B00165716 /* RCF Questionnaire */,
+			);
+			path = "Reclaim Care Fees";
+			sourceTree = "<group>";
+		};
+		91466B4C1A1F563B00165716 /* Wills & Probate */ = {
+			isa = PBXGroup;
+			children = (
+				91466B591A1F5E3D00165716 /* WP Questionnaire */,
+			);
+			path = "Wills & Probate";
+			sourceTree = "<group>";
+		};
+		91466B4D1A1F564400165716 /* Conveyancing */ = {
+			isa = PBXGroup;
+			children = (
+				91466B5A1A1F5E4500165716 /* CONV Questionnaire */,
+			);
+			path = Conveyancing;
+			sourceTree = "<group>";
+		};
+		91466B4E1A1F564D00165716 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				91466B5B1A1F5E4D00165716 /* OTHER Questionnaire */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		91466B4F1A1F5CE200165716 /* ASB Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "ASB Questionnaire";
+			path = "Asbestosis/ASB Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B501A1F5CF400165716 /* AAW Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "AAW Questionnaire";
+			path = "Accident At Work/AAW Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B511A1F5D0300165716 /* RTA Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "RTA Questionnaire";
+			path = "Road Traffic Accident/RTA Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B521A1F5D1100165716 /* VWF Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "VWF Questionnaire";
+			path = "Vibration White Finger/VWF Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B531A1F5D2600165716 /* BP Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "BP Questionnaire";
+			path = "Breathing Problems/BP Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B541A1F5D5D00165716 /* PPI Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "PPI Questionnaire";
+			path = "Financial Mis-selling/PPI/PPI Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B551A1F5D7100165716 /* MSLM Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "MSLM Questionnaire";
+			path = "Financial Mis-selling/Mis-sold Loans:Mortgages/MSLM Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B561A1F5D7E00165716 /* PBA Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "PBA Questionnaire";
+			path = "Financial Mis-selling/Packaged Bank Accounts/PBA Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B571A1F5D8D00165716 /* MSP Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "MSP Questionnaire";
+			path = "Financial Mis-selling/Mid-sold Pension/MSP Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B581A1F5D9B00165716 /* RCF Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "RCF Questionnaire";
+			path = "Financial Mis-selling/Reclaim Care Fees/RCF Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B591A1F5E3D00165716 /* WP Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "WP Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B5A1A1F5E4500165716 /* CONV Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "CONV Questionnaire";
+			sourceTree = "<group>";
+		};
+		91466B5B1A1F5E4D00165716 /* OTHER Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "OTHER Questionnaire";
 			sourceTree = "<group>";
 		};
 		918D1FE319F7B8CF00FEE5A3 /* Subclasses */ = {
@@ -186,16 +438,14 @@
 				910DA6F819F15F860051D608 /* SegmentControl.h */,
 				910DA6F919F15F860051D608 /* SegmentControl.m */,
 			);
-			name = Subclasses;
+			path = Subclasses;
 			sourceTree = "<group>";
 		};
 		91A329F819C035C400D1553C = {
 			isa = PBXGroup;
 			children = (
 				91A32A3F19C0376900D1553C /* Model */,
-				5483D55E19C61EAF0084BE08 /* Noisy Environments */,
-				91A32A3D19C0373E00D1553C /* Hearing & Employment */,
-				91A32A3E19C0375C00D1553C /* Other Services */,
+				91A32A3E19C0375C00D1553C /* Services */,
 				91A32A3C19C0373600D1553C /* Client Details */,
 				91A32A3B19C0372600D1553C /* Control Screen */,
 				91A32A0A19C035C400D1553C /* NGLS */,
@@ -280,7 +530,7 @@
 				91FABB5A19C2EA9F0098C340 /* AdminViewController.m */,
 				91FABB5B19C2EA9F0098C340 /* AdminViewController.xib */,
 			);
-			name = "Control Screen";
+			path = "Control Screen";
 			sourceTree = "<group>";
 		};
 		91A32A3C19C0373600D1553C /* Client Details */ = {
@@ -290,27 +540,30 @@
 				91A32A5019C04F3400D1553C /* ClientViewController.m */,
 				91A32A5119C04F3400D1553C /* ClientViewController.xib */,
 			);
-			name = "Client Details";
+			path = "Client Details";
 			sourceTree = "<group>";
 		};
-		91A32A3D19C0373E00D1553C /* Hearing & Employment */ = {
+		91A32A3D19C0373E00D1553C /* IND Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
-				91C8F26F19C1A59900318FB8 /* HearingViewController.h */,
-				91C8F27019C1A59900318FB8 /* HearingViewController.m */,
-				91C8F27119C1A59900318FB8 /* HearingViewController.xib */,
+				91C8F26F19C1A59900318FB8 /* INDViewController.h */,
+				91C8F27019C1A59900318FB8 /* INDViewController.m */,
+				91C8F27119C1A59900318FB8 /* INDViewController.xib */,
 			);
-			name = "Hearing & Employment";
+			path = "IND Questionnaire";
 			sourceTree = "<group>";
 		};
-		91A32A3E19C0375C00D1553C /* Other Services */ = {
+		91A32A3E19C0375C00D1553C /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				91C8F27419C1E58A00318FB8 /* ServicesViewController.h */,
 				91C8F27519C1E58A00318FB8 /* ServicesViewController.m */,
 				91C8F27619C1E58A00318FB8 /* ServicesViewController.xib */,
+				91466B431A1F519100165716 /* Accident / Work Claims */,
+				91466B441A1F51C300165716 /* Financial Mis-selling */,
+				91466B451A1F51DE00165716 /* General Legal Services */,
 			);
-			name = "Other Services";
+			path = Services;
 			sourceTree = "<group>";
 		};
 		91A32A3F19C0376900D1553C /* Model */ = {
@@ -333,7 +586,7 @@
 				910DA6B619E6CD820051D608 /* Launch-Screen.png */,
 				910DA6B019E6BD150051D608 /* NGLS Logo Final.png */,
 			);
-			name = Images;
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,13 +677,13 @@
 				910DA6B719E6CD820051D608 /* Launch-Screen.png in Resources */,
 				910DA6DB19ED14580051D608 /* ID Card.png in Resources */,
 				91FABB5D19C2EA9F0098C340 /* AdminViewController.xib in Resources */,
-				5483D56319C61F250084BE08 /* NoisyViewController.xib in Resources */,
+				5483D56319C61F250084BE08 /* INDEmpViewController.xib in Resources */,
 				91A32A5319C04F3400D1553C /* ClientViewController.xib in Resources */,
 				910DA6B919E6CD860051D608 /* Background.png in Resources */,
 				91A32A1D19C035C400D1553C /* Images.xcassets in Resources */,
 				910DA6B119E6BD150051D608 /* NGLS Logo Final.png in Resources */,
 				910DA6EF19F1537E0051D608 /* Button Long.png in Resources */,
-				91C8F27319C1A59900318FB8 /* HearingViewController.xib in Resources */,
+				91C8F27319C1A59900318FB8 /* INDViewController.xib in Resources */,
 				91A32A0F19C035C400D1553C /* InfoPlist.strings in Resources */,
 				910DA6F419F15AC40051D608 /* Button.png in Resources */,
 				91A32A1819C035C400D1553C /* Main.storyboard in Resources */,
@@ -466,13 +719,13 @@
 				910DA6DE19ED21530051D608 /* DisableTextMenu.m in Sources */,
 				91B07FAA19F667D500D633FA /* AcceptedCharacters.m in Sources */,
 				91A32A5219C04F3400D1553C /* ClientViewController.m in Sources */,
-				5483D56219C61F250084BE08 /* NoisyViewController.m in Sources */,
+				5483D56219C61F250084BE08 /* INDEmpViewController.m in Sources */,
 				91A32A4B19C04C0700D1553C /* Model.m in Sources */,
 				918D1FE219F7A3C300FEE5A3 /* PhoneNumber.m in Sources */,
 				910DA6FA19F15F860051D608 /* SegmentControl.m in Sources */,
 				918D1FE619FFF59100FEE5A3 /* LettersOnly.m in Sources */,
 				91C8F27719C1E58A00318FB8 /* ServicesViewController.m in Sources */,
-				91C8F27219C1A59900318FB8 /* HearingViewController.m in Sources */,
+				91C8F27219C1A59900318FB8 /* INDViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

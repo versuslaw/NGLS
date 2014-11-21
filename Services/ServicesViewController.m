@@ -9,12 +9,14 @@
 #import "ServicesViewController.h"
 #import "Model.h"
 #import "NGLSAppDelegate.h"
-#import "HearingViewController.h"
-#import "AcceptedCharacters.h"
+#import "INDViewController.h"
+#import "LettersOnly.h"
 #import "PhoneNumber.h"
 #define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'&-_."
 
 @interface ServicesViewController ()
+//@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+//@property (strong, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -31,6 +33,32 @@
     }
     return self;
 }
+
+/* HOW-TO: Set up UIScrollView with IB
+ * - ServicesViewController.xib
+ * - Shift + right-click, View > Attributes Inspector > Size > Freeform
+ * - Size Inspector > change height
+ * - Make background image very long
+ * - Rearrange buttons etc (shift down slightly)
+ * - Click on button, cmd + A > Editor > Embed In > ScrollView
+ * - Click on button, cmd + A > Editor > Embed In > View
+ * - Hook up ScrollView & View to ServicesViewController.m under @interface
+ * - Uncomment section below
+ * // Need to work on keyboard scroll bug //
+ 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self.scrollView layoutIfNeeded];
+    self.scrollView.contentSize = self.contentView.bounds.size;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardWillHide:)];
+    // prevents the scroll view from swallowing up the touch event of child buttons
+    tapGesture.cancelsTouchesInView = NO;
+    [self.scrollView addGestureRecognizer:tapGesture];
+}
+ 
+ *
+ */
 
 - (void)viewDidLoad
 {
@@ -65,6 +93,12 @@
     self.recName.delegate = self;
     self.recTel.delegate = self;
     
+    // If otherService is empty, disable textfield
+    NSString *otherServices = [_managedObjectNGLS valueForKey:@"otherServices"];
+    if (otherServices.length == 0) {
+        self.otherTextField.enabled = FALSE;
+    }
+    
     // Call moreInfoAlert method
     [self moreInfoAlert];
 }
@@ -77,8 +111,8 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     // Call AcceptedCharacters subclass on Other & Name textfields
-    if ([textField isKindOfClass:[AcceptedCharacters class]]) {
-        return [(AcceptedCharacters *)textField stringIsAcceptable:string inRange:range];
+    if ([textField isKindOfClass:[LettersOnly class]]) {
+        return [(LettersOnly *)textField stringIsAcceptable:string inRange:range];
     }
     
     // Call PhoneNumber subclass on telephone textfield
@@ -94,6 +128,42 @@
     }
 
     return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    // Dismiss keyboard when user taps anywhere on view
+    [self.view endEditing:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    // If otherTextField is empty, set otherBtn attributes
+    if (self.otherTextField.text.length == 0) {
+        _otherBtn.backgroundColor = [UIColor redColor];
+        _otherBtn.enabled = TRUE;
+        // Disable otherTextField
+        self.otherTextField.enabled = FALSE;
+        self.otherTextField.placeholder = @"Please tap 'Other' button";
+        [_managedObjectNGLS setValue:_otherTextField.text forKey:@"otherServices"];
+    }
+    
+    // If otherTextField isn't empty, disable otherBtn & set background colour
+    if (self.otherTextField.text.length > 0) {
+        _otherBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+        _otherBtn.enabled = FALSE;
+        [_managedObjectNGLS setValue:_otherTextField.text forKey:@"otherServices"];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // Dismiss keyboard when 'done' is pressed
+    [self.view endEditing:YES];
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    // Dismiss keyboard when lower-right hide button is tapped
+    [self.view endEditing:YES];
 }
 
 - (void)moreInfoAlert {
@@ -256,23 +326,16 @@
         _convBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
         _convBtn.enabled = FALSE;
     }
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    // Dismiss keyboard when user taps anywhere on view
-    [self.view endEditing:YES];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    // Dismiss keyboard when 'done' is pressed
-    [self.view endEditing:YES];
-    [textField resignFirstResponder];
-    return NO;
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    // Dismiss keyboard when lower-right hide button is tapped
-    [self.view endEditing:YES];
+    
+    // OTHER
+    NSString *otherServices = [_managedObjectNGLS valueForKey:@"otherServices"];
+    if (otherServices.length > 1) {
+        _otherBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+        // Populate textField with previously entered text
+        self.otherTextField.text = otherServices;
+        _otherBtn.enabled = FALSE;
+        self.otherTextField.enabled = TRUE;
+    }
 }
 
 - (IBAction)indBtnPressed:(UIButton *)sender {
@@ -502,9 +565,18 @@
     }
 }
 
+- (IBAction)otherBtnPressed:(id)sender {
+    // Enable textField & become active
+    self.otherTextField.enabled = YES;
+    [self.otherTextField becomeFirstResponder];
+    self.otherTextField.placeholder = @"Enter legal service";
+}
+
 - (IBAction)homeBtnPressed:(UIButton *) sender {
+    // If recTel field is populated
     if (self.recTel.text.length > 0) {
-        if (self.recTel.text.length != 11) {
+        // If length is less than 11
+        if (self.recTel.text.length < 11) {
             _invalidPhone = [[UIAlertView alloc]initWithTitle:@"Error"
                                                                  message:@"Please enter a valid phone number for the recommendation"
                                                                 delegate:nil
@@ -533,15 +605,15 @@
             // Set "Yes" for indSurvey
             [_managedObjectNGLS setValue:@"Yes" forKey:@"indSurvey"];
             
-            // Allocate & initialise HearingViewController
-            HearingViewController *hearing = [[HearingViewController alloc]initWithNibName:@"HearingViewController"
+            // Allocate & initialise INDViewController
+            INDViewController *ind = [[INDViewController alloc]initWithNibName:@"INDViewController"
                                                                                     bundle:nil];
             
             // Pass managedObject to view
-            hearing.managedObjectNGLS = self.managedObjectNGLS;
+            ind.managedObjectNGLS = self.managedObjectNGLS;
             
             // Push next view
-            [self.navigationController pushViewController:hearing animated:YES];
+            [self.navigationController pushViewController:ind animated:YES];
         }
     }
     
@@ -715,7 +787,7 @@
     [_managedObjectNGLS setValue:admin.userLogin forKey:@"username"];
     [_managedObjectNGLS setValue:admin.siteLocation forKey:@"site"];
     
-    [_managedObjectNGLS setValue:_otherTextField.text forKey:@"otherServices"];
+    //[_managedObjectNGLS setValue:_otherTextField.text forKey:@"otherServices"];
     [_managedObjectNGLS setValue:_recName.text forKey:@"recName"];
     [_managedObjectNGLS setValue:_recTel.text forKey:@"recTel"];
     

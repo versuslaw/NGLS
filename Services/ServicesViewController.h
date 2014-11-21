@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *aawBtn;
 @property (weak, nonatomic) IBOutlet UIButton *ppiBtn;
 @property (weak, nonatomic) IBOutlet UIButton *convBtn;
+@property (weak, nonatomic) IBOutlet UIButton *otherBtn;
 @property (weak, nonatomic) IBOutlet UITextField *otherTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *recName;

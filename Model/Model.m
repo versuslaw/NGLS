@@ -101,14 +101,14 @@
 
 @dynamic ind;
 @dynamic indSurvey;
-@dynamic q1;
-@dynamic q1More;
-@dynamic q2;
-@dynamic q2More;
-@dynamic q3;
-@dynamic q3More;
-@dynamic q4;
-@dynamic q4More;
+@dynamic indQ1;
+@dynamic indQ1More;
+@dynamic indQ2;
+@dynamic indQ2More;
+@dynamic indQ3;
+@dynamic indQ3More;
+@dynamic indQ4;
+@dynamic indQ4More;
 
 @dynamic aaw;
 @dynamic aawDetails;
@@ -155,7 +155,7 @@
     // Set blank value ("") if keys are nil
     
     // Services
-    NSArray *services = @[@"ind", @"asb", @"vwf", @"bp", @"rta", @"mslm", @"pba", @"rcf", @"msp", @"aaw", @"ppi", @"wp", @"conv"];
+    NSArray *services = @[@"ind", @"asb", @"vwf", @"bp", @"rta", @"mslm", @"pba", @"rcf", @"msp", @"aaw", @"ppi", @"wp", @"conv", @"otherServices"];
     for (NSString *serviceKey in services) {
         if ([_managedObjectNGLS valueForKey:serviceKey] == nil) {
             [_managedObjectNGLS setValue:@"" forKey:serviceKey];
@@ -180,7 +180,7 @@
     }
     
     // IND Questions
-    NSArray *indQuestions = @[@"indSurvey", @"q1", @"q1More", @"q2", @"q2More", @"q3", @"q3More", @"q4", @"q4More"];
+    NSArray *indQuestions = @[@"indSurvey", @"indQ1", @"indQ1More", @"indQ2", @"indQ2More", @"indQ3", @"indQ3More", @"indQ4", @"indQ4More"];
     for (NSString *indKey in indQuestions) {
         if ([_managedObjectNGLS valueForKey:indKey] == nil) {
             [_managedObjectNGLS setValue:@"" forKey:indKey];

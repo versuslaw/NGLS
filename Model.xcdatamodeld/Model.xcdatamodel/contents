@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Admin" syncable="YES">
         <attribute name="siteLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userLogin" optional="YES" attributeType="String" syncable="YES"/>
@@ -80,6 +80,14 @@
         <attribute name="emp10Noise" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="emp10To" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ind" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indQ1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indQ1More" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indQ2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indQ2More" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indQ3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indQ3More" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indQ4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indQ4More" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="indSurvey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mslm" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mslmDetails" optional="YES" attributeType="String" syncable="YES"/>
@@ -90,14 +98,6 @@
         <attribute name="pbaDetails" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ppi" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ppiDetails" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="q1" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="q1More" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="q2" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="q2More" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="q3" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="q3More" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="q4" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="q4More" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rcf" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rcfDetails" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recName" optional="YES" attributeType="String" syncable="YES"/>
