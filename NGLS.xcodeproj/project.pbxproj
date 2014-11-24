@@ -58,6 +58,8 @@
 		91CBFA9C1A23456E00F51CAF /* AAWViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91CBFA9A1A23456E00F51CAF /* AAWViewController.xib */; };
 		91CBFAA11A2349EB00F51CAF /* RTAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBFA9F1A2349EB00F51CAF /* RTAViewController.m */; };
 		91CBFAA21A2349EB00F51CAF /* RTAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91CBFAA01A2349EB00F51CAF /* RTAViewController.xib */; };
+		91CBFAA61A234C9C00F51CAF /* BPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBFAA41A234C9C00F51CAF /* BPViewController.m */; };
+		91CBFAA71A234C9C00F51CAF /* BPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91CBFAA51A234C9C00F51CAF /* BPViewController.xib */; };
 		91FABB5C19C2EA9F0098C340 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FABB5A19C2EA9F0098C340 /* AdminViewController.m */; };
 		91FABB5D19C2EA9F0098C340 /* AdminViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91FABB5B19C2EA9F0098C340 /* AdminViewController.xib */; };
 /* End PBXBuildFile section */
@@ -149,6 +151,9 @@
 		91CBFA9E1A2349EB00F51CAF /* RTAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTAViewController.h; path = "Services/Accident - Work Claims/Road Traffic Accident/RTA Questionnaire/RTAViewController.h"; sourceTree = SOURCE_ROOT; };
 		91CBFA9F1A2349EB00F51CAF /* RTAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RTAViewController.m; path = "Services/Accident - Work Claims/Road Traffic Accident/RTA Questionnaire/RTAViewController.m"; sourceTree = SOURCE_ROOT; };
 		91CBFAA01A2349EB00F51CAF /* RTAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RTAViewController.xib; path = "Services/Accident - Work Claims/Road Traffic Accident/RTA Questionnaire/RTAViewController.xib"; sourceTree = SOURCE_ROOT; };
+		91CBFAA31A234C9C00F51CAF /* BPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPViewController.h; path = "Services/Accident - Work Claims/Breathing Problems/BP Questionnaire/BPViewController.h"; sourceTree = SOURCE_ROOT; };
+		91CBFAA41A234C9C00F51CAF /* BPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPViewController.m; path = "Services/Accident - Work Claims/Breathing Problems/BP Questionnaire/BPViewController.m"; sourceTree = SOURCE_ROOT; };
+		91CBFAA51A234C9C00F51CAF /* BPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BPViewController.xib; path = "Services/Accident - Work Claims/Breathing Problems/BP Questionnaire/BPViewController.xib"; sourceTree = SOURCE_ROOT; };
 		91FABB5919C2EA9F0098C340 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
 		91FABB5A19C2EA9F0098C340 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
 		91FABB5B19C2EA9F0098C340 /* AdminViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdminViewController.xib; sourceTree = "<group>"; };
@@ -387,6 +392,9 @@
 		91466B531A1F5D2600165716 /* BP Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
+				91CBFAA31A234C9C00F51CAF /* BPViewController.h */,
+				91CBFAA41A234C9C00F51CAF /* BPViewController.m */,
+				91CBFAA51A234C9C00F51CAF /* BPViewController.xib */,
 			);
 			name = "BP Questionnaire";
 			path = "Breathing Problems/BP Questionnaire";
@@ -720,6 +728,7 @@
 				91466B671A1F86BC00165716 /* QuestionBox.png in Resources */,
 				91CBFAA21A2349EB00F51CAF /* RTAViewController.xib in Resources */,
 				91FABB5D19C2EA9F0098C340 /* AdminViewController.xib in Resources */,
+				91CBFAA71A234C9C00F51CAF /* BPViewController.xib in Resources */,
 				5483D56319C61F250084BE08 /* INDEmpViewController.xib in Resources */,
 				91A32A5319C04F3400D1553C /* ClientViewController.xib in Resources */,
 				910DA6B919E6CD860051D608 /* Background.png in Resources */,
@@ -767,6 +776,7 @@
 				91A32A4219C0377500D1553C /* Model.xcdatamodeld in Sources */,
 				910DA6DE19ED21530051D608 /* DisableTextMenu.m in Sources */,
 				91B07FAA19F667D500D633FA /* AcceptedCharacters.m in Sources */,
+				91CBFAA61A234C9C00F51CAF /* BPViewController.m in Sources */,
 				91A32A5219C04F3400D1553C /* ClientViewController.m in Sources */,
 				5483D56219C61F250084BE08 /* INDEmpViewController.m in Sources */,
 				91A32A4B19C04C0700D1553C /* Model.m in Sources */,

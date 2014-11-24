@@ -14,6 +14,7 @@
 #import "AAWViewController.h"
 #import "RTAViewController.h"
 #import "VWFViewController.h"
+#import "BPViewController.h"
 #import "LettersOnly.h"
 #import "PhoneNumber.h"
 #define ACCEPTABLE_CHARACTERS @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'&-_."
@@ -410,11 +411,9 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"bp"];
     }
     
-    alertTextField.text = nil;
-    moreInfo.tag = 4;
-    
+    qConfirm.tag = 4;
     if (sender.isSelected == YES) {
-        [moreInfo show];
+        [qConfirm show];
     }
 }
 
@@ -642,12 +641,11 @@
     
     // BP
     if (alertView.tag == 4) {
-        NSString *bpDetails = [alertView textFieldAtIndex:0].text;
-        [_managedObjectNGLS setValue:bpDetails forKeyPath:@"bpDetails"];
-        if (bpDetails.length > 1) {
-            [_bpBtn setSelected:NO];
-            _bpBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-            _bpBtn.enabled = FALSE;
+        if (buttonIndex == 1) {
+            BPViewController *bp = [[BPViewController alloc]initWithNibName:@"BPViewController"
+                                                                    bundle:nil];
+            bp.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:bp animated:YES];
         }
     }
     
