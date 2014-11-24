@@ -162,6 +162,14 @@
         }
     }
     
+    // Services - Additional Details
+    NSArray *addDetails = @[@"asbDetails", @"bpDetails", @"rtaDetails", @"mslmDetails", @"pbaDetails", @"rcfDetails", @"mspDetails", @"aawDetails", @"ppiDetails", @"wpDetails", @"convDetails"];
+    for (NSString *detailsKey in addDetails) {
+        if ([_managedObjectNGLS valueForKey:detailsKey] == nil) {
+            [_managedObjectNGLS setValue:@"" forKeyPath:detailsKey];
+        }
+    }
+    
     // IND Questions
     NSArray *indQuestions = @[@"indSurvey", @"indQ1", @"indQ1More", @"indQ2", @"indQ2More", @"indQ3", @"indQ3More", @"indQ4", @"indQ4More"];
     for (NSString *indKey in indQuestions) {
@@ -195,13 +203,6 @@
         }
     }
     
-    // Services - Additional Details
-    NSArray *addDetails = @[@"asbDetails", @"bpDetails", @"rtaDetails", @"mslmDetails", @"pbaDetails", @"rcfDetails", @"mspDetails", @"aawDetails", @"ppiDetails", @"wpDetails", @"convDetails"];
-    for (NSString *detailsKey in addDetails) {
-        if ([_managedObjectNGLS valueForKey:detailsKey] == nil) {
-            [_managedObjectNGLS setValue:@"" forKeyPath:detailsKey];
-        }
-    }
 }
 
 @end

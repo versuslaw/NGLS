@@ -11,6 +11,7 @@
 #import "NGLSAppDelegate.h"
 #import "INDViewController.h"
 #import "ASBViewController.h"
+#import "AAWViewController.h"
 #import "VWFViewController.h"
 #import "LettersOnly.h"
 #import "PhoneNumber.h"
@@ -229,12 +230,6 @@
         _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
         _vwfBtn.enabled = FALSE;
     }
-//    NSString *vwfDetails = [_managedObjectNGLS valueForKey:@"vwfDetails"];
-//    if (vwfDetails.length > 0) {
-//        _vwfBtn.selected = NO;
-//        _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-//        _vwfBtn.enabled = FALSE;
-//    }
     
     // BP
     if ([[_managedObjectNGLS valueForKey:@"bp"] isEqual: @"Yes"]) {
@@ -383,13 +378,9 @@
         [sender setSelected:YES];
         [_managedObjectNGLS setValue:@"Yes" forKey:@"asb"];
     }
-    // Set textfield.text to empty
-    //alertTextField.text = nil;
-    //moreInfo.tag = 2;
+
     qConfirm.tag = 2;
-    
     if (sender.isSelected == YES) {
-        //[moreInfo show];
         [qConfirm show];
     }
 }
@@ -404,7 +395,6 @@
     }
     
     qConfirm.tag = 3;
-    
     if (sender.isSelected == YES) {
         [qConfirm show];
     }
@@ -521,11 +511,9 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"aaw"];
     }
     
-    alertTextField.text = nil;
-    moreInfo.tag = 10;
-    
+    qConfirm.tag = 10;
     if (sender.isSelected == YES) {
-        [moreInfo show];
+        [qConfirm show];
     }
 }
 
@@ -641,41 +629,18 @@
             [self.navigationController pushViewController:asb animated:YES];
 
         }
-//        NSString *asbDetails = [alertView textFieldAtIndex:0].text;
-//        [_managedObjectNGLS setValue:asbDetails forKeyPath:@"asbDetails"];
-//        if (asbDetails.length > 1) {
-//            [_asbBtn setSelected:NO];
-//            _asbBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-//            _asbBtn.enabled = FALSE;
-//        }
     }
     
     // VWF
     if (alertView.tag == 3) {
         if (buttonIndex == 1) {
-            // Set "Yes" for vwfSurvey
             [_managedObjectNGLS setValue:@"Yes" forKey:@"vwfSurvey"];
-        
-            // Allocate & initialise INDViewController
             VWFViewController *vwf = [[VWFViewController alloc]initWithNibName:@"VWFViewController"
                                                                         bundle:nil];
-        
-            // Pass managedObject to view
             vwf.managedObjectNGLS = self.managedObjectNGLS;
-        
-            // Push next view
             [self.navigationController pushViewController:vwf animated:YES];
         }
     }
-
-//        NSString *vwfDetails = [alertView textFieldAtIndex:0].text;
-//        [_managedObjectNGLS setValue:vwfDetails forKeyPath:@"vwfDetails"];
-//        if (vwfDetails.length > 1) {
-//            [_vwfBtn setSelected:NO];
-//            _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-//            _vwfBtn.enabled = FALSE;
-//        }
-//    }
     
     // BP
     if (alertView.tag == 4) {
@@ -745,12 +710,12 @@
     
     // AAW
     if (alertView.tag == 10) {
-        NSString *aawDetails = [alertView textFieldAtIndex:0].text;
-        [_managedObjectNGLS setValue:aawDetails forKeyPath:@"aawDetails"];
-        if (aawDetails.length > 1) {
-            [_aawBtn setSelected:NO];
-            _aawBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-            _aawBtn.enabled = FALSE;
+        if (buttonIndex == 1) {
+            AAWViewController *aaw = [[AAWViewController alloc]initWithNibName:@"AAWViewController"
+                                                                        bundle:nil];
+            aaw.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:aaw
+                                                 animated:YES];
         }
     }
     
