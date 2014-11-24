@@ -365,7 +365,7 @@
                                     results.asb,
                                     results.asbDetails,
                                     results.vwf,
-                                    //results.vwfDetails,
+                                    results.vwfSurvey, // VWF section needs updating
                                     results.bp,
                                     results.bpDetails,
                                     results.rta,
@@ -412,7 +412,7 @@
     [handle closeFile];
     
 
-    /**
+    /*
      
      // SECTION BELOW IS FOR DEBUG PURPOSES ONLY
      // Opens UIDocumentInteractionController to preview contents of .csv
@@ -424,7 +424,7 @@
      [docController presentPreviewAnimated:YES];
      NSLog(@"Debug - preview .csv file");
      
-     **/
+     */
     
     // If device can send mail
     if ([MFMailComposeViewController canSendMail]) {

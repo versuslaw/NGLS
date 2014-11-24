@@ -10,6 +10,7 @@
 #import "Model.h"
 #import "NGLSAppDelegate.h"
 #import "INDViewController.h"
+#import "ASBViewController.h"
 #import "VWFViewController.h"
 #import "LettersOnly.h"
 #import "PhoneNumber.h"
@@ -36,7 +37,8 @@
     return self;
 }
 
-/* HOW-TO: Set up UIScrollView with IB
+/* 
+ * HOW-TO: Set up UIScrollView with IB
  * - ServicesViewController.xib
  * - Shift + right-click, View > Attributes Inspector > Size > Freeform
  * - Size Inspector > change height
@@ -58,7 +60,7 @@
     tapGesture.cancelsTouchesInView = NO;
     [self.scrollView addGestureRecognizer:tapGesture];
 }
- 
+
  *
  */
 
@@ -366,11 +368,6 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"ind"];
     }
     
-//    UIAlertView *qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
-//                                          message:@"Would you like to give additional information by answering some short related questions?"
-//                                         delegate:self
-//                                cancelButtonTitle:@"No"
-//                                otherButtonTitles:@"Proceed", nil];
     qConfirm.tag = 1;
     // If button is selected, show alert
     if (sender.isSelected == YES) {
@@ -387,11 +384,13 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"asb"];
     }
     // Set textfield.text to empty
-    alertTextField.text = nil;
-    moreInfo.tag = 2;
+    //alertTextField.text = nil;
+    //moreInfo.tag = 2;
+    qConfirm.tag = 2;
     
     if (sender.isSelected == YES) {
-        [moreInfo show];
+        //[moreInfo show];
+        [qConfirm show];
     }
 }
 
@@ -405,17 +404,10 @@
     }
     
     qConfirm.tag = 3;
-    // If button is selected, show alert
+    
     if (sender.isSelected == YES) {
         [qConfirm show];
     }
-
-//    alertTextField.text = nil;
-//    moreInfo.tag = 3;
-//    
-//    if (sender.isSelected == YES) {
-//        [moreInfo show];
-//    }
 }
 
 - (IBAction)bpBtnPressed:(UIButton *)sender {
@@ -630,7 +622,7 @@
             
             // Allocate & initialise INDViewController
             INDViewController *ind = [[INDViewController alloc]initWithNibName:@"INDViewController"
-                                                                                    bundle:nil];
+                                                                        bundle:nil];
             
             // Pass managedObject to view
             ind.managedObjectNGLS = self.managedObjectNGLS;
@@ -642,13 +634,20 @@
     
     // ASB
     if (alertView.tag == 2) {
-        NSString *asbDetails = [alertView textFieldAtIndex:0].text;
-        [_managedObjectNGLS setValue:asbDetails forKeyPath:@"asbDetails"];
-        if (asbDetails.length > 1) {
-            [_asbBtn setSelected:NO];
-            _asbBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-            _asbBtn.enabled = FALSE;
+        if (buttonIndex == 1) {
+            ASBViewController *asb = [[ASBViewController alloc]initWithNibName:@"ASBViewController"
+                                                                        bundle:nil];
+            asb.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:asb animated:YES];
+
         }
+//        NSString *asbDetails = [alertView textFieldAtIndex:0].text;
+//        [_managedObjectNGLS setValue:asbDetails forKeyPath:@"asbDetails"];
+//        if (asbDetails.length > 1) {
+//            [_asbBtn setSelected:NO];
+//            _asbBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+//            _asbBtn.enabled = FALSE;
+//        }
     }
     
     // VWF

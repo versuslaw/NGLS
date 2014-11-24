@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface VWFViewController : UIViewController <UITextFieldDelegate>
+@interface VWFViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @property (strong, nonatomic) NSManagedObject *managedObjectNGLS;
 @property (nonatomic, strong) NSManagedObject *managedObjectAdmin;
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *vwfQ1;
-@property (strong, nonatomic) IBOutlet UITextField *vwfQ2;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *vwfQ2;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *vwfQ3;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *vwfQ4;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *vwfQ5;
@@ -24,7 +24,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *vwfQ8;
 @property (strong, nonatomic) IBOutlet UITextField *vwfQ9;
 
+@property (strong, nonatomic) UIDatePicker *datePicker;
 
-@property (strong, nonatomic) IBOutlet UIAlertView *infoAlert;
+//@property (strong, nonatomic) IBOutlet UIAlertView *infoAlert;
 
 @end

@@ -21,6 +21,7 @@
 		91466B641A1F760900165716 /* VWFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91466B621A1F760900165716 /* VWFViewController.m */; };
 		91466B651A1F760900165716 /* VWFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91466B631A1F760900165716 /* VWFViewController.xib */; };
 		91466B671A1F86BC00165716 /* QuestionBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 91466B661A1F86BC00165716 /* QuestionBox.png */; };
+		91466B6A1A2330A500165716 /* AcceptedCharactersTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91466B691A2330A500165716 /* AcceptedCharactersTextView.m */; };
 		918D1FDF19F7A11F00FEE5A3 /* PostcodeField.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FDE19F7A11F00FEE5A3 /* PostcodeField.m */; };
 		918D1FE219F7A3C300FEE5A3 /* PhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FE119F7A3C300FEE5A3 /* PhoneNumber.m */; };
 		918D1FE619FFF59100FEE5A3 /* LettersOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D1FE519FFF59100FEE5A3 /* LettersOnly.m */; };
@@ -51,6 +52,8 @@
 		91C8F27319C1A59900318FB8 /* INDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C8F27119C1A59900318FB8 /* INDViewController.xib */; };
 		91C8F27719C1E58A00318FB8 /* ServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C8F27519C1E58A00318FB8 /* ServicesViewController.m */; };
 		91C8F27819C1E58A00318FB8 /* ServicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C8F27619C1E58A00318FB8 /* ServicesViewController.xib */; };
+		91CBFA961A233D7F00F51CAF /* ASBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBFA941A233D7F00F51CAF /* ASBViewController.m */; };
+		91CBFA971A233D7F00F51CAF /* ASBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91CBFA951A233D7F00F51CAF /* ASBViewController.xib */; };
 		91FABB5C19C2EA9F0098C340 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FABB5A19C2EA9F0098C340 /* AdminViewController.m */; };
 		91FABB5D19C2EA9F0098C340 /* AdminViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91FABB5B19C2EA9F0098C340 /* AdminViewController.xib */; };
 /* End PBXBuildFile section */
@@ -85,6 +88,8 @@
 		91466B621A1F760900165716 /* VWFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWFViewController.m; path = "Services/Accident - Work Claims/Vibration White Finger/VWF Questionnaire/VWFViewController.m"; sourceTree = SOURCE_ROOT; };
 		91466B631A1F760900165716 /* VWFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VWFViewController.xib; path = "Services/Accident - Work Claims/Vibration White Finger/VWF Questionnaire/VWFViewController.xib"; sourceTree = SOURCE_ROOT; };
 		91466B661A1F86BC00165716 /* QuestionBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuestionBox.png; sourceTree = "<group>"; };
+		91466B681A2330A500165716 /* AcceptedCharactersTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptedCharactersTextView.h; sourceTree = "<group>"; };
+		91466B691A2330A500165716 /* AcceptedCharactersTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptedCharactersTextView.m; sourceTree = "<group>"; };
 		918D1FDD19F7A11F00FEE5A3 /* PostcodeField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostcodeField.h; sourceTree = "<group>"; };
 		918D1FDE19F7A11F00FEE5A3 /* PostcodeField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostcodeField.m; sourceTree = "<group>"; };
 		918D1FE019F7A3C300FEE5A3 /* PhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumber.h; sourceTree = "<group>"; };
@@ -131,6 +136,9 @@
 		91C8F27419C1E58A00318FB8 /* ServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesViewController.h; sourceTree = "<group>"; };
 		91C8F27519C1E58A00318FB8 /* ServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesViewController.m; sourceTree = "<group>"; };
 		91C8F27619C1E58A00318FB8 /* ServicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesViewController.xib; sourceTree = "<group>"; };
+		91CBFA931A233D7F00F51CAF /* ASBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASBViewController.h; path = "Services/Accident - Work Claims/Asbestosis/ASB Questionnaire/ASBViewController.h"; sourceTree = SOURCE_ROOT; };
+		91CBFA941A233D7F00F51CAF /* ASBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASBViewController.m; path = "Services/Accident - Work Claims/Asbestosis/ASB Questionnaire/ASBViewController.m"; sourceTree = SOURCE_ROOT; };
+		91CBFA951A233D7F00F51CAF /* ASBViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ASBViewController.xib; path = "Services/Accident - Work Claims/Asbestosis/ASB Questionnaire/ASBViewController.xib"; sourceTree = SOURCE_ROOT; };
 		91FABB5919C2EA9F0098C340 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
 		91FABB5A19C2EA9F0098C340 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
 		91FABB5B19C2EA9F0098C340 /* AdminViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdminViewController.xib; sourceTree = "<group>"; };
@@ -325,6 +333,9 @@
 		91466B4F1A1F5CE200165716 /* ASB Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
+				91CBFA931A233D7F00F51CAF /* ASBViewController.h */,
+				91CBFA941A233D7F00F51CAF /* ASBViewController.m */,
+				91CBFA951A233D7F00F51CAF /* ASBViewController.xib */,
 			);
 			name = "ASB Questionnaire";
 			path = "Asbestosis/ASB Questionnaire";
@@ -437,6 +448,8 @@
 				918D1FE519FFF59100FEE5A3 /* LettersOnly.m */,
 				91B07FA819F667D500D633FA /* AcceptedCharacters.h */,
 				91B07FA919F667D500D633FA /* AcceptedCharacters.m */,
+				91466B681A2330A500165716 /* AcceptedCharactersTextView.h */,
+				91466B691A2330A500165716 /* AcceptedCharactersTextView.m */,
 				918D1FDD19F7A11F00FEE5A3 /* PostcodeField.h */,
 				918D1FDE19F7A11F00FEE5A3 /* PostcodeField.m */,
 				918D1FE71A00DDF100FEE5A3 /* NINumber.h */,
@@ -700,6 +713,7 @@
 				91A32A0F19C035C400D1553C /* InfoPlist.strings in Resources */,
 				910DA6F419F15AC40051D608 /* Button.png in Resources */,
 				91A32A1819C035C400D1553C /* Main.storyboard in Resources */,
+				91CBFA971A233D7F00F51CAF /* ASBViewController.xib in Resources */,
 				91C8F27819C1E58A00318FB8 /* ServicesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,6 +740,7 @@
 				91466B641A1F760900165716 /* VWFViewController.m in Sources */,
 				910DA6E519F142140051D608 /* NumbersOnly.m in Sources */,
 				91FABB5C19C2EA9F0098C340 /* AdminViewController.m in Sources */,
+				91CBFA961A233D7F00F51CAF /* ASBViewController.m in Sources */,
 				91A32A4E19C04E8E00D1553C /* CHCSVParser.m in Sources */,
 				91A32A1119C035C400D1553C /* main.m in Sources */,
 				918D1FDF19F7A11F00FEE5A3 /* PostcodeField.m in Sources */,
@@ -737,6 +752,7 @@
 				91A32A4B19C04C0700D1553C /* Model.m in Sources */,
 				918D1FE219F7A3C300FEE5A3 /* PhoneNumber.m in Sources */,
 				910DA6FA19F15F860051D608 /* SegmentControl.m in Sources */,
+				91466B6A1A2330A500165716 /* AcceptedCharactersTextView.m in Sources */,
 				918D1FE619FFF59100FEE5A3 /* LettersOnly.m in Sources */,
 				91C8F27719C1E58A00318FB8 /* ServicesViewController.m in Sources */,
 				91C8F27219C1A59900318FB8 /* INDViewController.m in Sources */,

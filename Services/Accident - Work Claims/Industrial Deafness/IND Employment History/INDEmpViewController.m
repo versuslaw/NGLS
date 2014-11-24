@@ -203,7 +203,7 @@
 
 - (void)datePickerTextField {
     // Open date picker when textfield is tapped
-    /*UIDatePicker */datePicker = [[UIDatePicker alloc]init];
+    datePicker = [[UIDatePicker alloc]init];
     datePicker.datePickerMode = UIDatePickerModeDate;
     
     // Set default date to 01/01/1980
@@ -245,7 +245,7 @@
     [self.empTo10 setInputView:datePicker];
 }
 
-- (void)updateDateTextField/*:(UIDatePicker *) datePicker*/ {
+- (void)updateDateTextField {
     // Format date
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd/MM/yyyy"];

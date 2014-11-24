@@ -27,8 +27,20 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Yw-kM-jKC">
                     <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="QuestionBox.png" translatesAutoresizingMaskIntoConstraints="NO" id="gtO-EV-gl8">
+                    <rect key="frame" x="0.0" y="74" width="768" height="116"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="QuestionBox.png" translatesAutoresizingMaskIntoConstraints="NO" id="v9o-Jh-538">
+                    <rect key="frame" x="0.0" y="198" width="768" height="116"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="QuestionBox.png" translatesAutoresizingMaskIntoConstraints="NO" id="UbF-dw-1ga">
+                    <rect key="frame" x="0.0" y="322" width="768" height="116"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="QuestionBox.png" translatesAutoresizingMaskIntoConstraints="NO" id="opc-Au-zK8">
+                    <rect key="frame" x="0.0" y="446" width="768" height="116"/>
+                </imageView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fYT-fq-uMs" customClass="SegmentControl">
-                    <rect key="frame" x="564" y="260" width="150" height="29"/>
+                    <rect key="frame" x="564" y="225" width="150" height="29"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <segments>
                         <segment title="Yes"/>
@@ -45,7 +57,7 @@
                     </connections>
                 </segmentedControl>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="igF-pc-lcM" customClass="SegmentControl">
-                    <rect key="frame" x="564" y="400" width="150" height="29"/>
+                    <rect key="frame" x="564" y="355" width="150" height="29"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <segments>
                         <segment title="Yes"/>
@@ -62,7 +74,7 @@
                     </connections>
                 </segmentedControl>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever had a hearing assessment?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytP-ic-6We">
-                    <rect key="frame" x="55" y="255" width="360" height="33"/>
+                    <rect key="frame" x="55" y="220" width="360" height="33"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES"/>
                     </accessibility>
@@ -70,7 +82,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="D8a-9F-jHD" customClass="SegmentControl">
-                    <rect key="frame" x="564" y="540" width="150" height="29"/>
+                    <rect key="frame" x="564" y="473" width="150" height="29"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <segments>
                         <segment title="Yes"/>
@@ -87,7 +99,7 @@
                     </connections>
                 </segmentedControl>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever served in HM Forces/TA?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbH-K6-KAr">
-                    <rect key="frame" x="56" y="535" width="360" height="33"/>
+                    <rect key="frame" x="56" y="468" width="360" height="33"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES"/>
                     </accessibility>
@@ -95,7 +107,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever spoken to your GP/Hospital regarding your hearing?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ly0-eQ-K2d">
-                    <rect key="frame" x="55" y="376" width="360" height="52"/>
+                    <rect key="frame" x="55" y="331" width="360" height="52"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES"/>
                     </accessibility>
@@ -103,7 +115,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qHD-DP-5aX">
-                    <rect key="frame" x="564" y="120" width="150" height="29"/>
+                    <rect key="frame" x="564" y="134" width="150" height="29"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <segments>
                         <segment title="Yes"/>
@@ -117,7 +129,7 @@
                     </userDefinedRuntimeAttributes>
                 </segmentedControl>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever worked in a noisy environment?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYb-rt-a3O">
-                    <rect key="frame" x="55" y="115" width="390" height="33"/>
+                    <rect key="frame" x="55" y="129" width="390" height="33"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES"/>
                     </accessibility>
@@ -125,22 +137,22 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Further details" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hcQ-sK-KRP" customClass="AcceptedCharacters">
-                    <rect key="frame" x="55" y="296" width="659" height="30"/>
+                    <rect key="frame" x="55" y="261" width="659" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Further details" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="erH-DU-vk0" customClass="AcceptedCharacters">
-                    <rect key="frame" x="55" y="436" width="659" height="30"/>
+                    <rect key="frame" x="55" y="391" width="659" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Further details" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MMB-s9-EhB" customClass="AcceptedCharacters">
-                    <rect key="frame" x="55" y="576" width="659" height="30"/>
+                    <rect key="frame" x="55" y="509" width="659" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textField>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4a2-XB-1Rb" customClass="SegmentControl">
-                    <rect key="frame" x="564" y="680" width="150" height="29"/>
+                    <rect key="frame" x="564" y="597" width="150" height="29"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <segments>
                         <segment title="Yes"/>
@@ -157,7 +169,7 @@
                     </connections>
                 </segmentedControl>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Have you ever made a claim for NIHL against your previous employers?" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCi-nN-fdA">
-                    <rect key="frame" x="55" y="653" width="360" height="55"/>
+                    <rect key="frame" x="55" y="570" width="360" height="55"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES"/>
                     </accessibility>
@@ -165,16 +177,20 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Further details" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7zv-7w-NOD" customClass="AcceptedCharacters">
-                    <rect key="frame" x="55" y="716" width="659" height="30"/>
+                    <rect key="frame" x="55" y="633" width="659" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textField>
+                <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="QuestionBox.png" translatesAutoresizingMaskIntoConstraints="NO" id="juQ-LE-CHk">
+                    <rect key="frame" x="0.0" y="570" width="768" height="116"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
     </objects>
     <resources>
         <image name="Background.png" width="768" height="1024"/>
+        <image name="QuestionBox.png" width="1354" height="208"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
