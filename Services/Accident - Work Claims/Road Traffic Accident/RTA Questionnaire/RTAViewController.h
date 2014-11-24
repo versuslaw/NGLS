@@ -1,5 +1,5 @@
 //
-//  AAWViewController.h
+//  RTAViewController.h
 //  NGLS
 //
 //  Created by Ross Humphreys on 24/11/2014.
@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AAWViewController : UIViewController <UITextViewDelegate>
+@interface RTAViewController : UIViewController <UITextViewDelegate>
 
 @property (strong, nonatomic) NSManagedObject *managedObjectNGLS;
 @property (nonatomic, strong) NSManagedObject *managedObjectAdmin;
 
-@property (strong, nonatomic) IBOutlet UITextView *aawDetails;
+@property (strong, nonatomic) IBOutlet UITextView *rtaDetails;
 
 @end

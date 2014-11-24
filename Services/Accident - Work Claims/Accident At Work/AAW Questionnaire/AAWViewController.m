@@ -45,12 +45,6 @@
     
     // Set textView delegate
     self.aawDetails.delegate = self;
-    
-//    // Populate textView
-//    NSString *aawText = [_managedObjectNGLS valueForKey:@"aawDetails"];
-//    if (aawText.length > 0) {
-//        self.aawDetails.text = [_managedObjectNGLS valueForKey:@"aawDetails"];
-//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,20 +78,12 @@
 }
 
 - (IBAction)servicesBtnPressed:(UIButton *)sender {
-    _infoAlert = [[UIAlertView alloc]initWithTitle:@"More information required"
-                                           message:@"Please enter further details"
-                                          delegate:nil
-                                 cancelButtonTitle:@"Dismiss"
-                                 otherButtonTitles:nil];
-    
     [self.managedObjectNGLS setValue:self.aawDetails.text forKey:@"aawDetails"];
-    
     NSLog(@"%@", self.managedObjectNGLS);
     
     // Allocate & initialise ServicesViewController
     ServicesViewController *services = [[ServicesViewController alloc]initWithNibName:@"ServicesViewController"
                                                                                bundle:nil];
-    
     // Pass managedObject to view
     services.managedObjectNGLS = self.managedObjectNGLS;
     

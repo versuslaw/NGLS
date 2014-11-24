@@ -12,6 +12,7 @@
 #import "INDViewController.h"
 #import "ASBViewController.h"
 #import "AAWViewController.h"
+#import "RTAViewController.h"
 #import "VWFViewController.h"
 #import "LettersOnly.h"
 #import "PhoneNumber.h"
@@ -426,11 +427,9 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"rta"];
     }
     
-    alertTextField.text = nil;
-    moreInfo.tag = 5;
-    
+    qConfirm.tag = 5;
     if (sender.isSelected == YES) {
-        [moreInfo show];
+        [qConfirm show];
     }
 }
 
@@ -627,7 +626,6 @@
                                                                         bundle:nil];
             asb.managedObjectNGLS = self.managedObjectNGLS;
             [self.navigationController pushViewController:asb animated:YES];
-
         }
     }
     
@@ -655,12 +653,11 @@
     
     // RTA
     if (alertView.tag == 5) {
-        NSString *rtaDetails = [alertView textFieldAtIndex:0].text;
-        [_managedObjectNGLS setValue:rtaDetails forKeyPath:@"rtaDetails"];
-        if (rtaDetails.length > 1) {
-            [_rtaBtn setSelected:NO];
-            _rtaBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-            _rtaBtn.enabled = FALSE;
+        if (buttonIndex == 1) {
+            RTAViewController *rta = [[RTAViewController alloc]initWithNibName:@"RTAViewController"
+                                                                        bundle:nil];
+            rta.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:rta animated:YES];
         }
     }
     

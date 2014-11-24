@@ -15,6 +15,4 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *asbDetails;
 
-@property (strong, nonatomic) IBOutlet UIAlertView *infoAlert;
-
 @end

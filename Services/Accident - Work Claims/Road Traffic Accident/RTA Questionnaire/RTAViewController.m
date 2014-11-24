@@ -1,20 +1,20 @@
 //
-//  ASBViewController.m
+//  RTAViewController.m
 //  NGLS
 //
 //  Created by Ross Humphreys on 24/11/2014.
 //  Copyright (c) 2014 Next Generation Legal Services. All rights reserved.
 //
 
-#import "ASBViewController.h"
+#import "RTAViewController.h"
 #import "ServicesViewController.h"
 #import "AcceptedCharactersTextView.h"
 
-@interface ASBViewController ()
+@interface RTAViewController ()
 
 @end
 
-@implementation ASBViewController
+@implementation RTAViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,7 +30,7 @@
                                                object:nil];
     
     // Set navbar title
-    self.navigationItem.title = @"Asbestosis";
+    self.navigationItem.title = @"Road Traffic Accident";
     
     // Create 'next' navbar item
     UIBarButtonItem *servicesBtn = [[UIBarButtonItem alloc]initWithTitle:@"Services"
@@ -43,9 +43,8 @@
     // Hide back button
     self.navigationItem.hidesBackButton = YES;
     
-    
     // Set textView delegate
-    self.asbDetails.delegate = self;
+    self.rtaDetails.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,7 +78,7 @@
 }
 
 - (IBAction)servicesBtnPressed:(UIButton *)sender {
-    [self.managedObjectNGLS setValue:self.asbDetails.text forKey:@"asbDetails"];
+    [self.managedObjectNGLS setValue:self.rtaDetails.text forKey:@"rtaDetails"];
     NSLog(@"%@", self.managedObjectNGLS);
     
     // Allocate & initialise ServicesViewController
