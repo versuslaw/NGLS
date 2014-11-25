@@ -45,6 +45,7 @@
     
     // Set textView delegate
     self.aawDetails.delegate = self;
+    [self.aawDetails becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

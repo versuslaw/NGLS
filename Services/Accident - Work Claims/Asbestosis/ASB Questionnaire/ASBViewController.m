@@ -46,6 +46,7 @@
     
     // Set textView delegate
     self.asbDetails.delegate = self;
+    [self.asbDetails becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

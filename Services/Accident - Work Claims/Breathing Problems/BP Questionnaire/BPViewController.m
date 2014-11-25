@@ -45,6 +45,7 @@
     
     // Set textView delegate
     self.bpDetails.delegate = self;
+    [self.bpDetails becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

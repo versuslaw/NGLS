@@ -45,6 +45,7 @@
     
     // Set textView delegate
     self.rtaDetails.delegate = self;
+    [self.rtaDetails becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

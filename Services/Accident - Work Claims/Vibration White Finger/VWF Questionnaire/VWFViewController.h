@@ -26,6 +26,5 @@
 
 @property (strong, nonatomic) UIDatePicker *datePicker;
 
-//@property (strong, nonatomic) IBOutlet UIAlertView *infoAlert;
 
 @end

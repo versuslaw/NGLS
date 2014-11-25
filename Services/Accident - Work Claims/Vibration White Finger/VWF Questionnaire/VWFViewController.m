@@ -132,12 +132,6 @@
 }
 
 - (IBAction)servicesBtnPressed:(UIButton *)sender {
-//    _infoAlert = [[UIAlertView alloc]initWithTitle:@"More information required"
-//                                           message:@"Please enter further details"
-//                                          delegate:nil
-//                                 cancelButtonTitle:@"Dismiss"
-//                                 otherButtonTitles:nil];
-    
     // Save values
     NSString *vwfQ1 = [self.vwfQ1 titleForSegmentAtIndex:self.vwfQ1.selectedSegmentIndex];
     [self.managedObjectNGLS setValue:vwfQ1 forKey:@"vwfQ1"];
