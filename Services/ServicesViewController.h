@@ -38,4 +38,6 @@
 @property (strong) UITextField *alertTextField;
 @property (strong) UIAlertView *invalidPhone;
 
+//@property (strong) NSString *btnTitle;
+
 @end

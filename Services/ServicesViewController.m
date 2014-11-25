@@ -112,8 +112,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"viewWillAppear called");
+    // This method is called every time the view appears
     [self isInterested];
+    //NSLog(@"viewWillAppear called");
 }
 
 - (void)didReceiveMemoryWarning
@@ -196,14 +197,17 @@
 
 - (void)qConfirmAlert {
     // Alloc & init qConfirm UIAlertView
+    //qConfirm = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@", _btnTitle]
     qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                          message:@"Would you like to give additional information by answering some short related questions?"
                                         delegate:self
                                cancelButtonTitle:@"No"
                                otherButtonTitles:@"Proceed", nil];
+    //[qConfirm show];
 }
 
 - (void)isInterested {
+    // Perform tests to determine button state
     // If <key> is "yes", keep button in selected state
     // If <keyDetails> isn't empty, disable button & change colour
     
@@ -373,6 +377,9 @@
     qConfirm.tag = 1;
     // If button is selected, show alert
     if (sender.isSelected == YES) {
+        //NSLog(@"%@", sender.titleLabel.text);
+        //_btnTitle = sender.titleLabel.text;
+        //[self qConfirmAlert];
         [qConfirm show];
     }
 }
@@ -388,6 +395,9 @@
 
     qConfirm.tag = 2;
     if (sender.isSelected == YES) {
+        //NSLog(@"%@", sender.titleLabel.text);
+        //_btnTitle = sender.titleLabel.text;
+        //[self qConfirmAlert];
         [qConfirm show];
     }
 }
@@ -403,6 +413,9 @@
     
     qConfirm.tag = 3;
     if (sender.isSelected == YES) {
+        //NSLog(@"%@", sender.titleLabel.text);
+        //_btnTitle = sender.titleLabel.text;
+        //[self qConfirmAlert];
         [qConfirm show];
     }
 }
