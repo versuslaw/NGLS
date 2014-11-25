@@ -93,7 +93,7 @@
     self.navigationItem.hidesBackButton = YES;
     
     // Perform tests to determine button state
-    [self isInterested];
+    //[self isInterested];
     
     // Set delegate on textfield
     self.otherTextField.delegate = self;
@@ -109,6 +109,11 @@
     // Call alert methods
     [self moreInfoAlert];
     [self qConfirmAlert];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"viewWillAppear called");
+    [self isInterested];
 }
 
 - (void)didReceiveMemoryWarning
