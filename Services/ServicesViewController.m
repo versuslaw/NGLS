@@ -108,7 +108,7 @@
     
     // Call alert methods
     [self moreInfoAlert];
-    [self qConfirmAlert];
+    //[self qConfirmAlert];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -197,13 +197,39 @@
 
 - (void)qConfirmAlert {
     // Alloc & init qConfirm UIAlertView
-    //qConfirm = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@", _btnTitle]
-    qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
+    qConfirm = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@", _btnTitle]
+    //qConfirm = [[UIAlertView alloc]initWithTitle:@"Additional Information"
                                          message:@"Would you like to give additional information by answering some short related questions?"
                                         delegate:self
                                cancelButtonTitle:@"No"
                                otherButtonTitles:@"Proceed", nil];
-    //[qConfirm show];
+    
+    // Check which string is stored in _btnTitle (look into better method - possibly button tags?)
+    if ([_btnTitle isEqual:@"Industrial Deafness"]) {
+        qConfirm.tag = 1;
+    }
+    
+    if ([_btnTitle isEqual:@"Asbestosis"]) {
+        qConfirm.tag = 2;
+    }
+    
+    if ([_btnTitle isEqual:@"Vibration White Finger"]) {
+        qConfirm.tag = 3;
+    }
+    
+    if ([_btnTitle isEqual:@"Breathing Problems"]) {
+        qConfirm.tag = 4;
+    }
+    
+    if ([_btnTitle isEqual:@"Road Traffic Accident"]) {
+        qConfirm.tag = 5;
+    }
+    
+    if ([_btnTitle isEqual:@"Accident At Work"]) {
+        qConfirm.tag = 10;
+    }
+    
+    [qConfirm show];
 }
 
 - (void)isInterested {
@@ -374,13 +400,13 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"ind"];
     }
     
-    qConfirm.tag = 1;
+    //qConfirm.tag = 1;
     // If button is selected, show alert
     if (sender.isSelected == YES) {
-        //NSLog(@"%@", sender.titleLabel.text);
-        //_btnTitle = sender.titleLabel.text;
-        //[self qConfirmAlert];
-        [qConfirm show];
+        NSLog(@"%@", sender.titleLabel.text);
+        _btnTitle = sender.titleLabel.text;
+        [self qConfirmAlert];
+        //[qConfirm show];
     }
 }
 
@@ -393,12 +419,12 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"asb"];
     }
 
-    qConfirm.tag = 2;
+    //qConfirm.tag = 2;
     if (sender.isSelected == YES) {
-        //NSLog(@"%@", sender.titleLabel.text);
-        //_btnTitle = sender.titleLabel.text;
-        //[self qConfirmAlert];
-        [qConfirm show];
+        NSLog(@"%@", sender.titleLabel.text);
+        _btnTitle = sender.titleLabel.text;
+        [self qConfirmAlert];
+        //[qConfirm show];
     }
 }
 
@@ -411,12 +437,12 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"vwf"];
     }
     
-    qConfirm.tag = 3;
+    //qConfirm.tag = 3;
     if (sender.isSelected == YES) {
-        //NSLog(@"%@", sender.titleLabel.text);
-        //_btnTitle = sender.titleLabel.text;
-        //[self qConfirmAlert];
-        [qConfirm show];
+        NSLog(@"%@", sender.titleLabel.text);
+        _btnTitle = sender.titleLabel.text;
+        [self qConfirmAlert];
+        //[qConfirm show];
     }
 }
 
@@ -429,9 +455,12 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"bp"];
     }
     
-    qConfirm.tag = 4;
+    //qConfirm.tag = 4;
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        NSLog(@"%@", sender.titleLabel.text);
+        _btnTitle = sender.titleLabel.text;
+        [self qConfirmAlert];
+        //[qConfirm show];
     }
 }
 
@@ -444,9 +473,12 @@
         [_managedObjectNGLS setValue:@"Yes" forKey:@"rta"];
     }
     
-    qConfirm.tag = 5;
+    //qConfirm.tag = 5;
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        NSLog(@"%@", sender.titleLabel.text);
+        _btnTitle = sender.titleLabel.text;
+        [self qConfirmAlert];
+        //[qConfirm show];
     }
 }
 
@@ -529,7 +561,10 @@
     
     qConfirm.tag = 10;
     if (sender.isSelected == YES) {
-        [qConfirm show];
+        NSLog(@"%@", sender.titleLabel.text);
+        _btnTitle = sender.titleLabel.text;
+        [self qConfirmAlert];
+        //[qConfirm show];
     }
 }
 
