@@ -111,7 +111,7 @@
                     <color key="backgroundColor" red="1" green="0.1891768096" blue="0.15015592019999999" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Accident at work" backgroundImage="Button.png">
+                    <state key="normal" title="Accident at Work" backgroundImage="Button.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected">

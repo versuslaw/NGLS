@@ -39,6 +39,6 @@
 @property (strong) UIAlertView *invalidPhone;
 
 @property (strong) NSString *btnTitle;
-@property (strong) UIButton *buttonTag;
+//@property int bTag;
 
 @end
