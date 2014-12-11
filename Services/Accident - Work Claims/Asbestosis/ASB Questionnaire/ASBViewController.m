@@ -10,11 +10,14 @@
 #import "ServicesViewController.h"
 #import "AcceptedCharactersTextView.h"
 
+#import "Model.h"
+
 @interface ASBViewController ()
 
 @end
 
 @implementation ASBViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,10 +46,14 @@
     // Hide back button
     self.navigationItem.hidesBackButton = YES;
     
-    
     // Set textView delegate
     self.asbDetails.delegate = self;
     [self.asbDetails becomeFirstResponder];
+    
+    NSString *asbDetails = [_managedObjectNGLS valueForKey:@"asbDetails"];
+    if (asbDetails.length > 0) {
+        self.asbDetails.text = asbDetails;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,20 +90,20 @@
     [self.managedObjectNGLS setValue:self.asbDetails.text forKey:@"asbDetails"];
     NSLog(@"%@", self.managedObjectNGLS);
     
-    // Allocate & initialise ServicesViewController
-    //ServicesViewController *services = [[ServicesViewController alloc]initWithNibName:@"ServicesViewController"
-    //                                                                           bundle:nil];
-    // Pass managedObject to view
-    //services.managedObjectNGLS = self.managedObjectNGLS;
-    
-    // Push next view
-    //[self.navigationController pushViewController:services animated:YES];
-    
-    // Pop to services
-    NSArray *array = [self.navigationController viewControllers];
-    for (int i= 0 ; i < [[self.navigationController viewControllers]count] ; i++) {
-        if ( [[[self.navigationController viewControllers] objectAtIndex:i] isKindOfClass:[ServicesViewController class]]) {
-            [self.navigationController popToViewController:[array objectAtIndex:i] animated:YES];
+    // If textview is empty, push services view
+    NSString *asbDetails = [_managedObjectNGLS valueForKey:@"asbDetails"];
+    if (asbDetails.length < 1) {
+        ServicesViewController *services = [[ServicesViewController alloc]initWithNibName:@"ServicesViewController"
+                                                                                   bundle:nil];
+        services.managedObjectNGLS = self.managedObjectNGLS;
+        [self.navigationController pushViewController:services animated:YES];
+    } else {
+        // Pop to services
+        NSArray *array = [self.navigationController viewControllers];
+        for (int i= 0 ; i < [[self.navigationController viewControllers]count] ; i++) {
+            if ( [[[self.navigationController viewControllers] objectAtIndex:i] isKindOfClass:[ServicesViewController class]]) {
+                [self.navigationController popToViewController:[array objectAtIndex:i] animated:YES];
+            }
         }
     }
 }

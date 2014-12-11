@@ -99,9 +99,6 @@
     // Hide back button
     self.navigationItem.hidesBackButton = YES;
     
-    // Perform tests to determine button state
-    //[self isInterested];
-    
     // Set delegate on textfield
     self.otherTextField.delegate = self;
     self.recName.delegate = self;
@@ -112,11 +109,8 @@
     if (otherServices.length == 0) {
         self.otherTextField.enabled = FALSE;
     }
-    
-    // Call alert methods
-    [self moreInfoAlert];
-    //[self qConfirmAlert];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     // This method is called every time the view appears
@@ -169,9 +163,11 @@
     
     // If otherTextField isn't empty, disable otherBtn & set background colour
     if (self.otherTextField.text.length > 0) {
-        _otherBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _otherBtn.enabled = FALSE;
+        [_otherBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+        //_otherBtn.enabled = FALSE;
         [_managedObjectNGLS setValue:_otherTextField.text forKey:@"otherServices"];
+    } else {
+        [_otherBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
 }
 
@@ -185,21 +181,6 @@
 - (void)keyboardWillHide:(NSNotification *)notification {
     // Dismiss keyboard when lower-right hide button is tapped
     [self.view endEditing:YES];
-}
-
-- (void)moreInfoAlert {
-    // Alloc & init moreInfo UIAlertView
-    moreInfo = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@", _btnTitle]
-                                         message:@"Would you like to give additional information?"
-                                        delegate:self
-                               cancelButtonTitle:@"Submit"
-                               otherButtonTitles:nil];
-    moreInfo.alertViewStyle = UIAlertViewStylePlainTextInput;
-    alertTextField = [moreInfo textFieldAtIndex:0];
-    self.alertTextField.delegate = self;
-    alertTextField.autocorrectionType = UITextAutocorrectionTypeDefault;
-    alertTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-    alertTextField.tag = 100;
 }
 
 - (void)qConfirmAlert {
@@ -222,8 +203,9 @@
     }
     if ([[_managedObjectNGLS valueForKey:@"indSurvey"] isEqual: @"Yes"]) {
         _indBtn.selected = NO;
-        _indBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _indBtn.enabled = FALSE;
+        [_indBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_indBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // ASB
@@ -233,8 +215,9 @@
     NSString *asbDetails = [_managedObjectNGLS valueForKey:@"asbDetails"];
     if (asbDetails.length > 0) {
         _asbBtn.selected = NO;
-        _asbBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _asbBtn.enabled = FALSE;
+        [_asbBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_asbBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // VWF
@@ -243,8 +226,9 @@
     }
     if ([[_managedObjectNGLS valueForKey:@"vwfSurvey"] isEqual: @"Yes"]) {
         _vwfBtn.selected = NO;
-        _vwfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _vwfBtn.enabled = FALSE;
+        [_vwfBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_vwfBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // BP
@@ -254,8 +238,9 @@
     NSString *bpDetails = [_managedObjectNGLS valueForKey:@"bpDetails"];
     if (bpDetails.length > 0) {
         _bpBtn.selected = NO;
-        _bpBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _bpBtn.enabled = FALSE;
+        [_bpBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_bpBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // RTA
@@ -265,8 +250,9 @@
     NSString *rtaDetails = [_managedObjectNGLS valueForKey:@"rtaDetails"];
     if (rtaDetails.length > 0) {
         _rtaBtn.selected = NO;
-        _rtaBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _rtaBtn.enabled = FALSE;
+        [_rtaBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_rtaBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // MSLM
@@ -276,8 +262,9 @@
     NSString *mslmDetails = [_managedObjectNGLS valueForKey:@"mslmDetails"];
     if (mslmDetails.length > 0) {
         _mslmBtn.selected = NO;
-        _mslmBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _mslmBtn.enabled = FALSE;
+        [_mslmBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_mslmBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // PBA
@@ -287,8 +274,9 @@
     NSString *pbaDetails = [_managedObjectNGLS valueForKey:@"pbaDetails"];
     if (pbaDetails.length > 0) {
         _pbaBtn.selected = NO;
-        _pbaBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _pbaBtn.enabled = FALSE;
+        [_pbaBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_pbaBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // RCF
@@ -298,8 +286,9 @@
     NSString *rcfDetails = [_managedObjectNGLS valueForKey:@"rcfDetails"];
     if (rcfDetails.length > 0) {
         _rcfBtn.selected = NO;
-        _rcfBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _rcfBtn.enabled = FALSE;
+        [_rcfBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_rcfBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // MSP
@@ -309,8 +298,9 @@
     NSString *mspDetails = [_managedObjectNGLS valueForKey:@"mspDetails"];
     if (mspDetails.length > 0) {
         _mspBtn.selected = NO;
-        _mspBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _mspBtn.enabled = FALSE;
+        [_mspBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_mspBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // WP
@@ -320,8 +310,9 @@
     NSString *wpDetails = [_managedObjectNGLS valueForKey:@"wpDetails"];
     if (wpDetails.length > 0) {
         _wpBtn.selected = NO;
-        _wpBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _wpBtn.enabled = FALSE;
+        [_wpBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_wpBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // AAW
@@ -331,8 +322,9 @@
     NSString *aawDetails = [_managedObjectNGLS valueForKey:@"aawDetails"];
     if (aawDetails.length > 0) {
         _aawBtn.selected = NO;
-        _aawBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _aawBtn.enabled = FALSE;
+        [_aawBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_aawBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // PPI
@@ -342,8 +334,9 @@
     NSString *ppiDetails = [_managedObjectNGLS valueForKey:@"ppiDetails"];
     if (ppiDetails.length > 0) {
         _ppiBtn.selected = NO;
-        _ppiBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _ppiBtn.enabled = FALSE;
+        [_ppiBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_ppiBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // CONV
@@ -353,17 +346,18 @@
     NSString *convDetails = [_managedObjectNGLS valueForKey:@"convDetails"];
     if (convDetails.length > 0) {
         _convBtn.selected = NO;
-        _convBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
-        _convBtn.enabled = FALSE;
+        [_convBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
+    } else {
+        [_convBtn setBackgroundImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     }
     
     // OTHER
     NSString *otherServices = [_managedObjectNGLS valueForKey:@"otherServices"];
     if (otherServices.length > 1) {
-        _otherBtn.backgroundColor = [UIColor colorWithRed:(55/255.0) green:(200/255.0) blue:(0/255.0) alpha:1];
+        [_otherBtn setBackgroundImage:[UIImage imageNamed:@"Button-Completed.png"] forState:UIControlStateNormal];
         // Populate textField with previously entered text
         self.otherTextField.text = otherServices;
-        _otherBtn.enabled = FALSE;
+        //_otherBtn.enabled = FALSE;
         self.otherTextField.enabled = TRUE;
     }
 }
@@ -372,25 +366,37 @@
     // If button is not selected
     if ([sender isSelected]) {
         [sender setSelected:NO];
+        // Set blank value
         [_managedObjectNGLS setValue:@"" forKey:@"ind"];
     } else {
         // If button is selected
         [sender setSelected:YES];
+        // Set "Yes" for interested
         [_managedObjectNGLS setValue:@"Yes" forKey:@"ind"];
     }
 
     // If button is selected
     if (sender.isSelected == YES) {
-        //_bTag = 1;
         NSLog(@"%@", sender.titleLabel.text);
-        // Set button title
-        _btnTitle = sender.titleLabel.text;
-        // Call qConfirm method to alloc & init alert
-        [self qConfirmAlert];
-        // Set alert tag
-        qConfirm.tag = 1;
-        // Show the alert
-        [qConfirm show];
+        NSString *indSurvey = [_managedObjectNGLS valueForKey:@"indSurvey"];
+        // If indSurvey key isn't empty, there must be an entry already submitted
+        if (indSurvey.length > 0) {
+            // Push view for editing
+            INDViewController *ind = [[INDViewController alloc]initWithNibName:@"INDViewController"
+                                                                        bundle:nil];
+            ind.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:ind animated:YES];
+             // Else, show qConfirm alert
+        } else {
+            // Set button title for qConfirmAlert
+            _btnTitle = sender.titleLabel.text;
+            // Call qConfirm method to alloc & init alert
+            [self qConfirmAlert];
+            // Set alert tag
+            qConfirm.tag = 1;
+            // Show the alert
+            [qConfirm show];
+        }
     }
 }
 
@@ -405,10 +411,18 @@
 
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 2;
-        [qConfirm show];
+        NSString *asbDetails = [_managedObjectNGLS valueForKey:@"asbDetails"];
+        if (asbDetails.length > 0) {
+            ASBViewController *asb = [[ASBViewController alloc]initWithNibName:@"ASBViewController"
+                                                                        bundle:nil];
+            asb.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:asb animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 2;
+            [qConfirm show];
+        }
     }
 }
 
@@ -423,10 +437,18 @@
 
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 3;
-        [qConfirm show];
+        NSString *vwfSurvey = [_managedObjectNGLS valueForKey:@"vwfSurvey"];
+        if (vwfSurvey.length > 0) {
+            VWFViewController *vwf = [[VWFViewController alloc]initWithNibName:@"VWFViewController"
+                                                                        bundle:nil];
+            vwf.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:vwf animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 3;
+            [qConfirm show];
+        }
     }
 }
 
@@ -441,10 +463,18 @@
 
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 4;
-        [qConfirm show];
+        NSString *bpDetails = [_managedObjectNGLS valueForKey:@"bpDetails"];
+        if (bpDetails.length > 0) {
+            BPViewController *bp = [[BPViewController alloc]initWithNibName:@"BPViewController"
+                                                                     bundle:nil];
+            bp.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:bp animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 4;
+            [qConfirm show];
+        }
     }
 }
 
@@ -459,10 +489,18 @@
 
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 5;
-        [qConfirm show];
+        NSString *rtaDetails = [_managedObjectNGLS valueForKey:@"rtaDetails"];
+        if (rtaDetails.length > 0) {
+            RTAViewController *rta = [[RTAViewController alloc]initWithNibName:@"RTAViewController"
+                                                                        bundle:nil];
+            rta.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:rta animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 5;
+            [qConfirm show];
+        }
     }
 }
 
@@ -477,10 +515,18 @@
 
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 6;
-        [qConfirm show];
+        NSString *mslmDetails = [_managedObjectNGLS valueForKey:@"mslmDetails"];
+        if (mslmDetails.length > 0) {
+            MSLMViewController *mslm = [[MSLMViewController alloc]initWithNibName:@"MSLMViewController"
+                                                                           bundle:nil];
+            mslm.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:mslm animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 6;
+            [qConfirm show];
+        }
     }
 }
 
@@ -495,10 +541,18 @@
     
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 7;
-        [qConfirm show];
+        NSString *pbaDetails = [_managedObjectNGLS valueForKey:@"pbaDetails"];
+        if (pbaDetails.length > 0) {
+            PBAViewController *pba = [[PBAViewController alloc]initWithNibName:@"PBAViewController"
+                                                                        bundle:nil];
+            pba.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:pba animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 7;
+            [qConfirm show];
+        }
     }
 }
 
@@ -513,10 +567,18 @@
     
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 8;
-        [qConfirm show];
+        NSString *rcfDetails = [_managedObjectNGLS valueForKey:@"rcfDetails"];
+        if (rcfDetails.length > 0) {
+            RCFViewController *rcf = [[RCFViewController alloc]initWithNibName:@"RCFViewController"
+                                                                        bundle:nil];
+            rcf.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:rcf animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 8;
+            [qConfirm show];
+        }
     }
 }
 
@@ -531,10 +593,18 @@
 
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 9;
-        [qConfirm show];
+        NSString *mspDetails = [_managedObjectNGLS valueForKey:@"mspDetails"];
+        if (mspDetails.length > 0) {
+            MSPViewController *msp = [[MSPViewController alloc]initWithNibName:@"MSPViewController"
+                                                                        bundle:nil];
+            msp.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:msp animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 9;
+            [qConfirm show];
+        }
     }
 }
 
@@ -549,10 +619,18 @@
 
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 10;
-        [qConfirm show];
+        NSString *aawDetails = [_managedObjectNGLS valueForKey:@"aawDetails"];
+        if (aawDetails.length > 0) {
+            AAWViewController *aaw = [[AAWViewController alloc]initWithNibName:@"AAWViewController"
+                                                                        bundle:nil];
+            aaw.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:aaw animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 10;
+            [qConfirm show];
+        }
     }
 }
 
@@ -567,10 +645,18 @@
     
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 11;
-        [qConfirm show];
+        NSString *ppiDetails = [_managedObjectNGLS valueForKey:@"ppiDetails"];
+        if (ppiDetails.length > 0) {
+            PPIViewController *ppi = [[PPIViewController alloc]initWithNibName:@"PPIViewController"
+                                                                        bundle:nil];
+            ppi.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:ppi animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 11;
+            [qConfirm show];
+        }
     }
 }
 
@@ -585,10 +671,18 @@
     
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 12;
-        [qConfirm show];
+        NSString *wpDetails = [_managedObjectNGLS valueForKey:@"wpDetails"];
+        if (wpDetails.length > 0) {
+            WPViewController *wp = [[WPViewController alloc]initWithNibName:@"WPViewController"
+                                                                     bundle:nil];
+            wp.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:wp animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 12;
+            [qConfirm show];
+        }
     }
 }
 
@@ -603,10 +697,18 @@
     
     if (sender.isSelected == YES) {
         NSLog(@"%@", sender.titleLabel.text);
-        _btnTitle = sender.titleLabel.text;
-        [self qConfirmAlert];
-        qConfirm.tag = 13;
-        [qConfirm show];
+        NSString *convDetails = [_managedObjectNGLS valueForKey:@"convDetails"];
+        if (convDetails.length > 0) {
+            CONVViewController *conv = [[CONVViewController alloc]initWithNibName:@"CONVViewController"
+                                                                           bundle:nil];
+            conv.managedObjectNGLS = self.managedObjectNGLS;
+            [self.navigationController pushViewController:conv animated:YES];
+        } else {
+            _btnTitle = sender.titleLabel.text;
+            [self qConfirmAlert];
+            qConfirm.tag = 13;
+            [qConfirm show];
+        }
     }
 }
 
@@ -643,7 +745,6 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    // Alter button state depending if additional details are added
     // IND
     if (alertView.tag == 1) {
         if (buttonIndex == 1) {
@@ -825,7 +926,6 @@
     [_managedObjectNGLS setValue:admin.userLogin forKey:@"username"];
     [_managedObjectNGLS setValue:admin.siteLocation forKey:@"site"];
     
-    //[_managedObjectNGLS setValue:_otherTextField.text forKey:@"otherServices"];
     [_managedObjectNGLS setValue:_recName.text forKey:@"recName"];
     [_managedObjectNGLS setValue:_recTel.text forKey:@"recTel"];
     

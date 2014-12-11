@@ -32,6 +32,7 @@
 		9125BED31A28CD8800AC22E7 /* WPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9125BED11A28CD8800AC22E7 /* WPViewController.xib */; };
 		9125BED71A28CEC500AC22E7 /* CONVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9125BED51A28CEC500AC22E7 /* CONVViewController.m */; };
 		9125BED81A28CEC500AC22E7 /* CONVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9125BED61A28CEC500AC22E7 /* CONVViewController.xib */; };
+		9125BEDA1A2CB4C200AC22E7 /* Button-Completed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9125BED91A2CB4C200AC22E7 /* Button-Completed.png */; };
 		91466B641A1F760900165716 /* VWFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91466B621A1F760900165716 /* VWFViewController.m */; };
 		91466B651A1F760900165716 /* VWFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91466B631A1F760900165716 /* VWFViewController.xib */; };
 		91466B671A1F86BC00165716 /* QuestionBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 91466B661A1F86BC00165716 /* QuestionBox.png */; };
@@ -125,6 +126,7 @@
 		9125BED41A28CEC500AC22E7 /* CONVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CONVViewController.h; sourceTree = "<group>"; };
 		9125BED51A28CEC500AC22E7 /* CONVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CONVViewController.m; sourceTree = "<group>"; };
 		9125BED61A28CEC500AC22E7 /* CONVViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CONVViewController.xib; sourceTree = "<group>"; };
+		9125BED91A2CB4C200AC22E7 /* Button-Completed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Completed.png"; sourceTree = "<group>"; };
 		91466B611A1F760900165716 /* VWFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWFViewController.h; path = "Services/Accident - Work Claims/Vibration White Finger/VWF Questionnaire/VWFViewController.h"; sourceTree = SOURCE_ROOT; };
 		91466B621A1F760900165716 /* VWFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWFViewController.m; path = "Services/Accident - Work Claims/Vibration White Finger/VWF Questionnaire/VWFViewController.m"; sourceTree = SOURCE_ROOT; };
 		91466B631A1F760900165716 /* VWFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VWFViewController.xib; path = "Services/Accident - Work Claims/Vibration White Finger/VWF Questionnaire/VWFViewController.xib"; sourceTree = SOURCE_ROOT; };
@@ -686,6 +688,7 @@
 				910DA6B819E6CD860051D608 /* Background.png */,
 				910DA6DA19ED14580051D608 /* ID Card.png */,
 				910DA6F319F15AC40051D608 /* Button.png */,
+				9125BED91A2CB4C200AC22E7 /* Button-Completed.png */,
 				910DA6EE19F1537E0051D608 /* Button Long.png */,
 				910DA6B619E6CD820051D608 /* Launch-Screen.png */,
 				910DA6B019E6BD150051D608 /* NGLS Logo Final.png */,
@@ -786,6 +789,7 @@
 				91CBFAA21A2349EB00F51CAF /* RTAViewController.xib in Resources */,
 				9125BEC91A28CB6600AC22E7 /* MSPViewController.xib in Resources */,
 				91FABB5D19C2EA9F0098C340 /* AdminViewController.xib in Resources */,
+				9125BEDA1A2CB4C200AC22E7 /* Button-Completed.png in Resources */,
 				9125BED31A28CD8800AC22E7 /* WPViewController.xib in Resources */,
 				91CBFAA71A234C9C00F51CAF /* BPViewController.xib in Resources */,
 				9125BEBF1A28C7DE00AC22E7 /* MSLMViewController.xib in Resources */,

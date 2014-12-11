@@ -15,7 +15,6 @@
 - (BOOL)stringIsAcceptable:(NSString *)string inRange:(NSRange)range {
     NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:ACCEPTABLE_CHARACTERS] invertedSet];
     NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-    
     return [string isEqualToString:filtered];
 }
 

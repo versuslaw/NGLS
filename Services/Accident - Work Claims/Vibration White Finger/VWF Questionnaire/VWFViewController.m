@@ -150,16 +150,6 @@
     
     NSLog(@"%@", self.managedObjectNGLS);
     
-//    // Allocate & initialise ServicesViewController
-//    ServicesViewController *services = [[ServicesViewController alloc]initWithNibName:@"ServicesViewController"
-//                                                                               bundle:nil];
-//    
-//    // Pass managedObject to view
-//    services.managedObjectNGLS = self.managedObjectNGLS;
-//        
-//    // Push next view
-//    [self.navigationController pushViewController:services animated:YES];
-    
     // Pop to services
     NSArray *array = [self.navigationController viewControllers];
     for (int i= 0 ; i < [[self.navigationController viewControllers]count] ; i++) {

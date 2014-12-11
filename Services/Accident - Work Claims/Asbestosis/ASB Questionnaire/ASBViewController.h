@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class Model;
+
 @interface ASBViewController : UIViewController <UITextViewDelegate>
 
 @property (strong, nonatomic) NSManagedObject *managedObjectNGLS;
